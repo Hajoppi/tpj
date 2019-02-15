@@ -8,7 +8,7 @@ create table signups (
   email text not null,
   start_year text not null,
   student boolean not null,
-  no_alchohol boolean not null,
+  no_alcohol boolean not null,
   sillis boolean not null,
   invited boolean not null,
   avec text,
