@@ -1,9 +1,6 @@
 <template>
   <div>
-    <p>Home</p>
-    <p>Home</p>
-    <p>Home</p>
-    <p>Home</p>
+    <p v-text="$t('home.welcome_msg')"></p>
   </div>
 </template>
 

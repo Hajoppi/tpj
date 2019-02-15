@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "bulma": "^0.7.4",
     "vue": "^2.6.6",
     "vue-hot-reload-api": "^2.3.2",
     "vue-i18n": "^8.8.1",
@@ -26,6 +27,7 @@
     "eslint-plugin-vue": "^5.2.1",
     "parcel-bundler": "^1.11.0",
     "parcel-plugin-eslint": "^1.0.6",
+    "sass": "^1.17.0",
     "vue-template-compiler": "^2.6.6"
   }
 }
