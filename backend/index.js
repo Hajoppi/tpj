@@ -2,38 +2,51 @@
 
 const Hapi = require('hapi');
 const db = require('./services/db');
-const server = new Hapi.Server();
-/*
-server.connection({
+
+const server = Hapi.server({
   port: process.env.PORT || 3001,
   host: 'localhost',
   routes: {
     cors: true
   }
 });
-*/
-/*
-const testobj = {
-  name: "Tuomas",
-  email: "tuomas.kontola@gmail.com",
-  start_year: "2016",
-  student: true,
-  no_alcohol: true,
-  sillis: true,
-  invited: false
+
+const init = async () => {
+  await server.start();
+  console.log(`Server running at: ${server.info.uri}`);
 };
-*/
-db.signup(testobj).then(res => {
-  console.log(res);
 
-}).catch(e => {
-  console.log("There was an error inserting data");
-  console.error(e.stack);
+process.on('unhandledRejection', (err) => {
+  console.log(err);
+  process.exit(1);
+});
+// Add new signup
+server.route({
+  method: 'POST',
+  path: '/api/signup',
+  handler: async (request, reply) => {
+    try {
+      const signupObj = request.payload;
+      return await db.signup(signupObj);
+    }
+    catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 });
 
-db.getParticipants().then(res => {
-  console.log(res);
-  db.terminate();
-}).catch(e => {
-  console.error(e.stack);
+server.route({
+  method: 'GET',
+  path: '/api/signups',
+  handler: async (request, h) => {
+    try {
+      return await db.getParticipants();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 });
+
+init();
