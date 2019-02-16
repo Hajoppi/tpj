@@ -20,7 +20,7 @@ process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
-// Add new signup
+// Insert new signup
 server.route({
   method: 'POST',
   path: '/api/signup',
@@ -35,7 +35,7 @@ server.route({
     }
   }
 });
-
+// Fetch the signups
 server.route({
   method: 'GET',
   path: '/api/signups',
