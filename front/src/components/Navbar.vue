@@ -19,10 +19,10 @@
     :class="{ 'is-active': showNavbar }">
       <div class="navbar-start">
         <a class="navbar-item" v-text="$t('navigation.frontpage')"></a>
-        <a class="navbar-item" v-text="$t('navigation.register')">Ilmoittautuminen</a>
-        <a class="navbar-item" v-text="$t('navigation.week')">Teekkariperinneviikko</a>
-        <a class="navbar-item" v-text="$t('navigation.companies')">Yrityksille</a>
-        <a class="navbar-item" v-text="$t('navigation.contact')">Yhteystiedot</a>
+        <a class="navbar-item" v-text="$t('navigation.register')"></a>
+        <a class="navbar-item" v-text="$t('navigation.week')"></a>
+        <a class="navbar-item" v-text="$t('navigation.companies')"></a>
+        <a class="navbar-item" v-text="$t('navigation.contact')"></a>
       </div>
     </div>
   </nav>

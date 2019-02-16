@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-class BaseProxy {
+class Proxy {
   /**
    * The constructor of the BaseProxy.
    *
@@ -84,7 +84,8 @@ class BaseProxy {
         .then((response) => {
           resolve(response.data);
         })
-        .catch(({ response }) => {
+        .catch((e) => {
+          console.log(e);
           if (response) {
             reject(response.data);
           } else {
@@ -164,4 +165,4 @@ class BaseProxy {
   }
 }
 
-export default BaseProxy;
+export default Proxy;
