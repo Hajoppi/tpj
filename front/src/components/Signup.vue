@@ -111,18 +111,6 @@
 
     methods: {
       handleSubmit() {
-        /*const data = {
-            name: 'Tuomas',
-            email: 'a@a.fi',
-            start_year: '1234',
-            student: false,
-            no_alcohol: false,
-            sillis: false,
-            avec: 'asd',
-            food_requirements: 'asd',
-            representative_of: 'asd',
-            gives_present: false,
-        };*/
         const data = this.$data;
         data.invited = this.invited;
         this.$store.dispatch("participants/register", data).then(() => {

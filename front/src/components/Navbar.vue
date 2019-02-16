@@ -18,11 +18,11 @@
     class="navbar-menu"
     :class="{ 'is-active': showNavbar }">
       <div class="navbar-start">
-        <a class="navbar-item" v-text="$t('navigation.frontpage')"></a>
-        <a class="navbar-item" v-text="$t('navigation.register')"></a>
-        <a class="navbar-item" v-text="$t('navigation.week')"></a>
-        <a class="navbar-item" v-text="$t('navigation.companies')"></a>
-        <a class="navbar-item" v-text="$t('navigation.contact')"></a>
+        <router-link class="navbar-item" v-text="$t('navigation.frontpage')" to="/"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.register')" to="/participants"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.week')" to="/"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.companies')" to="/"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.contact')" to="/"></router-link>
       </div>
     </div>
   </nav>
