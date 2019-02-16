@@ -126,7 +126,7 @@
         const data = this.$data;
         data.invited = this.invited;
         this.$store.dispatch("participants/register", data).then(() => {
-          console.log("thank you for registering");
+          this.$router.push({ name: 'participants.index'})
         }).catch(() => {
           console.log("errror");
         });

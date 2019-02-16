@@ -6,6 +6,7 @@
  */
 
  import Home from '../pages/Home';
+ import Participants from '../pages/Participants';
 
 export default [
   // Home
@@ -16,6 +17,11 @@ export default [
 
     // If the user needs to be authenticated to view this page
     // Has *auth: true* if needs authentication
+  },
+  {
+    path: '/participants',
+    name: 'participants.index',
+    component: Participants,
   },
 
   {
