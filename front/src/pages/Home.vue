@@ -1,7 +1,6 @@
 <template>
   <div>
     <p v-text="$t('home.welcome_msg')"></p>
-    <v-signup></v-signup>
   </div>
 </template>
 
@@ -12,7 +11,6 @@
    *
    * The home index page.
    */
-import VSignup from '../components/Signup';
 export default {
   /**
    * The name of the page.
@@ -23,7 +21,6 @@ export default {
    * The components that the page can use.
    */
   components: {
-    VSignup,
   },
 };
 </script>

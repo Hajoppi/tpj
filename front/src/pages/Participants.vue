@@ -1,8 +1,10 @@
 <template>
   <div>
+    <p>Invited</p>
     <div v-for="participant in invited">
       <div v-text="participant.name"></div>
     </div>
+    <p>Normal plebs</p>
     <div v-for="participant in normal">
       <div v-text="participant.name"></div>
     </div>

@@ -5,8 +5,9 @@
  * The routes and redirects are defined in this file.
  */
 
- import Home from '../pages/Home';
- import Participants from '../pages/Participants';
+import Home from '../pages/Home';
+import Participants from '../pages/Participants';
+import Signup from '../pages/Signup';
 
 export default [
   // Home
@@ -17,6 +18,11 @@ export default [
 
     // If the user needs to be authenticated to view this page
     // Has *auth: true* if needs authentication
+  },
+  {
+    path: '/signup',
+    name: 'signup.index',
+    component: Signup,
   },
   {
     path: '/participants',

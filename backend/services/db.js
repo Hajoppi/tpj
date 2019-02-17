@@ -28,18 +28,35 @@ db.signupIntoParams = (signupObj) => {
     ];
 };
 
-db.getParticipants = async () => {
-  const { rows } = await pool.query('SELECT * FROM signups');
+db.getInvitedParticipants = async () => {
+  const { rows } = await pool.query('SELECT * FROM signups WHERE invited=true');
   return rows;
-}
+};
+
+db.getNormalParticipants = async () => {
+  const { rows } = await pool.query('SELECT * FROM signups WHERE invited=false');
+  return rows;
+};
+
+db.getAllParticipants = async () => {
+  const normal = pool.query('SELECT * FROM signups WHERE invited=false');
+  const invited = pool.query('SELECT * FROM signups WHERE invited=true');
+  const r1 = await normal;
+  const r2 = await invited;
+  const rows = {
+    normal: r1.rows,
+    invited: r2.rows,
+  }
+  return rows;
+};
 
 db.signup = async (signupObj) => {
   const params = db.signupIntoParams(signupObj);
   const { rows } = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, representative_of, gives_present) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning name', params);
-  return rows[0].id;
-}
+  return rows[0].name;
+};
 
 
 db.terminate = async () => {
   await pool.end();
-}
+};

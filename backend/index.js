@@ -20,6 +20,7 @@ process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
+
 // Insert new signup
 server.route({
   method: 'POST',
@@ -35,13 +36,42 @@ server.route({
     }
   }
 });
+
 // Fetch the signups
 server.route({
   method: 'GET',
   path: '/api/signups',
   handler: async (request, h) => {
     try {
-      return await db.getParticipants();
+      return await db.getAllParticipants();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+});
+
+// Fetch normal guests
+server.route({
+  method: 'GET',
+  path: '/api/signups/normal',
+  handler: async (request, h) => {
+    try {
+      return await db.getNormalParticipants();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+});
+
+// Fetch invited guests
+server.route({
+  method: 'GET',
+  path: '/api/signups/invited',
+  handler: async (request, h) => {
+    try {
+      return await db.getInvitedParticipants();
     } catch (err) {
       console.error(err);
       throw err;

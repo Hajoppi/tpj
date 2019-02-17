@@ -19,8 +19,8 @@
     :class="{ 'is-active': showNavbar }">
       <div class="navbar-start">
         <router-link class="navbar-item" v-text="$t('navigation.frontpage')" to="/"></router-link>
-        <router-link class="navbar-item" v-text="$t('navigation.register')" to="/participants"></router-link>
-        <router-link class="navbar-item" v-text="$t('navigation.week')" to="/"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.register')" to="/signup"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.week')" to="/participants"></router-link>
         <router-link class="navbar-item" v-text="$t('navigation.companies')" to="/"></router-link>
         <router-link class="navbar-item" v-text="$t('navigation.contact')" to="/"></router-link>
       </div>

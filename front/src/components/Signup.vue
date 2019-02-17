@@ -1,77 +1,80 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input v-model="name" class="input" type="text" placeholder="Name">
+  <div>
+    <div v-if="invited">Invited</div>
+    <form @submit.prevent="handleSubmit">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input v-model="name" class="input" type="text" placeholder="Name">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control">
-        <input v-model="email" class="input" type="email" placeholder="Email">
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input v-model="email" class="input" type="email" placeholder="Email">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Start Year</label>
-      <div class="control">
-        <input v-model="start_year" class="input" type="number" placeholder="">
+      <div class="field">
+        <label class="label">Start Year</label>
+        <div class="control">
+          <input v-model="start_year" class="input" type="number" placeholder="">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Student</label>
-      <div class="control">
-        <input v-model="student" type="checkbox">
+      <div class="field">
+        <label class="label">Student</label>
+        <div class="control">
+          <input v-model="student" type="checkbox">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">No alcohol</label>
-      <div class="control">
-        <input v-model="no_alcohol" type="checkbox">
+      <div class="field">
+        <label class="label">No alcohol</label>
+        <div class="control">
+          <input v-model="no_alcohol" type="checkbox">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Sillis</label>
-      <div class="control">
-        <input v-model="sillis" type="checkbox">
+      <div class="field">
+        <label class="label">Sillis</label>
+        <div class="control">
+          <input v-model="sillis" type="checkbox">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Avec</label>
-      <div class="control">
-        <input v-model="avec" class="input" type="text" placeholder="Avec">
+      <div class="field">
+        <label class="label">Avec</label>
+        <div class="control">
+          <input v-model="avec" class="input" type="text" placeholder="Avec">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Food Allergies</label>
-      <div class="control">
-        <input v-model="food_requirements"
-               class="input"
-               type="text"
-               placeholder="Allergies">
+      <div class="field">
+        <label class="label">Food Allergies</label>
+        <div class="control">
+          <input v-model="food_requirements"
+                 class="input"
+                 type="text"
+                 placeholder="Allergies">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Representative of</label>
-      <div class="control">
-        <input v-model="representative_of"
-              class="input"
-              type="text"
-              placeholder="Representative">
+      <div class="field">
+        <label class="label">Representative of</label>
+        <div class="control">
+          <input v-model="representative_of"
+                class="input"
+                type="text"
+                placeholder="Representative">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <label class="label">Gives Present</label>
-      <div class="control">
-        <input v-model="gives_present" type="checkbox">
+      <div class="field">
+        <label class="label">Gives Present</label>
+        <div class="control">
+          <input v-model="gives_present" type="checkbox">
+        </div>
       </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <button class="button is-link">Submit</button>
+      <div class="field">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </template>
 
 <script>

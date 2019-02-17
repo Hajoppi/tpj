@@ -14,7 +14,8 @@ import {
 
 export default {
   [ALL](state, participants) {
-    state.normal = participants;
+    state.normal = participants.normal;
+    state.invited = participants.invited;
   },
 
   [REGISTER](state, participant) {
