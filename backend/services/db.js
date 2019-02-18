@@ -56,6 +56,15 @@ db.signup = async (signupObj) => {
   return rows[0].name;
 };
 
+db.deleteSignup = async (signup_id) => {
+    return query('delete from signups where id=$1', [signup_id]);
+};
+
+db.updateSignup = async (signupObj, signupId) => {
+    let params = db.signupIntoParams(signupObj);
+    params.unshift(signupId);
+    return query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, representative_of=$11, gives_present=$12 where id=$1', params);
+};
 
 db.terminate = async () => {
   await pool.end();
