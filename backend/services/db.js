@@ -28,6 +28,11 @@ db.signupIntoParams = (signupObj) => {
     ];
 };
 
+db.getSignupDetails = async (signupId) => {
+  const { rows } = await pool.query('SELECT * FROM signups WHERE id=$1', [signupId]);
+  return rows[0];
+}
+
 db.getInvitedParticipants = async () => {
   const { rows } = await pool.query('SELECT * FROM signups WHERE invited=true');
   return rows;
@@ -57,13 +62,14 @@ db.signup = async (signupObj) => {
 };
 
 db.deleteSignup = async (signup_id) => {
-    return query('delete from signups where id=$1', [signup_id]);
+    return await pool.query('delete from signups where id=$1', [signup_id]);
 };
 
-db.updateSignup = async (signupObj, signupId) => {
+db.updateSignup = async (signupId, signupObj) => {
     let params = db.signupIntoParams(signupObj);
     params.unshift(signupId);
-    return query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, representative_of=$11, gives_present=$12 where id=$1', params);
+    console.log(params);
+    return await pool.query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, representative_of=$11, gives_present=$12 where id=$1', params);
 };
 
 db.terminate = async () => {

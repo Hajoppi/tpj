@@ -2,6 +2,7 @@
 
 const Hapi = require('hapi');
 const db = require('./services/db');
+const utils = require('./services/utils');
 
 const server = Hapi.server({
   port: process.env.PORT || 3001,
@@ -47,6 +48,54 @@ server.route({
     } catch (err) {
       console.error(err);
       throw err;
+    }
+  }
+});
+
+//Fetch single signup
+server.route({
+  method: 'GET',
+  path: '/api/signup',
+  handler: async (request, h) => {
+    try {
+      const signupId = utils.decrypt(request.query.id);
+      const signup = await db.getSignupDetails(signupId);
+      signup.id = undefined;
+      return signup;
+    } catch(error) {
+      console.error(error.stack)
+      throw error;
+    }
+  }
+});
+
+//Update a signups
+server.route({
+  method: 'PUT',
+  path: '/api/signup',
+  handler: async (request, h) => {
+    try {
+      const signupId = utils.decrypt(request.payload.id);
+      const signupObj = request.payload;
+      const res = await db.updateSignup(signupId, signupObj);
+      return res;
+    } catch(error) {
+      console.log(error.stack);
+      throw error;
+    }
+  }
+});
+
+//Delete a signups
+server.route({
+  method: 'DELETE',
+  path: '/api/signup',
+  handler: async (request, h) => {
+    try {
+      const signupId = utils.decrypt(request.query.id);
+      return await db.deleteSignup(signupId);
+    } catch(error) {
+      throw error;
     }
   }
 });
