@@ -8,6 +8,7 @@
 import Home from '../pages/Home';
 import Participants from '../pages/Participants';
 import Signup from '../pages/Signup';
+import Edit from '../pages/Edit';
 
 export default [
   // Home
@@ -29,7 +30,11 @@ export default [
     name: 'participants.index',
     component: Participants,
   },
-
+  {
+    path: '/edit',
+    name: 'edit.index',
+    component: Edit,
+  },
   {
     path: '/',
     redirect: '/',

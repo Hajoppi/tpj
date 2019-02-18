@@ -134,8 +134,8 @@ class Proxy {
    *
    * @returns {Promise} The result in a promise.
    */
-  update(id, item) {
-    return this.submit('put', `/${this.endpoint}/${id}`, item);
+  update(item) {
+    return this.submit('put', `/${this.endpoint}`, item);
   }
 
   /**
@@ -145,8 +145,8 @@ class Proxy {
    *
    * @returns {Promise} The result in a promise.
    */
-  destroy(id) {
-    return this.submit('delete', `/${this.endpoint}/${id}`);
+  destroy() {
+    return this.submit('delete', `/${this.endpoint}`);
   }
 
   /**

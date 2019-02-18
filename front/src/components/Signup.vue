@@ -68,9 +68,13 @@
           <input v-model="gives_present" type="checkbox">
         </div>
       </div>
-      <div class="field">
+      <div class="field is-grouped">
         <div class="control">
-          <button class="button is-link">Submit</button>
+          <button v-if="edit" class="button is-link">Edit</button>
+          <button v-else class="button is-link">Submit</button>
+        </div>
+        <div v-if="edit" class="control">
+          <button @click.prevent="deleteSignup" class="button is-link">Delete</button>
         </div>
       </div>
     </form>
@@ -78,55 +82,95 @@
 </template>
 
 <script>
-  /* ============
-   * Home Index Page
-   * ============
-   *
-   * The home index page.
-   */
+/* ============
+ * Home Index Page
+ * ============
+ *
+ * The home index page.
+ */
+import Proxy from '../proxies/Proxy';
 
-  export default {
+export default {
+/**
+ * The name of the page.
+ */
+  name: 'home-index',
+  props: {
+    invited: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    edit: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
+  },
+  data() {
+    return {
+      name: '',
+      email: '',
+      start_year: '',
+      student: false,
+      no_alcohol: false,
+      sillis: false,
+      avec: '',
+      food_requirements: '',
+      representative_of: '',
+      gives_present: false,
+    };
+  },
+  mounted() {
+    if(this.edit) {
+      const signupId = this.$route.query.id;
+      new Proxy('signup', { id: signupId }).all().then((res) => {
+        Object.assign(this._data, res);
+        console.log(this.$data);
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+  },
+  methods: {
+    register() {
+      const data = this.$data;
+      data.invited = this.invited;
+      this.$store.dispatch("participants/register", data).then(() => {
+        this.$router.push({ name: 'participants.index'})
+      }).catch(() => {
+        console.log("error");
+      });
+    },
+    update() {
+      const data = this._data;
+      data.id = this.$route.query.id;
+      return new Proxy('signup').update(data).then(() => {
+        this.$router.push({ name: 'participants.index' });
+      }).catch(() => {
+        console.log("error");
+      });
+    },
+    deleteSignup() {
+      const signupId = this.$route.query.id;
+      return new Proxy('signup', { id: signupId }).destroy().then(() => {
+        this.$router.push({ name: 'participants.index'});
+      }).catch(() => {
+        console.log("error");
+      });
+    },
+    handleSubmit() {
+      if(this.edit) {
+        this.update();
+      } else {
+        this.register();
+      }
+    },
+  },
   /**
-   * The name of the page.
+   * The components that the page can use.
    */
-    name: 'home-index',
-    props: {
-      invited: {
-        type: Boolean,
-        required: false,
-        default: false,
-      },
-    },
-    data() {
-      return {
-        name: '',
-        email: '',
-        start_year: '',
-        student: false,
-        no_alcohol: false,
-        sillis: false,
-        avec: '',
-        food_requirements: '',
-        representative_of: '',
-        gives_present: false,
-      };
-    },
-
-    methods: {
-      handleSubmit() {
-        const data = this.$data;
-        data.invited = this.invited;
-        this.$store.dispatch("participants/register", data).then(() => {
-          this.$router.push({ name: 'participants.index'})
-        }).catch(() => {
-          console.log("errror");
-        });
-      },
-    },
-    /**
-     * The components that the page can use.
-     */
-    components: {
-    },
+  components: {
+  },
 };
 </script>

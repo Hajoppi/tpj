@@ -27,7 +27,12 @@ export const register = ({ commit }, data) => {
     });
 }
 
+export const update = ({ commit }, data) => {
+
+}
+
 export default {
   all,
   register,
+  update,
 };
