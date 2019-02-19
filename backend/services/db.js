@@ -57,8 +57,8 @@ db.getAllParticipants = async () => {
 
 db.signup = async (signupObj) => {
   const params = db.signupIntoParams(signupObj);
-  const { rows } = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, representative_of, gives_present) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning name', params);
-  return rows[0].name;
+  const { rows } = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, representative_of, gives_present) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning id', params);
+  return rows[0].id;
 };
 
 db.deleteSignup = async (signup_id) => {

@@ -3,6 +3,7 @@
 const Hapi = require('hapi');
 const db = require('./services/db');
 const utils = require('./services/utils');
+const mail = require('./services/mail');
 
 const server = Hapi.server({
   port: process.env.PORT || 3001,
@@ -29,7 +30,8 @@ server.route({
   handler: async (request, reply) => {
     try {
       const signupObj = request.payload;
-      return await db.signup(signupObj);
+      const id = await db.signup(signupObj);
+      return await mail.sendOnSignupCreate(signupObj, id);
     }
     catch (error) {
       console.log(error);
