@@ -5,19 +5,19 @@
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input v-model="name" class="input" type="text" placeholder="Name">
+          <input v-model="name" class="input" type="text" placeholder="Name" required>
         </div>
       </div>
       <div class="field">
         <label class="label">Email</label>
         <div class="control">
-          <input v-model="email" class="input" type="email" placeholder="Email">
+          <input v-model="email" class="input" type="email" placeholder="Email" required>
         </div>
       </div>
       <div class="field">
         <label class="label">Start Year</label>
         <div class="control">
-          <input v-model="start_year" class="input" type="number" placeholder="">
+          <input v-model="start_year" class="input" type="number" placeholder="" required>
         </div>
       </div>
       <div class="field">
