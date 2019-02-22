@@ -1,7 +1,8 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container">
+
     <div class="navbar-brand">
-      <v-locale></v-locale>
       <a role="button"
           class="navbar-burger burger"
           :class="{ 'is-active': showNavbar }"
@@ -24,7 +25,14 @@
         <router-link class="navbar-item" v-text="$t('navigation.companies')" to="/"></router-link>
         <router-link class="navbar-item" v-text="$t('navigation.contact')" to="/"></router-link>
       </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <v-locale></v-locale>
+        </div>
+      </div>
     </div>
+  </div>
+    
   </nav>
 </template>
 

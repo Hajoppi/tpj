@@ -1,3 +1,2 @@
-.container {
-  @extend .container;
-}
+@import '~bulma/bulma';
+@import './modules/choose';
