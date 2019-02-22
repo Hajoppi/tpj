@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar no-background" role="navigation" aria-label="main navigation">
     <div class="container">
 
     <div class="navbar-brand">
@@ -16,14 +16,14 @@
       </a>
     </div>
     <div id="navigationBar"
-    class="navbar-menu"
+    class="navbar-menu  no-background"
     :class="{ 'is-active': showNavbar }">
       <div class="navbar-start">
         <router-link class="navbar-item" v-text="$t('navigation.frontpage')" to="/"></router-link>
         <router-link class="navbar-item" v-text="$t('navigation.register')" to="/signup"></router-link>
         <router-link class="navbar-item" v-text="$t('navigation.week')" to="/participants"></router-link>
         <router-link class="navbar-item" v-text="$t('navigation.companies')" to="/"></router-link>
-        <router-link class="navbar-item" v-text="$t('navigation.contact')" to="/"></router-link>
+        <router-link class="navbar-item" v-text="$t('navigation.contact')" to="/contact"></router-link>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
@@ -32,7 +32,7 @@
       </div>
     </div>
   </div>
-    
+
   </nav>
 </template>
 

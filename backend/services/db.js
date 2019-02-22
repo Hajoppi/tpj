@@ -33,12 +33,12 @@ db.getSignupDetails = async (signupId) => {
   return rows[0];
 }
 
-db.getInvitedParticipants = async () => {
+getInvitedParticipants = async () => {
   const { rows } = await pool.query('SELECT * FROM signups WHERE invited=true');
   return rows;
 };
 
-db.getNormalParticipants = async () => {
+getNormalParticipants = async () => {
   const { rows } = await pool.query('SELECT * FROM signups WHERE invited=false');
   return rows;
 };

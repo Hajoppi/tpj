@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-text="$t('')"></p>
+    <p>asd</p>
   </div>
 </template>
 

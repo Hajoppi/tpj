@@ -9,6 +9,7 @@ import Home from '../pages/Home';
 import Participants from '../pages/Participants';
 import Signup from '../pages/Signup';
 import Edit from '../pages/Edit';
+import Contact from '../pages/Contact';
 
 export default [
   // Home
@@ -34,6 +35,11 @@ export default [
     path: '/edit',
     name: 'edit.index',
     component: Edit,
+  },
+  {
+    path: '/contact',
+    name: 'contact.index',
+    component: Contact,
   },
   {
     path: '/',

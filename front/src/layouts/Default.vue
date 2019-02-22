@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <v-navbar></v-navbar>
     <div class="section">
       <div class="container">
