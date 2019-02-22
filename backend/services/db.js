@@ -44,8 +44,8 @@ db.getNormalParticipants = async () => {
 };
 
 db.getAllParticipants = async () => {
-  const normal = pool.query('SELECT * FROM signups WHERE invited=false');
-  const invited = pool.query('SELECT * FROM signups WHERE invited=true');
+  const normal = pool.query('SELECT name, created FROM signups WHERE invited=false');
+  const invited = pool.query('SELECT name, created FROM signups WHERE invited=true');
   const r1 = await normal;
   const r2 = await invited;
   const rows = {
