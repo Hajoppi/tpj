@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <div class="container">
-      <v-navbar></v-navbar>
+    <v-layout>
       <router-view></router-view>
-    </div>
+    </v-layout>
   </div>
 </template>
 
 <script>
+import VLayout from './layouts/Default';
 
-import VNavbar from './components/Navbar';
 export default {
   name: 'app',
   components: {
-    VNavbar,
+    VLayout,
   },
 }
 </script>

@@ -1,42 +1,51 @@
 <template>
   <div>
-    <p>Invited</p>
-    <div v-for="participant in invited">
+    <div class="choose">
+      <div class="columns is-mobile">
+        <div class="column"><div class="button" @click="showInvited=false">Normal</div></div>
+        <div class="column"><div class="button" @click="showInvited=true">Invited</div></div>
+      </div>
+    </div>
+    <div v-if="showInvited" v-for="participant in invited">
       <div v-text="participant.name"></div>
     </div>
-    <p>Normal plebs</p>
-    <div v-for="participant in normal">
+    <div v-if="!showInvited" v-for="participant in normal">
       <div v-text="participant.name"></div>
     </div>
   </div>
 </template>
 
 <script>
-  /* ============
-   * Home Index Page
-   * ============
-   *
-   * The home index page.
-   */
+/* ============
+ * Home Index Page
+ * ============
+ *
+ * The home index page.
+ */
 
-  export default {
+export default {
+/**
+ * The name of the page.
+ */
+  name: 'invited',
+  data() {
+    return {
+      showInvited: false,
+    };
+  },
   /**
-   * The name of the page.
+   * The components that the page can use.
    */
-    name: 'invited',
-    /**
-     * The components that the page can use.
-     */
-    created() {
-      this.$store.dispatch('participants/all');
+  created() {
+    this.$store.dispatch('participants/all');
+  },
+  computed: {
+    invited() {
+      return this.$store.state.participants.invited;
     },
-    computed: {
-      invited() {
-        return this.$store.state.participants.invited;
-      },
-      normal() {
-        return this.$store.state.participants.normal;
-      },
-    }
+    normal() {
+      return this.$store.state.participants.normal;
+    },
+  }
 };
 </script>

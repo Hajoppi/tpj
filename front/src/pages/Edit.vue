@@ -12,6 +12,7 @@
  * The home index page.
  */
 import VSignup from '../components/Signup';
+
 export default {
   /**
    * The name of the page.
