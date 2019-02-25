@@ -1,23 +1,23 @@
 <template>
   <div>
-    <div v-if="invited">Invited</div>
-    <form @submit.prevent="handleSubmit">
+    <!--<div v-if="invited">Invited</div>-->
+    <form class="form" @submit.prevent="handleSubmit">
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input v-model="name" class="input" type="text" placeholder="Name" required>
+          <input v-model="name" class="input" type="text" required>
         </div>
       </div>
       <div class="field">
         <label class="label">Email</label>
         <div class="control">
-          <input v-model="email" class="input" type="email" placeholder="Email" required>
+          <input v-model="email" class="input" type="email" required>
         </div>
       </div>
       <div class="field">
         <label class="label">Start Year</label>
         <div class="control">
-          <input v-model="start_year" class="input" type="number" placeholder="" required>
+          <input v-model="start_year" class="input" type="number" required>
         </div>
       </div>
       <div class="field">
@@ -41,7 +41,7 @@
       <div class="field">
         <label class="label">Avec</label>
         <div class="control">
-          <input v-model="avec" class="input" type="text" placeholder="Avec">
+          <input v-model="avec" class="input" type="text">
         </div>
       </div>
       <div class="field">
@@ -49,8 +49,7 @@
         <div class="control">
           <input v-model="food_requirements"
                  class="input"
-                 type="text"
-                 placeholder="Allergies">
+                 type="text">
         </div>
       </div>
       <div class="field">
@@ -58,20 +57,19 @@
         <div class="control">
           <input v-model="representative_of"
                 class="input"
-                type="text"
-                placeholder="Representative">
+                type="text">
         </div>
       </div>
       <div class="field">
-        <label class="label">Gives Present</label>
+        <label class="label">Give Present?</label>
         <div class="control">
           <input v-model="gives_present" type="checkbox">
         </div>
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button v-if="edit" class="button is-link">Edit</button>
-          <button v-else class="button is-link">Submit</button>
+          <button v-if="edit" class="button">Edit</button>
+          <button v-else class="button">Submit</button>
         </div>
         <div v-if="edit" class="control">
           <button @click.prevent="deleteSignup" class="button is-link">Delete</button>

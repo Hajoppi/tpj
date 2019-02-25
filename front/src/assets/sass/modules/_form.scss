@@ -1,11 +1,35 @@
+.form {
+  margin: 0 auto;
+  text-align: center;
+}
+.field {
+  margin-bottom: 1rem;
+}
 .input {
+  height: 2rem;
+  font-size: 2rem;
   background: transparent;
   border: none;
   border-bottom: 1px solid;
+  border-color: $white;
+  color: $navajo;
 }
 
 .input:focus {
-  background: transparent;
-  border: none;
+  outline: none;
+}
+.label {
+  font-size: 1.45rem;
+  font-weight: bold;
+}
 
+.button {
+  color: $navajo;
+  background: transparent;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.button:hover {
+  background-color: rgba(0,0,0,0.2);
 }
