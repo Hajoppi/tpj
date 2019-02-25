@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar no-background" role="navigation" aria-label="main navigation">
+  <nav class="navbar transparent" role="navigation" aria-label="main navigation">
     <div class="container">
 
-    <div class="navbar-brand">
+    <div class="navbar-brand transparent">
       <a role="button"
           class="navbar-burger burger"
           :class="{ 'is-active': showNavbar }"
@@ -16,7 +16,7 @@
       </a>
     </div>
     <div id="navigationBar"
-    class="navbar-menu  no-background"
+    class="navbar-menu transparent"
     :class="{ 'is-active': showNavbar }">
       <div class="navbar-start">
         <router-link class="navbar-item" v-text="$t('navigation.frontpage')" to="/"></router-link>

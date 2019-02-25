@@ -1,15 +1,14 @@
 @charset "utf-8";
 
 @import './modules/colors';
-@import './modules/choose';
-@import './modules/layout';
-@import './modules/navbar';
 @import './modules/bulma-overrides';
 @import '~bulma/bulma';
-
+@import './modules/navbar';
+@import './modules/layout';
+@import './modules/choose';
+@import './modules/form';
 
 #app, html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
 }
