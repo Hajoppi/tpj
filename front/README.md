@@ -1,8 +1,8 @@
-#Frontend
+# Frontend
 
 This is the page's frontend.
 
-##Usage
+## Usage
 To get up and running run:
 ``` bash
 $ npm install
