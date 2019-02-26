@@ -21,6 +21,7 @@
  * This way the app stays clean.
  */
 import VNavbar from '../components/Navbar';
+
 export default {
   /**
    * The name of the layout.

@@ -6,7 +6,9 @@
 //@import './modules/choose';
 @import './modules/form';
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 #app, html, body {
+  position: relative;
   font-family: 'Source Sans Pro', sans-serif;
   height: 100%;
   margin: 0;

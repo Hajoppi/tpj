@@ -1,11 +1,21 @@
 .navbar {
-  height: 3rem;
-  padding-top: 1.5rem;
-  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgba(25, 25, 25, 0.52);
+}
+
+.navbar__menu {
   justify-content: space-evenly;
   display: flex;
   flex-direction: row;
-  background-color: rgba(25, 25, 25, 0.52)
+  @media screen and (max-width: $desktop) {
+    display: none;
+    flex-direction: column;
+  }
+}
+
+.navbar__menu--active {
+  display: flex;
 }
 
 .navbar__item {
@@ -13,10 +23,15 @@
   color:inherit;
   text-decoration: none;
   padding: 0.2rem;
-  margin-bottom: 3rem;
   color: $fawn;
 }
 
 .navbar__item:active:focus {
   color: $fawn;
+}
+
+.locale {
+  position:absolute;
+  top: 2rem;
+  right: 7rem;
 }

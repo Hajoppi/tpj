@@ -1,12 +1,8 @@
 <template>
-  <div class="field">
-    <div class="control">
-      <div class="select">
-        <select v-model="$i18n.locale">
-          <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
-        </select>
-      </div>
-    </div>
+  <div class="locale">
+    <select v-model="$i18n.locale">
+      <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+    </select>
   </div>
 </template>
 

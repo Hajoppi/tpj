@@ -22,21 +22,7 @@
       </div>
       <div class="field">
         <label class="label">Student</label>
-        <div class="control">
-          <input v-model="student" type="checkbox">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">No alcohol</label>
-        <div class="control">
-          <input v-model="no_alcohol" type="checkbox">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Sillis</label>
-        <div class="control">
-          <input v-model="sillis" type="checkbox">
-        </div>
+        <input v-model="student" type="checkbox">
       </div>
       <div class="field">
         <label class="label">Avec</label>
@@ -53,6 +39,10 @@
         </div>
       </div>
       <div class="field">
+        <label class="label">No alcohol</label>
+        <input v-model="no_alcohol" type="checkbox">
+      </div>
+      <div class="field">
         <label class="label">Representative of</label>
         <div class="control">
           <input v-model="representative_of"
@@ -62,9 +52,11 @@
       </div>
       <div class="field">
         <label class="label">Give Present?</label>
-        <div class="control">
-          <input v-model="gives_present" type="checkbox">
-        </div>
+        <input v-model="gives_present" type="checkbox">
+      </div>
+      <div class="field">
+        <label class="label">Sillis</label>
+        <input v-model="sillis" type="checkbox">
       </div>
       <div class="field is-grouped">
         <div class="control">
