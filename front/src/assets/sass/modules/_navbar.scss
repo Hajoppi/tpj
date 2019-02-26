@@ -1,21 +1,30 @@
 .navbar {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  margin-bottom: 1rem;
   background-color: rgba(25, 25, 25, 0.52);
+  overflow: hidden;
 }
 
 .navbar__menu {
-  justify-content: space-evenly;
+  justify-content: space-around;
   display: flex;
   flex-direction: row;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   @media screen and (max-width: $desktop) {
     display: none;
     flex-direction: column;
   }
 }
 
+
+.burger:hover {
+  background-color: rgba(0,0,0,0.2);
+}
 .navbar__menu--active {
   display: flex;
+  margin-top: 3.5rem;
 }
 
 .navbar__item {
@@ -31,7 +40,44 @@
 }
 
 .locale {
+  font-size: 1.5rem;
   position:absolute;
   top: 2rem;
-  right: 7rem;
+  right: 2.5rem;
+  color: $navajo;
+  border: none;
+  outline: none;
+  background: transparent;
+  @media screen and (max-width: $desktop) {
+    right: 1.5rem;
+  }
+  @media screen and (max-width: $tablet) {
+    right: 0.5rem;
+  }
+}
+/* Holy fuck what a tyomaa
+  This uses some dark magic to make a burger
+*/
+.burger {
+  display: block;
+  float: right;
+  width: $burger-size;
+  padding: $burger-size / 2;
+  padding-top: $burger-size * 0.75;
+  > span {
+    display: block;
+    height: $burger-size / 4;
+    border-top: ($burger-size * 0.1) solid black;
+    border-color: $fawn;
+  }
+  @media screen and (min-width: $desktop){
+    display: none;
+  }
+}
+
+.slide-enter-active {
+  transition: opacity .5s
+}
+.slide-enter-active {
+  opacity: 0;
 }
