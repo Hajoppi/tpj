@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <v-navbar></v-navbar>
-    <div class="section">
+    <div class="section" @click="closeNavbar">
       <div class="container">
         <slot></slot>
         <!-- Content will be placed here -->
@@ -27,7 +27,11 @@ export default {
    * The name of the layout.
    */
   name: 'default-layout',
-
+  methods: {
+    closeNavbar() {
+      this.$store.dispatch('navbar/set', false);
+    },
+  },
   components: {
     VNavbar,
   },

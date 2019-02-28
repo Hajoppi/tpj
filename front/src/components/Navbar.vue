@@ -23,18 +23,18 @@
 <script>
 export default {
   name: 'Navbar',
-  data() {
-    return {
-      showNavbar: false,
-    };
-  },
   methods: {
     toggleNavbar() {
-      this.showNavbar = !this.showNavbar;
+      this.$store.dispatch('navbar/toggle');
     },
     closeNavbar() {
-      this.showNavbar = false;
+      this.$store.dispatch('navbar/set', false);
     }
+  },
+  computed: {
+    showNavbar() {
+      return this.$store.state.navbar.showNavbar;
+    },
   },
   components: {
   }

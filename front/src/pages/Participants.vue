@@ -1,10 +1,8 @@
 <template>
   <div>
     <div class="choose">
-      <div class="columns is-mobile">
-        <div class="column"><div class="button" @click="showInvited=false">Normal</div></div>
-        <div class="column"><div class="button" @click="showInvited=true">Invited</div></div>
-      </div>
+      <div class="button" @click="showInvited=false">Normal</div>
+      <div class="button" @click="showInvited=true">Invited</div>
     </div>
     <div v-if="showInvited" v-for="participant in invited">
       <div v-text="participant.name"></div>
