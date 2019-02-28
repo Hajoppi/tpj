@@ -1,0 +1,15 @@
+{
+  "name": "Nimi",
+  "email": "Sähköposti",
+  "startYear": "Aloitusvuosi",
+  "student": "Opiskelija",
+  "avec": "Avec",
+  "foodAllergies": "Ruoka-allergiat",
+  "noAlcohol": "Alkoholiton",
+  "representative": "Edustan",
+  "present": "Annan lahjan",
+  "sillis": "Sillis",
+  "submit": "Tallenna",
+  "edit": "Muokkaa",
+  "delete": "Poista",
+}

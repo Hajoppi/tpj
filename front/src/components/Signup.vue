@@ -3,35 +3,35 @@
     <!--<div v-if="invited">Invited</div>-->
     <form class="form" @submit.prevent="handleSubmit">
       <div class="field">
-        <label class="label">Name</label>
+        <label class="label">{{$t('signup.name')}}</label>
         <div class="control">
           <input v-model="name" class="input" type="text" required>
         </div>
       </div>
       <div class="field">
-        <label class="label">Email</label>
+        <label class="label">{{$t('signup.email')}}</label>
         <div class="control">
           <input v-model="email" class="input" type="email" required>
         </div>
       </div>
       <div class="field">
-        <label class="label">Start Year</label>
+        <label class="label">{{$t('signup.startYear')}}</label>
         <div class="control">
           <input v-model="start_year" class="input" type="number" required>
         </div>
       </div>
       <div class="field">
-        <label class="label">Student</label>
+        <label class="label">{{$t('signup.student')}}</label>
         <input v-model="student" type="checkbox">
       </div>
       <div class="field">
-        <label class="label">Avec</label>
+        <label class="label">{{$t('signup.avec')}}</label>
         <div class="control">
           <input v-model="avec" class="input" type="text">
         </div>
       </div>
       <div class="field">
-        <label class="label">Food Allergies</label>
+        <label class="label">{{$t('signup.foodAllergies')}}</label>
         <div class="control">
           <input v-model="food_requirements"
                  class="input"
@@ -39,11 +39,11 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">No alcohol</label>
+        <label class="label">{{$t('signup.noAlcohol')}}</label>
         <input v-model="no_alcohol" type="checkbox">
       </div>
       <div class="field">
-        <label class="label">Representative of</label>
+        <label class="label">{{$t('signup.representative')}}</label>
         <div class="control">
           <input v-model="representative_of"
                 class="input"
@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">Give Present?</label>
+        <label class="label">{{$t('signup.present')}}</label>
         <input v-model="gives_present" type="checkbox">
       </div>
       <div class="field">
@@ -60,11 +60,11 @@
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button v-if="edit" class="button">Edit</button>
-          <button v-else class="button">Submit</button>
+          <button v-if="edit" class="button">{{$t('signup.edit')}}</button>
+          <button v-else class="button">{{$t('signup.submit')}}</button>
         </div>
         <div v-if="edit" class="control">
-          <button @click.prevent="deleteSignup" class="button is-link">Delete</button>
+          <button @click.prevent="deleteSignup" class="button is-link">{{$t('signup.delete')}}</button>
         </div>
       </div>
     </form>
