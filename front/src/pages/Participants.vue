@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="participants">
     <div class="choose">
       <div class="button" @click="showInvited=false">Normal</div>
       <div class="button" @click="showInvited=true">Invited</div>
