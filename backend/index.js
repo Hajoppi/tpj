@@ -2,8 +2,6 @@
 
 const Hapi = require('hapi');
 const db = require('./services/db');
-const utils = require('./services/utils');
-const mail = require('./services/mail');
 
 const server = Hapi.server({
   port: process.env.PORT || 3001,
