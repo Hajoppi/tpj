@@ -6,6 +6,7 @@ const db = require('./services/db');
 const server = Hapi.server({
   port: process.env.PORT || 3001,
   host: 'localhost',
+  address: process.env.NODE_URI || 'localhost',
   routes: {
     cors: true
   }
@@ -20,12 +21,18 @@ process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
-
+server.route({
+  method: 'POST',
+  path: '/status',
+  handler: (request, h) => {
+      return {success: true};
+  }
+});
 // Insert new signup
 server.route({
   method: 'POST',
   path: '/api/signup',
-  handler: async (request, reply) => {
+  handler: async (request, h) => {
     try {
       const signupObj = request.payload;
       const id = await db.signup(signupObj);

@@ -4,11 +4,15 @@
       <div class="button" @click="showInvited=false">Normal</div>
       <div class="button" @click="showInvited=true">Invited</div>
     </div>
-    <div v-if="showInvited" v-for="participant in invited">
-      <div v-text="participant.name"></div>
+    <div v-if="showInvited">
+      <div v-for="participant in invited" :key="participant.name">
+        <div v-text="participant.name"></div>
+      </div>
     </div>
-    <div v-if="!showInvited" v-for="participant in normal">
-      <div v-text="participant.name"></div>
+    <div v-else>
+      <div v-for="participant in normal" :key="participant.name">
+        <div v-text="participant.name"></div>
+      </div>
     </div>
   </div>
 </template>
