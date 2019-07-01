@@ -22,3 +22,11 @@ create table groups (
   id serial not null primary key,
   name text not null unique
 )
+
+create table users (
+  id serial NOT null primary key,
+  username TEXT NOT null,
+  password TEXT NOT null
+);
+
+insert into users (username, password) values ('admin', 'passwordHash');

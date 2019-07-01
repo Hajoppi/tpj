@@ -2,6 +2,7 @@
 
 const Hapi = require('hapi');
 const db = require('./services/db');
+const jwtAuth = require('./services/auth');
 
 const server = Hapi.server({
   port: process.env.PORT || 3001,
@@ -12,7 +13,16 @@ const server = Hapi.server({
   }
 });
 
+
+const auth = async (server) => {
+  server.register(jwtAuth);
+  server.auth.strategy('jwt', 'jwt');
+};
+
 const init = async () => {
+  await auth(server);
+  await require('./app/routes/users')(server);
+  await require('./app/routes/signups')(server);
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 };
@@ -21,117 +31,12 @@ process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });
+
 server.route({
   method: 'POST',
   path: '/status',
   handler: (request, h) => {
       return {success: true};
-  }
-});
-// Insert new signup
-server.route({
-  method: 'POST',
-  path: '/api/signup',
-  handler: async (request, h) => {
-    try {
-      const signupObj = request.payload;
-      const id = await db.signup(signupObj);
-      return await mail.sendOnSignupCreate(signupObj, id);
-    }
-    catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
-});
-
-// Fetch the signups
-server.route({
-  method: 'GET',
-  path: '/api/signups',
-  handler: async (request, h) => {
-    try {
-      return await db.getAllParticipants();
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
-  }
-});
-
-//Fetch single signup
-server.route({
-  method: 'GET',
-  path: '/api/signup',
-  handler: async (request, h) => {
-    try {
-      const signupId = utils.decrypt(request.query.id);
-      const signup = await db.getSignupDetails(signupId);
-      signup.id = undefined;
-      return signup;
-    } catch(error) {
-      console.error(error.stack)
-      throw error;
-    }
-  }
-});
-
-//Update a signups
-server.route({
-  method: 'PUT',
-  path: '/api/signup',
-  handler: async (request, h) => {
-    try {
-      const signupId = utils.decrypt(request.payload.id);
-      const signupObj = request.payload;
-      const res = await db.updateSignup(signupId, signupObj);
-      return res;
-    } catch(error) {
-      console.log(error.stack);
-      throw error;
-    }
-  }
-});
-
-//Delete a signups
-server.route({
-  method: 'DELETE',
-  path: '/api/signup',
-  handler: async (request, h) => {
-    try {
-      const signupId = utils.decrypt(request.query.id);
-      return await db.deleteSignup(signupId);
-    } catch(error) {
-      throw error;
-    }
-  }
-});
-
-// Fetch normal guests
-server.route({
-  method: 'GET',
-  path: '/api/signups/normal',
-  handler: async (request, h) => {
-    try {
-      return await db.getNormalParticipants();
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
-  }
-});
-
-// Fetch invited guests
-server.route({
-  method: 'GET',
-  path: '/api/signups/invited',
-  handler: async (request, h) => {
-    try {
-      return await db.getInvitedParticipants();
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
   }
 });
 
