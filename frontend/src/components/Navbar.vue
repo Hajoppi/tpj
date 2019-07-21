@@ -12,7 +12,7 @@
     @click="closeNavbar">
       <router-link class="navbar__item" v-text="$t('navigation.frontpage')" to="/"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.register')" to="/signup"></router-link>
-      <router-link class="navbar__item" v-text="$t('navigation.week')" to="/participants"></router-link>
+      <router-link class="navbar__item" v-text="$t('navigation.week')" to="/week"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.companies')" to="/"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.contact')" to="/contact"></router-link>
     </div>

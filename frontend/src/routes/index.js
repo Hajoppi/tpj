@@ -10,6 +10,7 @@ import Participants from '../pages/Participants';
 import Signup from '../pages/Signup';
 import Edit from '../pages/Edit';
 import Contact from '../pages/Contact';
+import Week from '../pages/Week';
 
 export default [
   // Home
@@ -30,6 +31,11 @@ export default [
     path: '/participants',
     name: 'participants.index',
     component: Participants,
+  },
+  {
+    path: '/week',
+    name: 'week.index',
+    component: Week,
   },
   {
     path: '/edit',

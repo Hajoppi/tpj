@@ -1,0 +1,9 @@
+.week {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.week__event {
+    flex: 1,
+}
