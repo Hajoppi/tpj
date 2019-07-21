@@ -12,8 +12,8 @@
   "dependencies": {
     "axios": "^0.18.1",
     "vue": "^2.6.10",
-    "vue-i18n": "^8.11.2",
-    "vue-router": "^3.0.6",
+    "vue-i18n": "^8.12.0",
+    "vue-router": "^3.0.7",
     "vuex": "^3.1.1",
     "vuex-router-sync": "^5.0.0"
   },
@@ -22,10 +22,10 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.1",
+    "eslint-plugin-vue": "^5.2.3",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-eslint": "^1.0.7",
-    "sass": "^1.20.3",
+    "sass": "^1.22.7",
     "vue-hot-reload-api": "^2.3.2",
     "vue-template-compiler": "^2.6.10"
   }
