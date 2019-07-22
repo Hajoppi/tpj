@@ -21,7 +21,7 @@ create table signups (
 create table groups (
   id serial not null primary key,
   name text not null unique
-)
+);
 
 create table users (
   id serial NOT null primary key,

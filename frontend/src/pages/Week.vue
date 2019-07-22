@@ -6,7 +6,7 @@
     </event>
     <event class="week__event">
       <h2 slot="title">Fuksien juhlasitsit Ma 4.11.</h2>
-      <p slot="description">Fuksien syksyn suurimmat juhlat. Tervetuloa fuksi/p>
+      <p slot="description">Fuksien syksyn suurimmat juhlat. Tervetuloa fuksi</p>
     </event>
     <event class="week__event">
       <h2 slot="title">KV Tapahtuma Ti 5.11.</h2>
