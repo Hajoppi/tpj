@@ -1,11 +1,13 @@
 <template>
   <div class="layout">
-    <v-navbar></v-navbar>
-    <div class="section" @click="closeNavbar">
-      <div class="container">
-        <slot></slot>
-        <!-- Content will be placed here -->
-      </div>
+    <div class="header">
+      <v-navbar></v-navbar>
+    </div>
+    <div class="content" @click="closeNavbar">
+      <slot></slot>
+    </div>
+    <div class="footer">
+      
     </div>
   </div>
 </template>

@@ -1,9 +1,19 @@
 .layout {
   font-size: 1.3rem;
   position: relative;
+  display: flex;
   margin: 0 auto;
-  width: 80%;
-  @media screen and (max-width: $desktop) {
-    width: 60;
-  }
+  max-width: $desktop;
+  height: 100%;
+  flex-direction: column;
+}
+.header{
+  flex: 1;
+}
+.content {
+  flex: 3;
+}
+
+.footer {
+  flex: 1;
 }
