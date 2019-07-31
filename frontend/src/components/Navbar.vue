@@ -1,12 +1,13 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="burger" @click="toggleNavbar">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+    <div class="navbar__header">
+      <div class="burger" @click="toggleNavbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </div>
+      <v-locale></v-locale>
     </div>
-    <transition name="slide">
-
     <div class="navbar__menu"
     :class="{'navbar__menu--active': showNavbar }"
     @click="closeNavbar">
@@ -16,11 +17,12 @@
       <router-link class="navbar__item" v-text="$t('navigation.companies')" to="/"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.contact')" to="/contact"></router-link>
     </div>
-    </transition>
   </nav>
 </template>
 
 <script>
+import VLocale from './Locale';
+
 export default {
   name: 'Navbar',
   methods: {
@@ -37,6 +39,7 @@ export default {
     },
   },
   components: {
+    VLocale
   }
 }
 </script>

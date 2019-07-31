@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <v-locale></v-locale>
     <v-layout>
       <router-view></router-view>
     </v-layout>

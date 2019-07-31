@@ -1,19 +1,20 @@
 .layout {
   font-size: 1.3rem;
   position: relative;
-  display: flex;
   margin: 0 auto;
   max-width: $desktop;
   height: 100%;
   flex-direction: column;
+  max-width: $desktop;
 }
-.header{
-  flex: 1;
+.header {
+  height: 6rem;
 }
 .content {
-  flex: 3;
+  height: 100%;
+  margin: 1rem;
 }
 
 .footer {
-  flex: 1;
+  height: 2rem;
 }

@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <div class="columns">
-      <!--<div @click="invited=true" class="column">Invited</div>
-      <div @click="invited=false" class="column">Normal</div>-->
-    </div>
-    <v-signup :invited="invited"></v-signup>
-  </div>
+  <v-signup :invited="invited"></v-signup>
 </template>
 
 <script>

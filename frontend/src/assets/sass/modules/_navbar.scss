@@ -1,7 +1,13 @@
 .navbar {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
   background-color: rgba(25, 25, 25, 0.52);
   overflow: hidden;
 }
@@ -10,28 +16,31 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   @media screen and (max-width: $desktop) {
     display: none;
     flex-direction: column;
   }
 }
 
+.navbar__header {
+  display: block;
+}
 
 .burger:hover {
   background-color: rgba(0,0,0,0.2);
 }
 .navbar__menu--active {
   display: flex;
-  margin-top: 3.5rem;
+  background-color: rgba(25, 25, 25, 0.90);
 }
 
 .navbar__item {
   font-size: 1.2rem;
-  color:inherit;
+  color: inherit;
   text-decoration: none;
-  padding: 0.2rem;
+  padding: 0.4rem;
   color: $fawn;
 }
 
@@ -40,21 +49,16 @@
 }
 
 .locale {
-  font-size: 1.5rem;
-  position:absolute;
-  top: 2rem;
-  right: 2.5rem;
+  display: block;
+  font-size: 1.25rem;
+  float: right;
   color: $navajo;
   border: none;
   outline: none;
   background: transparent;
-  @media screen and (max-width: $desktop) {
-    right: 1.5rem;
-  }
-  @media screen and (max-width: $tablet) {
-    right: 0.5rem;
-  }
+  margin-top: 1rem;
 }
+
 /* Holy fuck what a tyomaa
   This uses some dark magic to make a burger
 */
@@ -73,11 +77,4 @@
   @media screen and (min-width: $desktop){
     display: none;
   }
-}
-
-.slide-enter-active {
-  transition: opacity .5s
-}
-.slide-enter-active {
-  opacity: 0;
 }
