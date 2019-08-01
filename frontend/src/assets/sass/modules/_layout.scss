@@ -5,8 +5,11 @@
   max-width: $desktop;
 }
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 4rem;
+  width: 100%;
   z-index: 1;
 }
 .content {
@@ -14,6 +17,7 @@
   display: flex;
   height: 100%;
   margin: 1rem;
+  margin-top: 4rem;
   flex-direction: column;
 }
 
