@@ -3,18 +3,27 @@
   position: relative;
   margin: 0 auto;
   max-width: $desktop;
-  height: 100%;
-  flex-direction: column;
-  max-width: $desktop;
 }
 .header {
-  height: 6rem;
+  position: relative;
+  height: 4rem;
+  z-index: 1;
 }
 .content {
+  position: relative;
+  display: flex;
   height: 100%;
   margin: 1rem;
+  flex-direction: column;
 }
 
 .footer {
-  height: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 6rem;
+}
+
+.full-height {
+  height: 100%;
 }

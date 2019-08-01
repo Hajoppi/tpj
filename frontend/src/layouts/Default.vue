@@ -7,7 +7,12 @@
       <slot></slot>
     </div>
     <div class="footer">
-      
+      <div 
+        class="logo" 
+        v-for="sponsor in sponsors" 
+        :key="sponsor">
+        {{sponsor}}
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +37,11 @@ export default {
   methods: {
     closeNavbar() {
       this.$store.dispatch('navbar/set', false);
+    },
+  },
+  computed: {
+    sponsors() {
+      return ['a'];
     },
   },
   components: {

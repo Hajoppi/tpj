@@ -1,5 +1,5 @@
 <template>
-  <p v-text="$t('home.welcome_msg')"></p>
+  <p class="full-height" v-text="$t('home.welcome_msg')"></p>
 </template>
 
 <script>
