@@ -16,7 +16,6 @@ export default {
   methods: {
     toggleShow() {
       this.show = !this.show;
-      console.log(this.show);
     },
   },
 };
