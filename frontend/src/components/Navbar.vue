@@ -6,7 +6,6 @@
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </div>
-      <v-locale></v-locale>
     </div>
     <div class="navbar__menu"
     :class="{'navbar__menu--active': showNavbar }"

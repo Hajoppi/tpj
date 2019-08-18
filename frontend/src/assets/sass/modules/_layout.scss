@@ -2,7 +2,8 @@
   font-size: 1.3rem;
   position: relative;
   margin: 0 auto;
-  max-width: $desktop;
+  width: 100%;
+  //max-width: $desktop;
 }
 .header {
   position: fixed;
@@ -17,14 +18,22 @@
   display: flex;
   height: 100%;
   margin: 1rem;
-  margin-top: 5rem;
+  margin-top: 4rem;
   flex-direction: column;
 }
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(25, 25, 25, 0.52);
 }
 
 .full-height {
@@ -32,9 +41,11 @@
 }
 
 .logo {
+  display:flex;
   height: 5rem;
+  margin: auto;
+  justify-content: center;
   flex: 1;
-  object-fit: contain;
 }
 
 .logo__image {

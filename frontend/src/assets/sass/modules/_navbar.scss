@@ -5,9 +5,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  margin-bottom: 0.75rem;
+  height: 100%;
+  justify-content: center;
   background-color: rgba(25, 25, 25, 0.52);
   overflow: hidden;
 }
@@ -16,8 +15,6 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   @media screen and (max-width: $desktop) {
     display: none;
     flex-direction: column;
