@@ -11,7 +11,7 @@
         class="logo" 
         v-for="sponsor in sponsors" 
         :key="sponsor">
-        {{sponsor}}
+        <img class="logo__image" :src="imgSrc(sponsor)" :alt="sponsor">
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
  * This way the app stays clean.
  */
 import VNavbar from '../components/Navbar';
-
+import images from '../assets/images/*.*'
 export default {
   /**
    * The name of the layout.
@@ -38,10 +38,14 @@ export default {
     closeNavbar() {
       this.$store.dispatch('navbar/set', false);
     },
+    imgSrc(name) {
+      console.log(images[name])
+      return images[name].png;
+    }
   },
   computed: {
     sponsors() {
-      return ['a'];
+      return ['FCG','MML', 'TEK'];
     },
   },
   components: {

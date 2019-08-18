@@ -1,33 +1,13 @@
 <template>
   <div class="week">
-    <event class="week__event">
-      <h3 slot="title" class="event__title">Klubi-ilta La 2.11.</h3>
-      <p slot="description">GAYY ja Otaniemen jalostajat aloittavat teekkariperinneviikon Klubi-illala Smökissä</p>
-    </event>
-    <event class="week__event">
-      <h3 slot="title" class="event__title">Fuksien juhlasitsit Ma 4.11.</h3>
-      <p slot="description">Fuksien syksyn suurimmat juhlat. Tervetuloa fuksi</p>
-    </event>
-    <event class="week__event">
-      <h3 slot="title" class="event__title">KV Tapahtuma Ti 5.11.</h3>
-      <p slot="description">KVTMK järjestää hienon tapahtuman</p>
-    </event>
-        <event class="week__event">
-      <h3 slot="title" class="event__title">Laulukilpailusitsit Ti 5.11.</h3>
-      <p slot="description">Lukkaritoimikunta järjestää perinteisit Laulukilpailusitsit</p>
-    </event>
-    <event class="week__event">
-      <h3 slot="title" class="event__title">Polin Approt Ke 6.11.</h3>
-      <p slot="description">IE:n Polin Approt valloitavat taas Itäisen Satamakaupungin</p>
-    </event>
-    <event class="week__event">
-      <h3 slot="title" class="event__title">Perinnepäivä To 6.11.</h3>
-      <p slot="description">Polyteekkarimuseo ja Lukkarit järjestävät tapahtumia</p>
-    </event>
-    <event class="week__event">
-      <h3 slot="title" class="event__title">Teekariperinnejuhla Pe 7.11.</h3>
-      <p slot="description">Viikko huipentuu suureen juhlaan</p>
-    </event>
+    <div v-for="event in events" :key="event.name" class="event">
+      <div class="event__description">
+        <div class="event__title">
+        {{event.name}}
+      </div>
+        {{event.text}}
+    </div>
+      <div class="event__image"></div>
   </div>
 </template>
 
@@ -38,7 +18,6 @@
  *
  * The home index page.
  */
-import Event from '/src/components/Event';
 export default {
 /**
  * The name of the page.
@@ -49,10 +28,23 @@ export default {
    */
   data() {
     return {
+      events: [
+        {
+          name: 'Fuksisitsit',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?'
+        },
+        {
+          name: 'CASINO',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?'
+        },
+        {
+          name: 'FJS',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?'
+        },
+      ]
     }
   },
   components: {
-    Event,
   },
 };
 </script>
