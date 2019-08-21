@@ -1,5 +1,9 @@
 <template>
-  <button class="locale" @click="nextLang" v-text="getLang"></button>
+  <div class="locale">
+  <div class="locale__text-wrapper" v-for="lang in filteredLangs" :key="lang">
+    <button class="locale__text" @click="changeLang(lang)" v-text="lang.toUpperCase()"></button>
+  </div>
+</div>
 </template>
 
 <script>
@@ -7,23 +11,24 @@ export default {
   name: 'Locale',
   data () {
     return {
-      langs: ['en', 'fi'],
+      langs: ['fi', 'en', 'sv'],
       index: 0,
     };
   },
 
   computed: {
-    getLang() {
-      return this.langs[this.index].toUpperCase();
+    filteredLangs() {
+      return this.langs.filter( lang => lang != this.$i18n.locale)
     },
+    getLang() {
+      return this.$i18n.locale;
+    },
+
   },
   methods:{
-    nextLang(){
-      this.index += 1;
-      if(this.index >= this.langs.length) this.index = 0;
-      this.$i18n.locale = this.langs[this.index];
-    }
+    changeLang(lang) {
+      this.$i18n.locale = lang;
+    },
   }
-
 }
 </script>

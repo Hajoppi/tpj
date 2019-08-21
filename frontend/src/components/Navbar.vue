@@ -1,19 +1,23 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar__header">
-      <div class="burger" @click="toggleNavbar">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+      <v-locale></v-locale>
+      <div class="navbar-title">
+      <router-link class="navbar-title__text" to="/">Teekkarius 147</router-link>
+      </div>
+      <div class="burger-wrapper">
+        <div class="burger" @click="toggleNavbar">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </div>
       </div>
     </div>
     <div class="navbar__menu"
     :class="{'navbar__menu--active': showNavbar }"
     @click="closeNavbar">
-      <router-link class="navbar__item" v-text="$t('navigation.frontpage')" to="/"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.register')" to="/signup"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.week')" to="/week"></router-link>
-      <router-link class="navbar__item" v-text="$t('navigation.companies')" to="/"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.contact')" to="/contact"></router-link>
     </div>
   </nav>

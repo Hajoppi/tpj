@@ -39,7 +39,6 @@ export default {
       this.$store.dispatch('navbar/set', false);
     },
     imgSrc(name) {
-      console.log(images[name])
       return images[name].png;
     }
   },

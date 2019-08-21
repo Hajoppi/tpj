@@ -7,7 +7,11 @@
       </div>
         {{event.text}}
     </div>
-      <div class="event__image"></div>
+      <div class="event__image">
+        <div class="image-filler"></div>
+        <img class="teemu-image" src="../assets/images/teemu.png" />
+        <div class="image-filler"></div>
+      </div>
   </div>
 </template>
 
