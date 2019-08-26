@@ -1,6 +1,7 @@
 <template>
   <div class="week">
-    <div v-for="event in events" :key="event.name" class="event">
+    <div v-for="event in events" :key="event.name" class="event"
+    :style="getImagePath(event.image)">
       <div class="event__description">
         <div class="event__title">
         {{event.name}}
@@ -22,6 +23,7 @@
  *
  * The home index page.
  */
+import images from '../assets/images/*.*'
 export default {
 /**
  * The name of the page.
@@ -35,17 +37,25 @@ export default {
       events: [
         {
           name: 'Fuksisitsit',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?'
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?',
+          image: 'earth',
         },
         {
           name: 'CASINO',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?'
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?',
+          image: 'tropiikki',
         },
         {
           name: 'FJS',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?'
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?',
+          image: 'earth',
         },
       ]
+    }
+  },
+  methods: {
+    getImagePath(image) {
+      return `background-image: url("${images[image].png}");`;
     }
   },
   components: {

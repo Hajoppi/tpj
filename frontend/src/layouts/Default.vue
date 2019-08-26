@@ -28,7 +28,7 @@
  * This way the app stays clean.
  */
 import VNavbar from '../components/Navbar';
-import images from '../assets/images/*.*'
+import images from '../assets/images/logos/*.*'
 export default {
   /**
    * The name of the layout.
