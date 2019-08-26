@@ -1,9 +1,13 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav 
+    class="navbar"
+    role="navigation"
+    aria-label="main navigation"
+  >
     <div class="navbar__header">
       <v-locale></v-locale>
-      <div class="navbar-title">
-      <router-link class="navbar-title__text" to="/">Teekkarius 147</router-link>
+      <div class="navbar-title" @click="closeNavbar">
+      <router-link  class="navbar-title__text" to="/">Teekkarius 147</router-link>
       </div>
       <div class="burger-wrapper">
         <div class="burger" @click="toggleNavbar">
