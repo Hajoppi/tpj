@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "export $(cat .env) && parcel index.html --port 3000 --hmr-port 45253"
+    "start": "export $(cat .env) && parcel index.html --port 3000 --hmr-port 45253",
+    "build": "export $(cat .env) && parcel build index.html"
   },
   "author": "",
   "license": "ISC",
