@@ -1,12 +1,15 @@
 {
-  "name": "Name",
-  "email": "Email",
-  "startYear": "Start Year",
-  "student": "Student",
+  "name": "Namn",
+  "email": "E Post",
+  "startYear": "Året",
+  "student": "Studenten",
   "avec": "Avec",
-  "foodAllergies": "Food Allergies",
-  "noAlcohol": "No achohol",
-  "representative": "Representative of",
-  "present": "I will give a present",
+  "foodAllergies": "Mat allergi",
+  "noAlcohol": "Alkoholfri",
+  "representative": "Edustan",
+  "present": "Annan lahjan",
   "sillis": "Sillis",
+  "submit": "Tallenna",
+  "edit": "Muokkaa",
+  "delete": "Poista"
 }

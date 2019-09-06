@@ -12,9 +12,12 @@ import VueI18n from 'vue-i18n';
 import messages from '../locale';
 
 Vue.use(VueI18n);
-
+let locale = 'fi';
+if(localStorage.getItem('locale')) {
+  locale = localStorage.getItem('locale');
+}
 export const i18n = new VueI18n({
-  locale: 'fi',
+  locale,
   fallbackLocale: 'fi',
   messages,
 });
