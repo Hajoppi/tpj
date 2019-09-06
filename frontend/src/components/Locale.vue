@@ -11,7 +11,7 @@ export default {
   name: 'Locale',
   data () {
     return {
-      langs: ['fi', 'en', 'sv'],
+      langs: ['fi', 'en', 'se'],
       index: 0,
     };
   },

@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="handleSubmit">
+  <form v-if="isOpen" class="form" @submit.prevent="handleSubmit">
     <div class="field">
       <label class="label">{{$t('signup.name')}}</label>
       <div class="control">
@@ -76,6 +76,7 @@
  * The home index page.
  */
 import Proxy from '../proxies/Proxy';
+import config from '../../config';
 
 export default {
 /**
@@ -153,6 +154,15 @@ export default {
         this.register();
       }
     },
+  },
+  computed: {
+    isOpen() {
+      const now = new Date()
+      return ((this.invited && now > config.signupStartInvited) 
+      || (!this.invited && now > config.signupStart))
+      &&
+      (now < config.signupEnd);
+    }
   },
   /**
    * The components that the page can use.

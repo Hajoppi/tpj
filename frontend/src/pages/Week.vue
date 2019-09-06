@@ -4,9 +4,9 @@
     :style="getImagePath(event.image)">
       <div class="event__description">
         <div class="event__title">
-        {{event.name}}
+        {{$t(`week.${event.name}`)}}
       </div>
-        {{event.text}}
+        <span v-html="$t(`event.${event.name}`)"></span>
     </div>
       <div class="event__image">
         <div class="image-filler"></div>
@@ -36,26 +36,26 @@ export default {
     return {
       events: [
         {
-          name: 'Fuksisitsit',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?',
-          image: 'earth',
-        },
-        {
-          name: 'CASINO',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?',
+          name: 'kv',
+          text: 'kv',
           image: 'tropiikki',
         },
         {
-          name: 'FJS',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum illo veniam aperiam, ducimus molestias! Non, eaque rem! Enim, ullam?',
-          image: 'earth',
+          name: 'kv',
+          text: 'kv',
+          image: 'arktinen',
+        },
+        {
+          name: 'kv',
+          text: 'kv',
+          image: 'maapallo',
         },
       ]
     }
   },
   methods: {
     getImagePath(image) {
-      return `background-image: url("${images[image].png}");`;
+      return `background-image: url("${images[image].jpg}");`;
     }
   },
   components: {

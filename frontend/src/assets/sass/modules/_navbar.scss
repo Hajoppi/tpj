@@ -34,12 +34,12 @@
 .navbar-title {
   flex: 6;
   display: flex;
-  padding-left: 2rem;
   @media screen and (max-width: $desktop) {
     padding-left: 0;
     justify-content: center;
     font-size: 2rem;
   }
+  justify-content: center;
   align-items: center;
   font-size: 3rem;
 }
@@ -70,7 +70,7 @@
   justify-content: center;
   flex: 1;
   @media screen and (min-width: $desktop){
-    display: none;
+    //display: none;
   }
 }
 
@@ -90,6 +90,9 @@
   flex: 1;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: $desktop){
+    display: none;
+  }
 }
 /* Holy fuck what a tyomaa
   This uses some dark magic to make a burger
@@ -102,8 +105,5 @@
     height: $burger-size / 4;
     border-top: ($burger-size * 0.1) solid black;
     border-color: $fawn;
-  }
-  @media screen and (min-width: $desktop){
-    display: none;
   }
 }

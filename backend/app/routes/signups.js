@@ -1,10 +1,17 @@
 const db = require('../../services/db');
+const config = require('../config');
 
 module.exports = async (server) => {
   server.route({
     method: 'POST',
     path: '/api/signup',
     handler: async (request, h) => {
+      if (
+        (request.invited && Date.now() < config.signupStartInvited)
+        || (!request.invited && Date.now < config.signupStart)
+      ) {
+        return h.response('Not time').code(401);
+      }
       try {
         const signupObj = request.payload;
         const id = await db.signup(signupObj);
