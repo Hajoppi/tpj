@@ -41,13 +41,13 @@ export default {
           image: 'tropiikki',
         },
         {
-          name: 'kv',
-          text: 'kv',
+          name: 'punainen',
+          text: 'punainen',
           image: 'arktinen',
         },
         {
-          name: 'kv',
-          text: 'kv',
+          name: 'poli',
+          text: 'poli',
           image: 'maapallo',
         },
       ]
