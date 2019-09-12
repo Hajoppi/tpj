@@ -13,11 +13,8 @@
     flex-direction: row;
     text-align: center;
     height: 82vh;
-    &:nth-child(2) {
+    &:nth-child(2n) {
         flex-direction: row-reverse;
-        @media screen and (max-width: $desktop) {
-            flex-direction: column-reverse;
-        }
     }
     @media screen and (max-width: $desktop) {
         flex-direction: column-reverse;

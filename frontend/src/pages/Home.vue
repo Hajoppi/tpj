@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <p class="home__text" v-text="$t('home.welcome_msg')"></p>
+    <p class="home__text" v-html="$t('home.home')"></p>
   </div>
 </template>
 

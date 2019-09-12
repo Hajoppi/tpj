@@ -36,19 +36,36 @@ export default {
     return {
       events: [
         {
+          name: "klubi",
+          image: "urban",
+        },
+        {
+          name: "fjs",
+          image: "arktinen",
+        },
+        {
           name: 'kv',
-          text: 'kv',
           image: 'tropiikki',
         },
         {
-          name: 'punainen',
-          text: 'punainen',
-          image: 'arktinen',
+          name: "lks",
+          image: "arktinen",
         },
         {
           name: 'poli',
-          text: 'poli',
           image: 'maapallo',
+        },
+        {
+          name: 'punainen',
+          image: 'arktinen',
+        },
+        {
+          name: "tpj",
+          image: "maapallo",
+        },
+        {
+          name: "sillis",
+          image: "tropiikki",
         },
       ]
     }

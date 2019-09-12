@@ -1,10 +1,11 @@
 {
-    "klubi-ilta": "Club Night",
-    "fjs": "Freshman Annual Ball",
+    "klubi": "Klubbkväll",
+    "fjs": "Phuxarnas jubilésitz",
     "poli": "Polin Appro",
-    "punainen": "Sing Trough",
+    "punainen": "Röda sångboken",
     "perinnepaiva": "Tradition day",
-    "laulukilpailu": "Singing contest sitsit",
+    "lks": "Sångtävlingssits",
     "kv": "Mystery Dinner",
-    "tpj": "Teekkari Tradition Party"
+    "tpj": "Teknlogtraditionsfesten",
+    "sillis": "Teekkarisillis"
 }

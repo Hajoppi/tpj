@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>asd</p>
+  <div class="home">
+    <p class="home__text" v-html="$t('home.contact')"></p>
   </div>
 </template>
 
