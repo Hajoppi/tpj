@@ -3,8 +3,7 @@
     <div v-for="event in events" :key="event.name" class="event"
     :style="getImagePath(event.image)">
       <div class="event__description">
-        <div class="event__title">
-        {{$t(`week.${event.name}`)}}
+        <div class="event__title" v-html="$t(`week.${event.name}`)">
       </div>
         <span v-html="$t(`event.${event.name}`)"></span>
     </div>
