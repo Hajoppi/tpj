@@ -3,7 +3,6 @@
   position: relative;
   margin: 0 auto;
   width: 100%;
-  //max-width: $desktop;
 }
 
 .header {
@@ -12,7 +11,11 @@
   left: 0;
   height: 8vh;
   width: 100%;
+  align-content: center;
+  text-align: center;
+  align-items: center;
   z-index: 1;
+  background-color: rgba(25, 25, 25, 0.8);
 }
 .content {
   position: relative;
