@@ -3,15 +3,15 @@
     <div v-for="event in events" :key="event.name" class="event"
     :style="getImagePath(event.image)">
       <div class="event__description">
-        <div class="event__title" v-html="$t(`week.${event.name}`)">
-      </div>
+        <div class="event__title" v-html="$t(`week.${event.name}`)"></div>
         <span v-html="$t(`event.${event.name}`)"></span>
-    </div>
+      </div>
       <div class="event__image">
         <div class="image-filler"></div>
         <img class="teemu-image" src="../assets/images/teemu.png" />
         <div class="image-filler"></div>
       </div>
+    </div>
   </div>
 </template>
 

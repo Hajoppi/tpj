@@ -7,7 +7,7 @@
     <div class="navbar__header">
       <v-locale></v-locale>
       <div class="navbar-title" @click="closeNavbar">
-      <router-link  class="navbar-title__text" to="/">Teekkarius 147</router-link>
+      <router-link class="navbar-title__text" to="/"><img src="../assets/images/logo.png" alt="Teekkarius 147"></router-link>
       </div>
       <div class="burger-wrapper">
         <div class="burger" @click="toggleNavbar">

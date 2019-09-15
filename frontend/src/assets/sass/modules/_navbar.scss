@@ -34,15 +34,6 @@
 
 .navbar-title {
   flex: 6;
-  display: flex;
-  @media screen and (max-width: $desktop) {
-    padding-left: 0;
-    justify-content: center;
-    font-size: 2rem;
-  }
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
 }
 
 .navbar__header {

@@ -1,17 +1,13 @@
 .week {
     display: relative;
-    flex-direction: row;
-    justify-content: flex-start;
 }
 
 .event {
-    scroll-snap-align: start;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: row;
-    text-align: center;
     height: 82vh;
     &:nth-child(2n) {
         flex-direction: row-reverse;
@@ -31,7 +27,7 @@
     background-color: rgba(0, 0, 0, $week_opacity);
 }
 .event__title {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 .image-filler {
     background-color: rgba(0, 0, 0, $week_opacity);
@@ -49,7 +45,4 @@
     display: flex;
     flex: 1;
     height: 100%;
-    @media screen and (max-width: $desktop) {
-        flex: 2;
-    }
 }

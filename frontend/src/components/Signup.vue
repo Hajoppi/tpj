@@ -49,11 +49,7 @@
       </div>
     </div>
     <div class="field">
-      <label class="label">{{$t('signup.present')}}</label>
-      <input v-model="gives_present" type="checkbox">
-    </div>
-    <div class="field">
-      <label class="label">Sillis</label>
+      <label class="label">{{$t('signup.sillis')}}</label>
       <input v-model="sillis" type="checkbox">
     </div>
     <div class="field is-grouped">
