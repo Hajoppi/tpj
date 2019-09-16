@@ -12,4 +12,7 @@
   "submit": "Submit",
   "edit": "Edit",
   "delete": "Delete",
+  "invited": "Invitational",
+  "normal": "Normal",
+  "closed": "Signup has not yet begun"
 }

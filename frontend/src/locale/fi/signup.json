@@ -10,5 +10,8 @@
   "sillis": "Ilmoittaudun sillikselle 9.11.2019 (+20€)",
   "submit": "Tallenna",
   "edit": "Muokkaa",
-  "delete": "Poista"
+  "delete": "Poista",
+  "invited": "Kutsuvieraat",
+  "normal": "Vieraat",
+  "closed": "Ilmoittautuminen ei ole vielä alkanut"
 }

@@ -1,5 +1,7 @@
 const db = require('../../services/db');
 const config = require('../config');
+const mail = require('../../services/mail');
+const utils = require('../../services/utils');
 
 module.exports = async (server) => {
   server.route({

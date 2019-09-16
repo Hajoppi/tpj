@@ -6,18 +6,6 @@ const nodemailer = require('nodemailer'),
 
 const mail = module.exports = {};
 let transporter = null;
-nodemailer.createTestAccount((err, account) => {
-  const SMTP_settings = {
-    host: "smtp.ethereal.email",
-    port: 587,
-    auth: {
-        user: account.user,
-        pass: account.pass
-    }
-  };
-  console.log(SMTP_settings);
-  transporter = nodemailer.createTransport(SMTP_settings);
-});
 
 const smtp_host = process.env.SMTP_HOST,
   smtp_port = process.env.SMTP_PORT,
@@ -26,26 +14,36 @@ const smtp_host = process.env.SMTP_HOST,
 
 if (!smtp_host || !smtp_port || !smtp_user || !smtp_pass) {
   console.error('SMTP credentials are not defined!');
-  // return process.exit();
+  return process.exit();
 }
-// Currently test settings
+const SMTP_settings = {
+  host: smtp_host,
+  port: smtp_port,
+  auth: {
+    user: smtp_user,
+    pass: smtp_pass,
+  }
+};
+console.log(SMTP_settings);
 
+transporter = nodemailer.createTransport(SMTP_settings);
+transporter.verify().then((success) => {
+  console.log(success)
+}).catch((err) => {
+  console.log(err);
+});
 
 mail.sendOnSignupCreate = async function (signupObj, signupId) {
-  console.log(signupId);
   const signupHash = utils.encrypt(String(signupId));
-  const link = 'https://www.muistinnollaus.fi/edit?id=' + signupHash;
+  const link = 'https://teekkarius147.ayy.fi/edit?id=' + signupHash;
+  console.log(signupObj.email);
   const options = {
-    from: '"Teekkarius" <tpj@tpj.fi>',
+    from: '"Teekkarius" <tuomas.kontola@ayy.fi>',
     to: signupObj.email,
     subject: 'Subject',
     text: link
   };
-
-  console.log('Sending mail to ' + signupObj.email);
   const info = await transporter.sendMail(options);
-  console.log('mail sent');
   console.log(info);
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   return 1;
 }

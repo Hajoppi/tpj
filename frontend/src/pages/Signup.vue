@@ -1,10 +1,17 @@
 <template>
   <div>
-    <div class="columns">
-      <div @click="invited=true" class="button">Invited</div>
-      <div @click="invited=false" class="button">Normal</div>
+    <div class="choose" v-if="!select">
+      <button @click="invited=true; select=true" class="button">
+        {{$t(`signup.invited`)}}
+      </button>
+      <button @click="invited=false; select=true" class="button">
+        {{$t(`signup.normal`)}}
+        </button>
     </div>
-    <v-signup :invited="invited"></v-signup>
+    <v-signup v-if="select && isOpen" :invited="invited"></v-signup>
+    <div class="closed-label" v-if="select && !isOpen">
+      {{$t('signup.closed')}}
+    </div>
   </div>
 </template>
 
@@ -16,6 +23,7 @@
  * The home index page.
  */
 import VSignup from '../components/Signup';
+import config from '../../config';
 
 export default {
 /**
@@ -27,7 +35,17 @@ export default {
    */
   data() {
     return {
+      select: false,
       invited: false,
+    }
+  },
+  computed: {
+    isOpen() {
+      const now = new Date()
+      return ((this.invited && now > config.signupStartInvited) 
+      || (!this.invited && now > config.signupStart))
+      &&
+      (now < config.signupEnd);
     }
   },
   components: {

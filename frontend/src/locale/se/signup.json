@@ -11,5 +11,8 @@
   "sillis": "Sillis",
   "submit": "Tallenna",
   "edit": "Muokkaa",
-  "delete": "Poista"
+  "delete": "Poista",
+  "invited": "Inbjudna gäster",
+  "normal": "Gäster",
+  "closed": "Ilmoittautuminen ei ole vielä alkanut"
 }
