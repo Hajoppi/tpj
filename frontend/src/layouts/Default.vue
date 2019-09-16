@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     sponsors() {
-      return ['FCG','MML', 'TEK'];
+      return ['okm','MML', 'TEK', 'FCG'];
     },
   },
   components: {
