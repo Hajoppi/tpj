@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="choose" v-if="!select">
-      <button @click="invited=true; select=true" class="button">
+    <div class="choose">
+      <a @click.prevent="invited=true; select=true" class="choose-button">
         {{$t(`signup.invited`)}}
-      </button>
-      <button @click="invited=false; select=true" class="button">
+      </a>
+      <a @click.prevent="invited=false; select=true" class="choose-button">
         {{$t(`signup.normal`)}}
-        </button>
+        </a>
     </div>
     <v-signup v-if="select && isOpen" :invited="invited"></v-signup>
     <div class="closed-label" v-if="select && !isOpen">

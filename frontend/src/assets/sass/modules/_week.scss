@@ -46,11 +46,13 @@
 .teemu-image {
     opacity: $week_opacity;
     width: initial;
-    height:100%;
+    margin: 0;
+    padding: 0;
 }
 
 .event__image {
     display: flex;
     flex: 1;
+    max-height: 100%;
     height: 100%;
 }

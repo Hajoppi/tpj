@@ -13,5 +13,7 @@
   "delete": "Poista",
   "invited": "Kutsuvieraat",
   "normal": "Vieraat",
-  "closed": "Ilmoittautuminen ei ole vielä alkanut"
+  "closed": "Ilmoittautuminen ei ole vielä alkanut",
+  "title": "Ilmoittautuminen",
+  "titleInvited": "Kutsuvieras ilmoittautuminen"
 }

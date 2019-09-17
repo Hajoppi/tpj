@@ -46,11 +46,11 @@ export default {
         },
         {
           name: 'kv',
-          image: 'tropiikki',
+          image: 'viidakko',
         },
         {
           name: "lks",
-          image: "arktinen",
+          image: "savanni",
         },
         {
           name: 'poli',

@@ -9,9 +9,10 @@
 }
 .input {
   height: 2rem;
-  font-size: 1.5rem;;
+  font-size: 1.1rem;;
   background: transparent;
   border: none;
+  width: 80%;
   max-width: $desktop/2;
   text-align: center;
   border-bottom: 1px solid;
@@ -24,15 +25,22 @@
 }
 
 .label {
-  font-size: 1.45rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
 .button {
-  color: $navajo;
   background: transparent;
   padding: 1rem;
   font-size: 2rem;
+  text-decoration: none;
+  margin: 0.2rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  border: 2px;
+  border-style: solid;
+  border-color: $navajo;
+  color: $navajo;
 }
 
 .button:hover {
@@ -42,18 +50,34 @@
 .choose {
   width: 100%;
   text-align: center;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
   padding-top: 3rem;
   display: block;
-  > * {
-    display: inline-block;
-  }
+}
+
+.choose-button {
+  font-size: 1.3rem;
+  text-decoration: none;
+  margin: 0.2rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  border: 1px;
+  border-style: solid;
+  border-color: $navajo;
+  color: $navajo;
 }
 
 .closed-label {
+  padding: 1rem;
   text-align: center;
 }
 
 .participants {
   text-align: center;
+}
+
+.signup-header {
+  color: $fawn;
+  font-size: 2rem;
 }

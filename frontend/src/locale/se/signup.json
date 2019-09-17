@@ -14,5 +14,7 @@
   "delete": "Poista",
   "invited": "Inbjudna gäster",
   "normal": "Gäster",
-  "closed": "Ilmoittautuminen ei ole vielä alkanut"
+  "closed": "Ilmoittautuminen ei ole vielä alkanut",
+  "title": "Gäst anmälan",
+  "titleInvited": "Inbjuden gäst anmälan"
 }

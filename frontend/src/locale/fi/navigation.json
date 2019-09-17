@@ -1,7 +1,5 @@
 {
-  "frontpage": "ETUSIVU",
   "register": "ILMOITTAUTUMINEN",
   "week": "TEEKKARIPERINNEVIIKKO",
-  "companies": "YRITYKSILLE",
-  "contact": "YHTEYSTIEDOT",
+  "contact": "YHTEYSTIEDOT"
 }

@@ -1,5 +1,6 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
+    <div class="signup-header">{{formTitle}}</div>
     <div class="field">
       <label class="label">{{$t('signup.name')}}</label>
       <div class="control">
@@ -113,6 +114,11 @@ export default {
       }).catch((err) => {
         console.log(err);
       });
+    }
+  },
+  computed: {
+    formTitle() {
+      return this.invited ? this.$t('signup.titleInvited') : this.$t('signup.title')
     }
   },
   methods: {

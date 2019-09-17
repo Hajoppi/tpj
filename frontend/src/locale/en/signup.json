@@ -14,5 +14,7 @@
   "delete": "Delete",
   "invited": "Invitational",
   "normal": "Normal",
-  "closed": "Signup has not yet begun"
+  "closed": "Signup has not yet begun",
+  "title": "Guest signup",
+  "titleInvited": "Invited guest signup"
 }
