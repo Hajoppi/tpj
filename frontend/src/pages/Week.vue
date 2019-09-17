@@ -2,6 +2,7 @@
   <div class="week">
     <div v-for="event in events" :key="event.name" class="event"
     :style="getImagePath(event.image)">
+      <div class="event-padder"></div>
       <div class="event__description">
         <div class="event__title" v-html="$t(`week.${event.name}`)"></div>
         <span v-html="$t(`event.${event.name}`)"></span>
@@ -11,6 +12,7 @@
         <img class="teemu-image" src="../assets/images/teemu.png" />
         <div class="image-filler"></div>
       </div>
+      <div class="event-padder"></div>
     </div>
   </div>
 </template>

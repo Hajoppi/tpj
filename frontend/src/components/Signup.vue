@@ -43,7 +43,7 @@
     <div class="field">
       <label class="label">{{$t('signup.representative')}}</label>
       <div class="control">
-        <input v-model="representative_of"
+        <input v-model="table_group"
               class="input"
               type="text">
       </div>
@@ -100,7 +100,7 @@ export default {
       sillis: false,
       avec: '',
       food_requirements: '',
-      representative_of: '',
+      table_group: '',
       gives_present: false,
     };
   },
