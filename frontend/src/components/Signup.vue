@@ -16,7 +16,7 @@
     <div class="field">
       <label class="label">{{$t('signup.startYear')}}</label>
       <div class="control">
-        <input v-model="start_year" class="input" type="number" required>
+        <input v-model="start_year" class="input" type="text" required>
       </div>
     </div>
     <div class="field">
@@ -42,6 +42,14 @@
       <input v-model="no_alcohol" type="checkbox">
     </div>
     <div class="field">
+      <label class="label">{{$t('signup.tableGroup')}}</label>
+      <div class="control">
+        <input v-model="table_group"
+              class="input"
+              type="text">
+      </div>
+    </div>
+    <div class="field" v-if="invited">
       <label class="label">{{$t('signup.representative')}}</label>
       <div class="control">
         <input v-model="table_group"
@@ -55,6 +63,7 @@
     </div>
     <div class="field is-grouped">
       <div class="control">
+        <div class="label" v-text="$t('signup.gdpr')"></div>
         <button v-if="edit" class="button">{{$t('signup.edit')}}</button>
         <button v-else class="button">{{$t('signup.submit')}}</button>
       </div>
@@ -102,6 +111,7 @@ export default {
       avec: '',
       food_requirements: '',
       table_group: '',
+      representative_of: '',
       gives_present: false,
     };
   },

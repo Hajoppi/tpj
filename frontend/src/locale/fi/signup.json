@@ -6,7 +6,8 @@
   "avec": "Avecin nimi",
   "foodAllergies": "Ruoka-aineallergiat sekä erityisruokavaliot",
   "noAlcohol": "Alkoholiton",
-  "representative": "Pöytäseurue",
+  "tableGroup": "Pöytäseurue",
+  "representative": "Edustamani taho",
   "sillis": "Ilmoittaudun sillikselle 9.11.2019 (+20€)",
   "submit": "Tallenna",
   "edit": "Muokkaa",
@@ -16,5 +17,5 @@
   "closed": "Ilmoittautuminen ei ole vielä alkanut",
   "title": "Ilmoittautuminen",
   "titleInvited": "Kutsuvieras ilmoittautuminen",
-  "gdrp": "Tämän lomakkeen lähettämällä hyväksyt, että nimesi ja pöytäseuratoiveesi julkaistaan näillä sivuilla, ja että tietoja käytetään juhlan järjestelyihin",
+  "gdpr": "Tämän lomakkeen lähettämällä hyväksyt, että nimesi ja pöytäseuratoiveesi julkaistaan näillä sivuilla, ja että tietoja käytetään juhlan järjestelyihin",
 }

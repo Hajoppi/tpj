@@ -24,6 +24,7 @@ db.signupIntoParams = (signupObj) => {
         signupObj.avec || '',
         signupObj.food_requirements || '',
         signupObj.group || '',
+        signupObj.representative_of || '',
     ];
 };
 
@@ -56,7 +57,7 @@ db.getAllParticipants = async () => {
 
 db.signup = async (signupObj) => {
   const params = db.signupIntoParams(signupObj);
-  const { rows } = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning id', params);
+  const { rows } = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group, representative_of) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) returning id', params);
   return rows[0].id;
 };
 
@@ -68,7 +69,7 @@ db.updateSignup = async (signupId, signupObj) => {
     let params = db.signupIntoParams(signupObj);
     params.unshift(signupId);
     console.log(params);
-    return await pool.query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, table_group=$11 where id=$1', params);
+    return await pool.query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, table_group=$11, representative_of=$12 where id=$1', params);
 };
 
 db.terminate = async () => {

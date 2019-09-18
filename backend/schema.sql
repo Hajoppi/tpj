@@ -12,6 +12,7 @@ create table signups (
   food_requirements text,
   no_alcohol boolean not null,
   table_group text,
+  representative_of text,
   sillis boolean not null,
   invited boolean not null,
   created timestamp with time zone not null default now()

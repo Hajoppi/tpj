@@ -19,10 +19,10 @@ if (!smtp_host || !smtp_port || !smtp_user || !smtp_pass) {
 const SMTP_settings = {
   host: smtp_host,
   port: smtp_port,
-  auth: {
+  /*auth: {
     user: smtp_user,
     pass: smtp_pass,
-  }
+  }*/
 };
 console.log(SMTP_settings);
 
