@@ -23,7 +23,7 @@ db.signupIntoParams = (signupObj) => {
         signupObj.invited,
         signupObj.avec || '',
         signupObj.food_requirements || '',
-        signupObj.group || '',
+        signupObj.table_group || '',
         signupObj.representative_of || '',
     ];
 };
@@ -44,14 +44,15 @@ getNormalParticipants = async () => {
 };
 
 db.getAllParticipants = async () => {
-  const normal = pool.query('SELECT name, created FROM signups WHERE invited=false');
-  const invited = pool.query('SELECT name, created FROM signups WHERE invited=true');
+  const normal = pool.query('SELECT name, table_group, created FROM signups WHERE invited=false');
+  const invited = pool.query('SELECT name, table_group, created FROM signups WHERE invited=true');
   const r1 = await normal;
   const r2 = await invited;
   const rows = {
     normal: r1.rows,
     invited: r2.rows,
   }
+console.log(rows);
   return rows;
 };
 

@@ -6,8 +6,8 @@
   "avec": "Avec",
   "foodAllergies": "Food Allergies",
   "noAlcohol": "No achohol",
+  "tableGroup": "Table Group",
   "representative": "Representative of",
-  "present": "I will give a present",
   "sillis": "Sillis",
   "submit": "Submit",
   "edit": "Edit",
@@ -15,6 +15,8 @@
   "invited": "Invitational",
   "normal": "Normal",
   "closed": "Signup has not yet begun",
+  "participants": "Participants",
   "title": "Guest signup",
-  "titleInvited": "Invited guest signup"
+  "titleInvited": "Invited guest signup",
+  "gdpr": "Tämän lomakkeen lähettämällä hyväksyt, että nimesi ja pöytäseuratoiveesi julkaistaan näillä sivuilla, ja että tietoja käytetään juhlan järjestelyihin",
 }

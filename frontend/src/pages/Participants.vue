@@ -1,19 +1,18 @@
 <template>
   <div class="participants">
     <div class="choose">
-      <div class="button" @click="showInvited=false">Normal</div>
-      <div class="button" @click="showInvited=true">Invited</div>
+      <a class="choose-button" @click.prevent="showInvited=false">{{$t(`signup.normal`)}}</a>
+      <a class="choose-button" @click.prevent="showInvited=true">{{$t(`signup.invited`)}}</a>
     </div>
-    <div v-if="showInvited">
-      <div v-for="participant in invited" :key="participant.name">
-        <div v-text="participant.name"></div>
-      </div>
-    </div>
-    <div v-else>
-      <div v-for="participant in normal" :key="participant.name">
-        <div v-text="participant.name"></div>
-      </div>
-    </div>
+    <table class="list">
+      <thead>
+        <th>{{$t('signup.name')}}</th><th>{{$t('signup.tableGroup')}}</th>
+      </thead>
+      <tr v-for="participant in participants" :key="participant.name">
+        <td v-text="participant.name" />
+        <td v-text="participant.table_group" />
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -42,6 +41,9 @@ export default {
     this.$store.dispatch('participants/all');
   },
   computed: {
+    participants() {
+      return this.showInvited ? this.invited : this.normal;
+    },
     invited() {
       return this.$store.state.participants.invited;
     },

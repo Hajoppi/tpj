@@ -6,6 +6,7 @@
   "avec": "Avec",
   "foodAllergies": "Mat allergi",
   "noAlcohol": "Alkoholfri",
+  "tableGroup": "Bordsgrupp",
   "representative": "Edustan",
   "present": "Annan lahjan",
   "sillis": "Sillis",
@@ -14,7 +15,9 @@
   "delete": "Poista",
   "invited": "Inbjudna gäster",
   "normal": "Gäster",
+  "participants": "Deltagarna",
   "closed": "Ilmoittautuminen ei ole vielä alkanut",
   "title": "Gäst anmälan",
-  "titleInvited": "Inbjuden gäst anmälan"
+  "titleInvited": "Inbjuden gäst anmälan",
+  "gdpr": "Tämän lomakkeen lähettämällä hyväksyt, että nimesi ja pöytäseuratoiveesi julkaistaan näillä sivuilla, ja että tietoja käytetään juhlan järjestelyihin",
 }

@@ -7,7 +7,10 @@
       </a>
       <a @click.prevent="invited=false; select=true" class="choose-button">
         {{$t(`signup.normal`)}}
-        </a>
+      </a>
+      <router-link to="/participants" class="choose-button">
+        {{$t(`signup.participants`)}}
+      </a>
     </div>
     <v-signup v-if="select && isOpen" :invited="invited"></v-signup>
     <div class="closed-label" v-if="select && !isOpen">

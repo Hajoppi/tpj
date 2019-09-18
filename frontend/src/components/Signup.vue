@@ -52,7 +52,7 @@
     <div class="field" v-if="invited">
       <label class="label">{{$t('signup.representative')}}</label>
       <div class="control">
-        <input v-model="table_group"
+        <input v-model="representative_of"
               class="input"
               type="text">
       </div>
