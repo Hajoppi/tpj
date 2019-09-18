@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="home__text" v-html="$t('home.signup')"></div>
     <div class="choose">
       <a @click.prevent="invited=true; select=true" class="choose-button">
         {{$t(`signup.invited`)}}
