@@ -4,7 +4,7 @@
   "startYear": "Opiskelujen aloitusvuosi",
   "student": "Olen opiskelija",
   "avec": "Avecin nimi",
-  "foodAllergies": "Ruoka-allergiat",
+  "foodAllergies": "Ruoka-aineallergiat sekä erityisruokavaliot",
   "noAlcohol": "Alkoholiton",
   "representative": "Pöytäseurue",
   "sillis": "Ilmoittaudun sillikselle 9.11.2019 (+20€)",
@@ -12,8 +12,8 @@
   "edit": "Muokkaa",
   "delete": "Poista",
   "invited": "Kutsuvieraat",
-  "normal": "Vieraat",
   "closed": "Ilmoittautuminen ei ole vielä alkanut",
   "title": "Ilmoittautuminen",
-  "titleInvited": "Kutsuvieras ilmoittautuminen"
+  "titleInvited": "Kutsuvieras ilmoittautuminen",
+  "gdrp": "Tämän lomakkeen lähettämällä hyväksyt, että nimesi ja pöytäseuratoiveesi julkaistaan näillä sivuilla, ja että tietoja käytetään juhlan järjestelyihin",
 }
