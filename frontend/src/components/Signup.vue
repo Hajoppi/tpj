@@ -1,6 +1,6 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <div class="signup-header">{{formTitle}}</div>
+    <div class="signup-header" v-html="formTitle"></div>
     <div class="field">
       <label class="label">{{$t('signup.name')}}</label>
       <div class="control">
@@ -133,6 +133,7 @@ export default {
       gives_present: false,
       support: false,
       dish: '',
+      gdpr: false,
     };
   },
   mounted() {

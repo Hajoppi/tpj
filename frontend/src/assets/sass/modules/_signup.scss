@@ -55,11 +55,13 @@
 }
 
 .choose {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   text-align: center;
   padding-bottom: 1rem;
   padding-top: 3rem;
-  display: block;
 }
 
 .choose-button {
@@ -94,7 +96,11 @@
 }
 
 .signup-header {
+  hyphens: auto;
   color: $fawn;
   font-size: 2rem;
+  @media screen and (max-width: $desktop) {
+    font-size: 1.6rem;
+  }
   padding: 1rem;
 }

@@ -63,7 +63,7 @@ export default {
         },
         {
           name: 'punainen',
-          image: 'arktinen',
+          image: 'vuoristo',
           pvm: '7.11',
         },
         {
