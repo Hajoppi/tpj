@@ -39,8 +39,8 @@ export default {
    */
   data() {
     return {
-      select: false,
-      invited: false,
+      select: true,
+      invited: true,
     }
   },
   computed: {

@@ -15,6 +15,8 @@ create table signups (
   representative_of text,
   sillis boolean not null,
   invited boolean not null,
+  support boolean not null,
+  dish text not null,
   created timestamp with time zone not null default now()
 );
 

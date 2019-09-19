@@ -4,7 +4,7 @@
     :style="getImagePath(event.image)">
       <div class="event-padder"></div>
       <div class="event__description">
-        <div class="event__title" v-html="$t(`week.${event.name}`)"></div>
+        <div class="event__title" v-html="$t(`week.${event.name}`) + ' ' + event.pvm "></div>
         <span v-html="$t(`event.${event.name}`)"></span>
       </div>
       <div class="event__image">
@@ -39,34 +39,42 @@ export default {
         {
           name: "klubi",
           image: "urban",
+          pvm: "2.11.",
         },
         {
           name: "fjs",
           image: "arktinen",
+          pvm: "4.11.",
         },
         {
           name: 'kv',
           image: 'viidakko',
+          pvm: '5.11.',
         },
         {
           name: "lks",
           image: "savanni",
+          pvm: "5.11.",
         },
         {
           name: 'poli',
-          image: 'maapallo',
+          image: 'aavikko',
+          pvm: '6.11.',
         },
         {
           name: 'punainen',
           image: 'arktinen',
+          pvm: '7.11',
         },
         {
           name: "tpj",
           image: "maapallo",
+          pvm: "8.11."
         },
         {
           name: "sillis",
           image: "tropiikki",
+          pvm: "9.11"
         },
       ]
     }

@@ -30,6 +30,17 @@
       </div>
     </div>
     <div class="field">
+      <label class="label">{{$t('signup.dish')}}</label>
+      <div class="control dish">
+        <label for="fish">{{$t('signup.fish')}}</label>
+        <input class="radio" required name="dish" type="radio" id="fish" value="fish" v-model="dish">
+        <span class="radio-padder"></span>
+        <label for="vegetarian">{{$t('signup.vegetarian')}}</label>
+        <input class="radio" name="dish" type="radio" id="vegetarian" value="vegetarian" v-model="dish">
+        <br>
+      </div>
+    </div>
+    <div class="field">
       <label class="label">{{$t('signup.foodAllergies')}}</label>
       <div class="control">
         <input v-model="food_requirements"
@@ -61,9 +72,16 @@
       <label class="label">{{$t('signup.sillis')}}</label>
       <input v-model="sillis" type="checkbox">
     </div>
+    <div class="field">
+      <label class="label">{{$t('signup.support')}}</label>
+      <input v-model="support" type="checkbox">
+    </div>
     <div class="field is-grouped">
       <div class="control">
-        <div class="label" v-text="$t('signup.gdpr')"></div>
+        <div class="accept">
+          <input v-model="gdpr" type="checkbox">
+          <label for="" class="label" v-html="$t('signup.accept')"></label>
+        </div>
         <button v-if="edit" class="button">{{$t('signup.edit')}}</button>
         <button v-else class="button">{{$t('signup.submit')}}</button>
       </div>
@@ -113,6 +131,8 @@ export default {
       table_group: '',
       representative_of: '',
       gives_present: false,
+      support: false,
+      dish: '',
     };
   },
   mounted() {

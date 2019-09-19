@@ -10,7 +10,8 @@
 .input {
   height: 2rem;
   font-size: 1.1rem;;
-  background: transparent;
+  background: rgba(0,0,0,0.5);
+  border-radius: 0.3rem;
   border: none;
   width: 80%;
   max-width: $desktop/2;
@@ -26,16 +27,22 @@
 
 .label {
   font-size: 1.3rem;
-  font-weight: bold;
+  font-weight: 500
+}
+
+.accept {
+  max-width: $desktop/2;
+  margin: auto;
+  padding: 1rem;
 }
 
 .button {
   background: transparent;
-  padding: 1rem;
+  padding: 1.4rem;
   font-size: 2rem;
   text-decoration: none;
-  margin: 0.2rem;
-  border-radius: 0.2rem;
+  margin: 1rem;
+  border-radius: 0.3rem;
   cursor: pointer;
   border: 2px;
   border-style: solid;
@@ -67,13 +74,27 @@
   border-color: $navajo;
   color: $navajo;
 }
-
+.link {
+  font-size: 1.3rem;
+  cursor: pointer;
+  border: 1px;
+  color: $fawn;
+}
 .closed-label {
   padding: 1rem;
   text-align: center;
 }
 
+.dish>*{
+  display: inline;
+}
+
+.radio-padder {
+  margin-left: 2rem;
+}
+
 .signup-header {
   color: $fawn;
   font-size: 2rem;
+  padding: 1rem;
 }

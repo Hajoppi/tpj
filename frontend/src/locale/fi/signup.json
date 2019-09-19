@@ -1,15 +1,19 @@
 {
   "name": "Nimi",
+  "support": "Haluan ostaa kannatuslipun (147€)",
   "email": "Sähköposti",
   "startYear": "Opiskelujen aloitusvuosi",
   "student": "Olen opiskelija",
-  "avec": "Avecin nimi",
+  "avec": "Avecin nimi (avecin on ilmoittauduttava erikseen)",
   "foodAllergies": "Ruoka-aineallergiat sekä erityisruokavaliot",
   "noAlcohol": "Alkoholiton",
   "tableGroup": "Pöytäseurue",
   "representative": "Edustamani taho",
   "sillis": "Ilmoittaudun sillikselle 9.11.2019 (+20€)",
-  "submit": "Tallenna",
+  "submit": "Lähetä",
+  "dish": "Menu vaihtoehdot",
+  "fish": "Kala",
+  "vegetarian": "Kasvis",
   "edit": "Muokkaa",
   "delete": "Poista",
   "invited": "Kutsuvieraat",
@@ -18,5 +22,5 @@
   "closed": "Ilmoittautuminen ei ole vielä alkanut",
   "title": "Ilmoittautuminen",
   "titleInvited": "Kutsuvieras ilmoittautuminen",
-  "gdpr": "Tämän lomakkeen lähettämällä hyväksyt, että nimesi ja pöytäseuratoiveesi julkaistaan näillä sivuilla, ja että tietoja käytetään juhlan järjestelyihin",
+  "accept": "Hyväksyn, että nimeni ja pöytäseuratoiveeni julkaistaan näillä sivuilla, ja että antamiani tietoja käsittellään AYY:n <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/Tietosuoja\">tietosuojaohjeen</a> mukaisesti."
 }
