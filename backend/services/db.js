@@ -72,7 +72,7 @@ db.updateSignup = async (signupId, signupObj) => {
     let params = db.signupIntoParams(signupObj);
     params.unshift(signupId);
     console.log(params);
-    return await pool.query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, table_group=$11, representative_of=$12, support=$13 , dish=$14where id=$1', params);
+    return await pool.query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, table_group=$11, representative_of=$12, support=$13 , dish=$14 where id=$1', params);
 };
 
 db.terminate = async () => {
