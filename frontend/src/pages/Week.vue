@@ -9,7 +9,7 @@
       </div>
       <div class="event__image">
         <div class="image-filler"></div>
-        <img class="teemu-image" src="../assets/images/teemu.png" />
+        <img class="teemu-image" src="../assets/images/teemu-min.png" />
         <div class="image-filler"></div>
       </div>
       <div class="event-padder"></div>
@@ -81,7 +81,8 @@ export default {
   },
   methods: {
     getImagePath(image) {
-      return `background-image: url("${images[image].jpg}");`;
+      const file = `${image}-min`;
+      return `background-image: url("${images[file].jpg}");`;
     }
   },
   components: {
