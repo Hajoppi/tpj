@@ -8,7 +8,7 @@
       <thead>
         <th>{{$t('signup.name')}}</th><th>{{$t('signup.tableGroup')}}</th>
       </thead>
-      <tr v-for="participant in participants" :key="participant.name">
+      <tr v-for="(participant, index) in participants" :key="`${participant.name}_${index}`">
         <td v-text="participant.name" />
         <td v-text="participant.table_group" />
       </tr>

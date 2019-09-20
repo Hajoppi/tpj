@@ -13,9 +13,6 @@
       </router-link>
     </div>
     <v-signup v-if="select && isOpen" :invited="invited"></v-signup>
-    <div class="closed-label" v-if="select && !isOpen">
-      {{$t('signup.closed')}}
-    </div>
   </div>
 </template>
 

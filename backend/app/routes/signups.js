@@ -3,15 +3,19 @@ const config = require('../config');
 const mail = require('../../services/mail');
 const utils = require('../../services/utils');
 
+function isOpen(invited) {
+  const now = new Date();
+  const invitedOpen = invited && now > config.signupStartInvited && now < config.signupEndInvited;
+  const otherOpen = !invited && now > config.signupStart && now < config.signupEnd;
+  return invitedOpen || otherOpen;
+}
+
 module.exports = async (server) => {
   server.route({
     method: 'POST',
     path: '/api/signup',
     handler: async (request, h) => {
-      if (
-        (request.invited && Date.now() < config.signupStartInvited)
-        || (!request.invited && Date.now < config.signupStart)
-      ) {
+      if (!isOpen(request.payload.invited)) {
         return h.response('Not time').code(401);
       }
       try {

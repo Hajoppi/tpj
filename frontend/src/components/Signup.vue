@@ -76,14 +76,16 @@
       <label class="label">{{$t('signup.support')}}</label>
       <input v-model="support" type="checkbox">
     </div>
+    <div class="field">
+      <div class="accept">
+        <input v-model="gdpr" type="checkbox">
+        <label for="" class="label" v-html="$t('signup.accept')"></label>
+      </div>
+    </div>
     <div class="field is-grouped">
       <div class="control">
-        <div class="accept">
-          <input v-model="gdpr" type="checkbox">
-          <label for="" class="label" v-html="$t('signup.accept')"></label>
-        </div>
-        <button v-if="edit" class="button">{{$t('signup.edit')}}</button>
-        <button v-else class="button">{{$t('signup.submit')}}</button>
+        <button v-if="edit" class="button" :disabled="!gdpr">{{$t('signup.edit')}}</button>
+        <button v-else class="button" :disabled="!gdpr">{{$t('signup.submit')}}</button>
       </div>
       <div v-if="edit" class="control">
         <button @click.prevent="deleteSignup" class="button is-link">{{$t('signup.delete')}}</button>
@@ -130,10 +132,10 @@ export default {
       food_requirements: '',
       table_group: '',
       representative_of: '',
-      gives_present: false,
       support: false,
       dish: '',
       gdpr: false,
+      error: '',
     };
   },
   mounted() {

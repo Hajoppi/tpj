@@ -84,6 +84,12 @@
   cursor: default;
 }
 
+.button:disabled {
+  color: $peru;
+  border-color: $peru;
+  cursor: default;
+}
+
 .link {
   font-size: 1.3rem;
   cursor: pointer;
