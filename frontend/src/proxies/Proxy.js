@@ -83,14 +83,8 @@ class Proxy {
       Vue.$http[requestType](url + this.getParameterString(), data)
         .then((response) => {
           resolve(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-          if (response) {
-            reject(response.data);
-          } else {
-            reject();
-          }
+        }).catch((e) => {
+          reject(e);
         });
     });
   }

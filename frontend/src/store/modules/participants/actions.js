@@ -9,30 +9,28 @@
 import * as types from './mutation-types';
 import Proxy from '../../../proxies/Proxy';
 
-export const all = ({ commit }) => {
+export const all = ({ commit }) => new Promise((resolve, reject) => {
   new Proxy('signups').all()
     .then((response) => {
       commit(types.ALL, response);
+      resolve();
   }).catch((e) => {
-      console.log(e);
+      reject(e);
    });
-};
+});
 
-export const register = ({ commit }, data) => {
+
+export const register = ({ commit }, data) => new Promise((resolve, reject) => {
   new Proxy('signup').create(data)
     .then((response) => {
       commit(types.REGISTER, response);
+      resolve();
     }).catch((e) => {
-      console.log(e);
+      reject(e);
     });
-}
-
-export const update = ({ commit }, data) => {
-
-}
+});
 
 export default {
   all,
   register,
-  update,
 };

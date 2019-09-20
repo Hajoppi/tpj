@@ -158,8 +158,8 @@ export default {
       data.invited = this.invited;
       this.$store.dispatch("participants/register", data).then(() => {
         this.$router.push({ name: 'participants.index'})
-      }).catch(() => {
-        console.log("error");
+      }).catch((error) => {
+        console.log(error);
       });
     },
     update() {
@@ -167,16 +167,16 @@ export default {
       data.id = this.$route.query.id;
       return new Proxy('signup').update(data).then(() => {
         this.$router.push({ name: 'participants.index' });
-      }).catch(() => {
-        console.log("error");
+      }).catch((error) => {
+        console.log(error);
       });
     },
     deleteSignup() {
       const signupId = this.$route.query.id;
       return new Proxy('signup', { id: signupId }).destroy().then(() => {
         this.$router.push({ name: 'participants.index'});
-      }).catch(() => {
-        console.log("error");
+      }).catch((error) => {
+        console.log(error);
       });
     },
     handleSubmit() {
