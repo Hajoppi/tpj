@@ -2,15 +2,15 @@
   <div>
     <div class="home__text" v-html="$t('home.signup')"></div>
     <div class="choose">
-      <a @click.prevent="invited=true; select=true" class="choose-button">
+      <button :disabled="!isOpenInvited" @click.prevent="invited=true; select=true" class="choose-button">
         {{$t(`signup.invited`)}}
-      </a>
-      <a @click.prevent="invited=false; select=true" class="choose-button">
+      </button>
+      <button :disabled="!isOpenOther" @click.prevent="invited=false; select=true" class="choose-button">
         {{$t(`signup.normal`)}}
-      </a>
+      </button>
       <router-link to="/participants" class="choose-button">
         {{$t(`signup.participants`)}}
-      </a>
+      </router-link>
     </div>
     <v-signup v-if="select && isOpen" :invited="invited"></v-signup>
     <div class="closed-label" v-if="select && !isOpen">
@@ -39,17 +39,23 @@ export default {
    */
   data() {
     return {
-      select: true,
-      invited: true,
+      select: false,
+      invited: false,
     }
   },
   computed: {
+    isOpenInvited() {
+      const now = new Date()
+      return now > config.signupStartInvited && now < config.signupEndInvited
+    },
+    isOpenOther() {
+      const now = new Date()
+      return now > config.signupStart && now < config.signupEnd;
+    },
     isOpen() {
       const now = new Date()
-      return ((this.invited && now > config.signupStartInvited) 
-      || (!this.invited && now > config.signupStart))
-      &&
-      (now < config.signupEnd);
+      return ((this.invited && this.isOpenInvited) 
+      || (!this.invited && this.isOpenOther))
     }
   },
   components: {

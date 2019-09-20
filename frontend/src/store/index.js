@@ -7,12 +7,10 @@
  * http://vuex.vuejs.org/en/index.html
  */
 
-import Vue from 'vue';
 import Vuex from 'vuex';
 import createLogger from 'vuex/dist/logger';
 
 // Modules
-import auth from './modules/auth';
 import participants from './modules/participants';
 import navbar from './modules/navbar';
 
@@ -23,7 +21,6 @@ export default new Vuex.Store({
    * Assign the modules to the store.
    */
   modules: {
-    auth,
     participants,
     navbar,
   },

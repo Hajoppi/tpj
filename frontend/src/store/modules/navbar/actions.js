@@ -6,8 +6,6 @@
  * auth module.
  */
 
-import Vue from 'vue';
-import store from '../../../store';
 import * as types from './mutation-types';
 
 export const set = ({ commit }, value) => {

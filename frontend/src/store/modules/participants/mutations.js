@@ -6,7 +6,6 @@
  * participants module.
  */
 
-import Vue from 'vue';
 import {
   ALL,
   REGISTER,
