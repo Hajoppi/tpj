@@ -8,6 +8,7 @@
   margin-bottom: 1rem;
 }
 .input {
+  margin-top: 0.5rem;
   height: 2rem;
   font-size: 1.1rem;;
   background: rgba(0,0,0,0.5);
@@ -27,7 +28,7 @@
 
 .label {
   font-size: 1.3rem;
-  font-weight: 500
+  font-weight: 500;
 }
 
 .accept {
@@ -37,6 +38,8 @@
 }
 
 .button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   background: transparent;
   padding: 1.4rem;
   font-size: 2rem;
@@ -51,7 +54,7 @@
 }
 
 .button:hover {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(196, 134, 134, 0.2);
 }
 
 .choose {
@@ -65,6 +68,8 @@
 }
 
 .choose-button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   background: transparent;
   font-size: 1.3rem;
   text-decoration: none;
