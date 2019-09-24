@@ -92,7 +92,7 @@ module.exports = async (server) => {
       }
     }
   });
-  
+  /*
   // Fetch normal guests
   server.route({
     method: 'GET',
@@ -119,6 +119,6 @@ module.exports = async (server) => {
         throw err;
       }
     }
-  });
+  });*/
 }
 // Insert new signup
