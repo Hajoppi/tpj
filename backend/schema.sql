@@ -17,5 +17,6 @@ create table signups (
   invited boolean not null,
   support boolean not null,
   dish text not null,
+  gdpr boolean not null,
   created timestamp default CURRENT_TIMESTAMP
 );

@@ -36,14 +36,13 @@ transporter.verify().then((success) => {
 mail.sendOnSignupCreate = async function (signupObj, signupId) {
   const signupHash = utils.encrypt(String(signupId));
   const link = 'https://teekkarius147.ayy.fi/edit?id=' + signupHash;
-  console.log(signupObj.email);
   const options = {
     from: '"Teekkarius" <tuomas.kontola@ayy.fi>',
     to: signupObj.email,
     subject: 'Subject',
     text: link
   };
-  const info = await transporter.sendMail(options);
-  console.log(info);
+  //const info = await transporter.sendMail(options);
+  //console.log(info);
   return 1;
 }

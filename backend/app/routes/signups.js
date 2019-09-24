@@ -21,7 +21,7 @@ module.exports = async (server) => {
       try {
         const signupObj = request.payload;
         const id = await db.signup(signupObj);
-        return id //await mail.sendOnSignupCreate(signupObj, id);
+        return await mail.sendOnSignupCreate(signupObj, id);
       }
       catch (error) {
         console.log(error);
@@ -53,6 +53,7 @@ module.exports = async (server) => {
         const signupId = utils.decrypt(request.query.id);
         const signup = await db.getSignupDetails(signupId);
         signup.id = undefined;
+        console.log(signup);
         return signup;
       } catch(error) {
         console.error(error.stack)

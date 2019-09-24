@@ -145,6 +145,7 @@ export default {
         Object.assign(this._data, res);
         console.log(this.$data);
       }).catch((err) => {
+        this.$router.push({name: 'signup.index'})
         console.log(err);
       });
     }
