@@ -95,7 +95,6 @@ mail.sendOnSignupCreate = async function (signupObj, signupId) {
 }
 
 mail.sendOnSignupUpdate = async function(signupObj, signupId) {
-  console.log(signupObj.locale)
   const text = createSignupMailText(signupObj, signupId, 'update');
   const options = {
     from: '"Teekkarius" <anni.parkkila@ayy.fi>',

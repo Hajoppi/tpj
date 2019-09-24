@@ -50,7 +50,7 @@ module.exports = async (server) => {
     path: '/api/signup',
     handler: async (request, h) => {
       try {
-        if (!isOpen(false)) {
+        if (!isOpen(false) && !isOpen(true)) {
           return h.response('Not time').code(401);
         }
         const signupId = utils.decrypt(request.query.id);
@@ -70,7 +70,7 @@ module.exports = async (server) => {
     path: '/api/signup',
     handler: async (request, h) => {
       try {
-        if (!isOpen(false)) {
+        if (!isOpen(false) && !isOpen(true)) {
           return h.response('Not time').code(401);
         }
         const signupId = utils.decrypt(request.payload.id);
@@ -91,7 +91,7 @@ module.exports = async (server) => {
     path: '/api/signup',
     handler: async (request, h) => {
       try {
-        if (!isOpen(false)) {
+        if (!isOpen(false) && !isOpen(true)) {
           return h.response('Not time').code(401);
         }
         const signupId = utils.decrypt(request.query.id);
