@@ -55,10 +55,10 @@ const settings = {
 
 function createSignupMailText(signupObj, signupId, update) {
   const signupHash = utils.encrypt(String(signupId));
-  const link = 'https://teekkarius.ayy.fi/#/edit?id=' + signupHash;
+  const link = 'https://teekkarius147.ayy.fi/#/edit?id=' + signupHash;
   let text = '';
   if (update === 'update') {
-      text = strings[signupObj.locale].signupUpdate.prepend.concat(strings.mail.signupCreate.paragraphs).join('\n\n');
+      text = strings[signupObj.locale].signupUpdate.prepend.concat(strings[signupObj.locale].signupCreate.paragraphs).join('\n\n');
   } else {
       text = strings[signupObj.locale].signupCreate.paragraphs.join('\n\n');
   }
@@ -85,7 +85,29 @@ mail.sendOnSignupCreate = async function (signupObj, signupId) {
     subject: strings[signupObj.locale].signupCreate.subject,
     text: text
   };
-  const info = await transporter.sendMail(options);
-  console.log(info);
-  return 1;
+  try {
+    await transporter.sendMail(options);
+    return 1;
+  } catch(err) {
+    console.error(err)
+    throw err
+  }
+}
+
+mail.sendOnSignupUpdate = async function(signupObj, signupId) {
+  console.log(signupObj.locale)
+  const text = createSignupMailText(signupObj, signupId, 'update');
+  const options = {
+    from: '"Teekkarius" <anni.parkkila@ayy.fi>',
+    to: signupObj.email,
+    subject: strings[signupObj.locale].signupCreate.subject,
+    text: text
+  };
+  try {
+    await transporter.sendMail(options);
+    return 1;
+  } catch(err) {
+    console.error(err)
+    throw err
+  }
 }

@@ -50,10 +50,12 @@ module.exports = async (server) => {
     path: '/api/signup',
     handler: async (request, h) => {
       try {
+        if (!isOpen(false)) {
+          return h.response('Not time').code(401);
+        }
         const signupId = utils.decrypt(request.query.id);
         const signup = await db.getSignupDetails(signupId);
         signup.id = undefined;
-        console.log(signup);
         return signup;
       } catch(error) {
         console.error(error.stack)
@@ -62,15 +64,19 @@ module.exports = async (server) => {
     }
   });
   
-  //Update a signups
+  //Update a signup
   server.route({
     method: 'PUT',
     path: '/api/signup',
     handler: async (request, h) => {
       try {
+        if (!isOpen(false)) {
+          return h.response('Not time').code(401);
+        }
         const signupId = utils.decrypt(request.payload.id);
         const signupObj = request.payload;
         const res = await db.updateSignup(signupId, signupObj);
+        await mail.sendOnSignupUpdate(signupObj, signupId);
         return res;
       } catch(error) {
         console.log(error.stack);
@@ -85,6 +91,9 @@ module.exports = async (server) => {
     path: '/api/signup',
     handler: async (request, h) => {
       try {
+        if (!isOpen(false)) {
+          return h.response('Not time').code(401);
+        }
         const signupId = utils.decrypt(request.query.id);
         return await db.deleteSignup(signupId);
       } catch(error) {
@@ -92,33 +101,5 @@ module.exports = async (server) => {
       }
     }
   });
-  /*
-  // Fetch normal guests
-  server.route({
-    method: 'GET',
-    path: '/api/signups/normal',
-    handler: async (request, h) => {
-      try {
-        return await db.getNormalParticipants();
-      } catch (err) {
-        console.error(err);
-        throw err;
-      }
-    }
-  });
-  
-  // Fetch invited guests
-  server.route({
-    method: 'GET',
-    path: '/api/signups/invited',
-    handler: async (request, h) => {
-      try {
-        return await db.getInvitedParticipants();
-      } catch (err) {
-        console.error(err);
-        throw err;
-      }
-    }
-  });*/
 }
 // Insert new signup

@@ -1,6 +1,6 @@
 module.exports = {
-    signupStartInvited: new Date('2018-09-25T12:00:00'),
-    signupEndInvited: new Date('2019-10-08T23:59'),
-    signupStart: new Date('2018-10-09T12:00:00'),
-    signupEnd: new Date('2019-10-24T23:59:00'),
+    signupStartInvited: new Date(1569402000000),
+    signupEndInvited: new Date(1570568399000),
+    signupStart: new Date(1570611600000),
+    signupEnd: new Date(1571950799000),
 }

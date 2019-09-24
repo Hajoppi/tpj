@@ -170,6 +170,7 @@ export default {
     update() {
       const data = this._data;
       data.id = this.$route.query.id;
+      data.locale = this.$i18n.locale;
       return new Proxy('signup').update(data).then(() => {
         this.$router.push({ name: 'participants.index' });
       }).catch((error) => {
