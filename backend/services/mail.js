@@ -27,7 +27,7 @@ transporter.verify().then((success) => {
   console.log(err);
 });
 
-function signupToText(signupObj, lang) {
+function signupToText(signupObj) {
   const booleans = strings[signupObj.locale].booleans;
   const details = strings[signupObj.locale].signupDetailsTemplate.join('\n')
   return details.format({
