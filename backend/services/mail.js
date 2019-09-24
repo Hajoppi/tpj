@@ -12,7 +12,7 @@ const smtp_host = process.env.SMTP_HOST,
   smtp_user = process.env.SMTP_USER,
   smtp_pass = process.env.SMTP_PASS;
 
-if (!smtp_host || !smtp_port || !smtp_user || !smtp_pass) {
+if (!smtp_host || !smtp_port) {
   console.error('SMTP credentials are not defined!');
   return process.exit();
 }
