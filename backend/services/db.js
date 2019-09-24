@@ -5,7 +5,7 @@ const pool = mariadb.createPool({
   user: process.env.DBUSER,
   password: process.env.DBPASSWORD,
   database: process.env.DBDATABASE,
-  connectionLimit: 5
+  connectionLimit: 10
 });
 
 const db = module.exports = {};
@@ -25,7 +25,7 @@ db.signupIntoParams = (signupObj) => {
         signupObj.representative_of || '',
         signupObj.support || false,
         signupObj.dish || '',
-        signupObj.gdpr || true,
+        signupObj.gdpr || false,
     ];
 };
 
@@ -90,7 +90,6 @@ db.getAllParticipants = async () => {
 db.signup = async (signupObj) => {
   let conn;
   try {
-    console.log('here');
     conn = await pool.getConnection();
     const params = db.signupIntoParams(signupObj);
     const res = await conn.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group, representative_of, support, dish, gdpr) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params);
