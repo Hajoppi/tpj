@@ -21,7 +21,7 @@ module.exports = async (server) => {
       try {
         const signupObj = request.payload;
         const id = await db.signup(signupObj);
-        return await mail.sendOnSignupCreate(signupObj, id);
+        return id //await mail.sendOnSignupCreate(signupObj, id);
       }
       catch (error) {
         console.log(error);

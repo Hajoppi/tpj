@@ -20,13 +20,13 @@ services:
       - NODE_URI=0.0.0.0
     command: npm start
     ports:
-      - 3001:3001
+      - 3001:2041
     
   db:
-    image: postgres:latest
+    image: mariadb
     environment: 
-      - POSTGRES_DB=tpjdb
-      - POSTGRES_PASSWORD=lorem
+      - MYSQL_DATABASE=tpjdb
+      - MYSQL_ROOT_PASSWORD=lorem
     volumes: 
       - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     depends_on:

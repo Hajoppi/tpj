@@ -64,7 +64,7 @@ export default {
         {
           name: 'punainen',
           image: 'vuoristo',
-          pvm: '7.11',
+          pvm: '7.11.',
         },
         {
           name: "tpj",
@@ -74,7 +74,7 @@ export default {
         {
           name: "sillis",
           image: "tropiikki",
-          pvm: "9.11"
+          pvm: "9.11."
         },
       ]
     }

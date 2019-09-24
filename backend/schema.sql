@@ -17,13 +17,5 @@ create table signups (
   invited boolean not null,
   support boolean not null,
   dish text not null,
-  created timestamp with time zone not null default now()
+  created timestamp default CURRENT_TIMESTAMP
 );
-
-create table users (
-  id serial NOT null primary key,
-  username TEXT NOT null,
-  password TEXT NOT null
-);
-
-insert into users (username, password) values ('admin', 'passwordHash');

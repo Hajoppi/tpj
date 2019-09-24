@@ -1,16 +1,14 @@
-const { Pool } = require('pg');
-const pool = new Pool();
-const db = module.exports = {};
-//Create db by
-// su postgres
-// createdb <dbname>
-// psql
-// grant all privileges on database <dbname> to <username> ;
+const mariadb = require('mariadb');
 
-pool.on('error', (err, client) => {
-  console.error('Unexpected error on idle client', err)
-  process.exit(-1)
+const pool = mariadb.createPool({
+  host: process.env.DBHOST,
+  user: process.env.DBUSER,
+  password: process.env.DBPASSWORD,
+  database: process.env.DBDATABASE,
+  connectionLimit: 5
 });
+
+const db = module.exports = {};
 
 db.signupIntoParams = (signupObj) => {
     return [
@@ -31,50 +29,103 @@ db.signupIntoParams = (signupObj) => {
 };
 
 db.getSignupDetails = async (signupId) => {
-  const { rows } = await pool.query('SELECT * FROM signups WHERE id=$1', [signupId]);
-  return rows[0];
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const result = await conn.query('SELECT * FROM signups WHERE id=$1', [signupId]);
+    return result[0];
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) return conn.end();
+  }
 }
 
 getInvitedParticipants = async () => {
-  const { rows } = await pool.query('SELECT * FROM signups WHERE invited=true');
-  return rows;
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    return await conn.query('SELECT * FROM signups WHERE invited=true');
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
 };
 
 getNormalParticipants = async () => {
-  const { rows } = await pool.query('SELECT * FROM signups WHERE invited=false');
-  return rows;
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    return await conn.query('SELECT * FROM signups WHERE invited=false');
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
 };
 
 db.getAllParticipants = async () => {
-  const normal = pool.query('SELECT name, table_group, created FROM signups WHERE invited=false');
-  const invited = pool.query('SELECT name, table_group, created FROM signups WHERE invited=true');
-  const r1 = await normal;
-  const r2 = await invited;
-  const rows = {
-    normal: r1.rows,
-    invited: r2.rows,
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const normal = conn.query('SELECT name, table_group, created FROM signups WHERE invited=false');
+    const invited = conn.query('SELECT name, table_group, created FROM signups WHERE invited=true');
+    const r1 = await normal;
+    const r2 = await invited;
+    console.log(r2, r2.length);
+    const rows = {
+      normal: r1,
+      invited: r2,
+    }
+    console.log(rows);
+    return rows;
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
   }
-console.log(rows);
-  return rows;
 };
 
 db.signup = async (signupObj) => {
-  const params = db.signupIntoParams(signupObj);
-  const { rows } = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group, representative_of, support, dish) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) returning id', params);
-  return rows[0].id;
+  let conn;
+  try {
+    console.log('here');
+    conn = await pool.getConnection();
+    const params = db.signupIntoParams(signupObj);
+    const res = await conn.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group, representative_of, support, dish) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params);
+    return res.insertId
+  } catch (err) {
+    console.error(err);
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
 };
 
 db.deleteSignup = async (signup_id) => {
-    return await pool.query('delete from signups where id=$1', [signup_id]);
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    return await conn.query('delete from signups where id=$1', [signup_id]);
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
 };
 
 db.updateSignup = async (signupId, signupObj) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
     let params = db.signupIntoParams(signupObj);
-    params.unshift(signupId);
+    params.push(signupId);
     console.log(params);
-    return await pool.query('update signups set name=$2, email=$3, start_year=$4, student=$5, no_alcohol=$6, sillis=$7, invited=$8, avec=$9, food_requirements=$10, table_group=$11, representative_of=$12, support=$13 , dish=$14 where id=$1', params);
-};
-
-db.terminate = async () => {
-  await pool.end();
+    return await conn.query('update signups set name=?, email=?, start_year=?, student=?, no_alcohol=?, sillis=?, invited=?, avec=?, food_requirements=?, table_group=?, representative_of=?, support=?, dish=? where id=?', params);
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
 };
