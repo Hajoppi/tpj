@@ -159,6 +159,8 @@ export default {
     register() {
       const data = this.$data;
       data.invited = this.invited;
+      data.locale = this.$i18n.locale;
+      console.log(data);
       this.$store.dispatch("participants/register", data).then(() => {
         this.$router.push({ name: 'participants.index'})
       }).catch((error) => {

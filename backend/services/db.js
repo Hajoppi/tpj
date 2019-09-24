@@ -39,7 +39,7 @@ db.getSignupDetails = async (signupId) => {
   } catch (err) {
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) conn.release();
   }
 }
 
@@ -51,7 +51,7 @@ getInvitedParticipants = async () => {
   } catch (err) {
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) conn.release();
   }
 };
 
@@ -63,7 +63,7 @@ getNormalParticipants = async () => {
   } catch (err) {
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) conn.release();
   }
 };
 
@@ -83,7 +83,9 @@ db.getAllParticipants = async () => {
   } catch (err) {
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) {
+      await conn.release();
+    }
   }
 };
 
@@ -98,7 +100,7 @@ db.signup = async (signupObj) => {
     console.error(err);
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) conn.release();
   }
 };
 
@@ -110,7 +112,7 @@ db.deleteSignup = async (signup_id) => {
   } catch (err) {
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) conn.release();
   }
 };
 
@@ -124,6 +126,6 @@ db.updateSignup = async (signupId, signupObj) => {
   } catch (err) {
     throw err;
   } finally {
-    if (conn) conn.end();
+    if (conn) conn.release();
   }
 };

@@ -1,8 +1,8 @@
 'use strict';
 
 const nodemailer = require('nodemailer'),
-      utils = require('./utils');
-
+      utils = require('./utils'),
+      strings = require('../strings');
 
 const mail = module.exports = {};
 let transporter = null;
@@ -19,13 +19,7 @@ if (!smtp_host || !smtp_port || !smtp_user || !smtp_pass) {
 const SMTP_settings = {
   host: smtp_host,
   port: smtp_port,
-  /*auth: {
-    user: smtp_user,
-    pass: smtp_pass,
-  }*/
 };
-console.log(SMTP_settings);
-
 transporter = nodemailer.createTransport(SMTP_settings);
 transporter.verify().then((success) => {
   console.log(success)
@@ -33,16 +27,65 @@ transporter.verify().then((success) => {
   console.log(err);
 });
 
-mail.sendOnSignupCreate = async function (signupObj, signupId) {
+function signupToText(signupObj, lang) {
+  const booleans = strings[signupObj.locale].booleans;
+  const details = strings[signupObj.locale].signupDetailsTemplate.join('\n')
+  return details.format({
+      name: signupObj.name,
+      email: signupObj.email,
+      start_year: signupObj.start_year,
+      student: signupObj.student ? booleans[0] : booleans[1],
+      avec: signupObj.avec,
+      dish: signupObj.dish,
+      food_requirements: signupObj.food_requirements,
+      no_alcohol: signupObj.no_alcohol ? booleans[0] : booleans[1],
+      table_group: signupObj.table_group,
+      representative_of: signupObj.representative_of,
+      sillis: signupObj.sillis ? booleans[0] : booleans[1],
+      gives_present: signupObj.gives_present ? booleans[0] : booleans[1],
+      support: signupObj.support ? booleans[0] : booleans[1]
+  });
+}
+const settings = {
+  price_student: 85,
+  price_other: 110,
+  price_support: 147,
+  price_sillis: 20
+}
+
+function createSignupMailText(signupObj, signupId, update) {
   const signupHash = utils.encrypt(String(signupId));
-  const link = 'https://teekkarius147.ayy.fi/edit?id=' + signupHash;
+  const link = 'https://teekkarius.ayy.fi/#/edit?id=' + signupHash;
+  let text = '';
+  if (update === 'update') {
+      text = strings[signupObj.locale].signupUpdate.prepend.concat(strings.mail.signupCreate.paragraphs).join('\n\n');
+  } else {
+      text = strings[signupObj.locale].signupCreate.paragraphs.join('\n\n');
+  }
+
+  let signupPrice = signupObj.student ? settings.price_student : settings.price_other;
+  if (signupObj.support) signupPrice = settings.price_support;
+  if (signupObj.sillis) {
+      signupPrice += settings.price_sillis;
+  }
+
+  return text.format({
+      signupPrice: String(signupPrice),
+      signupDetails: signupToText(signupObj),
+      modifyLink: link
+  });
+}
+
+
+mail.sendOnSignupCreate = async function (signupObj, signupId) {
+  const text = createSignupMailText(signupObj, signupId)
   const options = {
-    from: '"Teekkarius" <tuomas.kontola@ayy.fi>',
+    from: '"Teekkarius" <anni.parkkila@ayy.fi>',
     to: signupObj.email,
-    subject: 'Subject',
-    text: link
+    subject: strings[signupObj.locale].signupCreate.subject,
+    text: text
   };
-  //const info = await transporter.sendMail(options);
-  //console.log(info);
+  const info = await transporter.sendMail(options);
+  console.log(info);
   return 1;
 }
