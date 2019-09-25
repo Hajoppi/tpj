@@ -18,17 +18,23 @@ html, body {
   height: 100%;
 }
 
-#app {
+
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background:
     linear-gradient(
       rgba(0,0,0,0.8),
       rgba(0,0,0,0.6)
     ),
     url('/src/assets/images/maapallo-min.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    overflow: hidden;
-    min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  min-height: 100vh;
 }
