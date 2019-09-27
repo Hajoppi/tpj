@@ -60,7 +60,7 @@
               type="text">
       </div>
     </div>
-    <div class="field" v-if="invited">
+    <div class="field" v-if="invited || (edit && this._data.invited)">
       <label class="label">{{$t('signup.representative')}}</label>
       <div class="control">
         <input v-model="representative_of"
@@ -143,7 +143,6 @@ export default {
       const signupId = this.$route.query.id;
       new Proxy('signup', { id: signupId }).all().then((res) => {
         Object.assign(this._data, res);
-        console.log(this.$data);
       }).catch((err) => {
         this.$router.push({name: 'signup.index'})
         console.log(err);
@@ -153,7 +152,7 @@ export default {
   computed: {
     formTitle() {
       return this.invited ? this.$t('signup.titleInvited') : this.$t('signup.title')
-    }
+    },
   },
   methods: {
     register() {
