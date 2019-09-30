@@ -12,7 +12,7 @@ module.exports = {
           '{signupDetails}',
           'Voit muokata tietojasi ilmoittautumisen sulkeutumiseen mennessä osoitteessa {modifyLink}',
           'Maksutiedot löydät alempaa.',
-          'Saaja: Aalto-yliopiston ylioppilaskunta\nTili: FI78 3131 1001 1779 34\nSwift/BIC: HANDFIHH\nSumma: {signupPrice}€\nEräpäivä: 24.10.2019\nViite: 1182',
+          'Saaja: Aalto-yliopiston ylioppilaskunta\nTili: FI78 3131 1001 1779 34\nSwift/BIC: HANDFIHH\nSumma: {signupPrice}€\nEräpäivä: 24.10.2019\nViite: 11824',
           'Olettehan maksuihin liittyvissä asioissa suoraan yhteydessä tuottajaamme Eeva Ylimäkeen, eeva.ylimaki@ayy.fi.',
           'Nähdään juhlassa!\n',
           'Ystävällisin terveisin,\n\nAnni Parkkila\n\nTeekkariperinnetirehtööri\nTeekkarijaosto, Aalto-yliopiston ylioppilaskunta\nanni.parkkila@ayy.fi'
@@ -50,7 +50,7 @@ module.exports = {
           '{signupDetails}',
           'You can modify your information until the end of the signup from this link: {modifyLink}',
           'The payment details are attached below.',
-          'Recipient: Aalto-yliopiston ylioppilaskunta\nAccount: FI78 3131 1001 1779 34\nSwift/BIC: HANDFIHH\nSum: {signupPrice}€\nDue date: 24.10.2019\nReference number: 1182',
+          'Recipient: Aalto-yliopiston ylioppilaskunta\nAccount: FI78 3131 1001 1779 34\nSwift/BIC: HANDFIHH\nSum: {signupPrice}€\nDue date: 24.10.2019\nReference number: 11824',
           'If you have any payment related questions, please contact our producer Eeva Ylimäki directly, eeva.ylimaki@ayy.fi.',
           'See you at the party!\n',
           'Best regards,\n\nAnni Parkkila\n\nDirector of Teekkari traditions\nTeekkari Section, Aalto University Student Union\nanni.parkkila@ayy.fi'
@@ -88,7 +88,7 @@ module.exports = {
           '{signupDetails}',
           'Du kan ändra din information tills registreringen slutar från den här länken: {modifyLink}',
           'Betalninginformation hittar du nedre.',
-          'Betalningsmottagare: Aalto-yliopiston ylioppilaskunta\nKonto: FI78 3131 1001 1779 34\nSwift/BIC: HANDFIHH\nMängd: {signupPrice}€\nFörfallodag: 24.10.2019\nRef.n: 1182',
+          'Betalningsmottagare: Aalto-yliopiston ylioppilaskunta\nKonto: FI78 3131 1001 1779 34\nSwift/BIC: HANDFIHH\nMängd: {signupPrice}€\nFörfallodag: 24.10.2019\nRef.n: 11824',
           'Om du har fårgor om betalningen, ta konkat med vår producent Eeva Ylimäki. eeva.ylimaki@ayy.fi.',
           'Vi ses på festen!\n',
           'Med vänliga hälsning,\n\nAnni Parkkila\n\nTeknologtraditionsdirektör\nTeknologsektionen, Aalto-universitetets studentkår\nanni.parkkila@ayy.fi'
