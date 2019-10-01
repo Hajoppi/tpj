@@ -17,3 +17,13 @@
     font-size: 1.2rem;
     text-align: center;
 }
+
+.total {
+    @extend .label;
+    margin: auto;
+    max-width: $desktop/1.5;
+    align-self: center;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

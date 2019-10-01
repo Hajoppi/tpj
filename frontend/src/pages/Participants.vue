@@ -4,6 +4,7 @@
       <a class="choose-button" @click.prevent="showInvited=false">{{$t(`signup.normal`)}}</a>
       <a class="choose-button" @click.prevent="showInvited=true">{{$t(`signup.invited`)}}</a>
     </div>
+    <div class="total">{{total}}/300</div>
     <table class="list">
       <thead>
         <th>{{$t('signup.name')}}</th><th>{{$t('signup.tableGroup')}}</th>
@@ -50,6 +51,11 @@ export default {
     normal() {
       return this.$store.state.participants.normal;
     },
+    total() {
+      const invited = this.invited.length;
+      const normal = this.normal.length;
+      return invited + normal;
+    }
   }
 };
 </script>
