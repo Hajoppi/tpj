@@ -23,5 +23,6 @@
   "closed": "Ilmoittautuminen ei ole vielä alkanut",
   "title": "Anmälan för övriga gäster",
   "titleInvited": "Anmälan för inbjudna gäster",
-  "accept": "Jag godkänner att mitt namn och bordsällskap publiceras på den här sidan, och att inläggt information hanteras enligt <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/Allman+Dataskyddsforordning\">Dataskyddsbeskrivningar</a> av AUS"
+  "gdpr": "Jag godkänner att inläggt information hanteras enligt <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/Allman+Dataskyddsforordning\">Dataskyddsbeskrivningar</a> av AUS",
+  "accept": "Jag godkänner att mitt namn och bordsällskap publiceras på den här sidan"
 }

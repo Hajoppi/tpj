@@ -10,6 +10,16 @@ const pool = mariadb.createPool({
 
 const db = module.exports = {};
 
+function mapAccepts(rows) {
+  return rows.map((row) => {
+    if(!row.accept) {
+      row.name = '-'
+      row.table_group = '-'
+    }
+    return row;
+  });
+}
+
 db.signupIntoParams = (signupObj) => {
     return [
         signupObj.name,
@@ -26,6 +36,7 @@ db.signupIntoParams = (signupObj) => {
         signupObj.support || false,
         signupObj.dish || '',
         signupObj.gdpr || false,
+        signupObj.accept || false,
     ];
 };
 
@@ -43,20 +54,20 @@ db.getNormalParticipants = async () => {
 };
 
 db.getAllParticipants = async () => {
-  const normal = pool.query('SELECT name, table_group, created FROM signups WHERE invited=false');
-  const invited = pool.query('SELECT name, table_group, created FROM signups WHERE invited=true');
+  const normal = pool.query('SELECT name, table_group, accept, created FROM signups WHERE invited=false');
+  const invited = pool.query('SELECT name, table_group, accept, created FROM signups WHERE invited=true');
   const r1 = await normal;
   const r2 = await invited;
   const rows = {
-    normal: r1,
-    invited: r2,
+    normal: mapAccepts(r1),
+    invited: mapAccepts(r2),
   }
   return rows;
 };
 
 db.signup = async (signupObj) => {
   const params = db.signupIntoParams(signupObj);
-  const res = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group, representative_of, support, dish, gdpr) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params);
+  const res = await pool.query('insert into signups (name, email, start_year, student, no_alcohol, sillis, invited, avec, food_requirements, table_group, representative_of, support, dish, gdpr, accept) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params);
   return res.insertId
 };
 
@@ -67,5 +78,5 @@ db.deleteSignup = async (signup_id) => {
 db.updateSignup = async (signupId, signupObj) => {
   let params = db.signupIntoParams(signupObj);
   params.push(signupId);
-  return await pool.query('update signups set name=?, email=?, start_year=?, student=?, no_alcohol=?, sillis=?, invited=?, avec=?, food_requirements=?, table_group=?, representative_of=?, support=?, dish=?, gdpr=? where id=?', params);
+  return await pool.query('update signups set name=?, email=?, start_year=?, student=?, no_alcohol=?, sillis=?, invited=?, avec=?, food_requirements=?, table_group=?, representative_of=?, support=?, dish=?, gdpr=?, accept=? where id=?', params);
 };

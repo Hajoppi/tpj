@@ -22,5 +22,6 @@
   "closed": "Ilmoittautuminen ei ole vielä alkanut",
   "title": "Ilmoittautuminen",
   "titleInvited": "Kutsu<wbr>vieras<wbr>ilmoittautuminen",
-  "accept": "Hyväksyn, että nimeni ja pöytäseuratoiveeni julkaistaan näillä sivuilla, ja että antamiani tietoja käsittellään AYY:n <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/Tietosuoja\">tietosuojaohjeen</a> mukaisesti."
+  "gdpr": "Hyväksyn, että antamiani tietoja käsittellään AYY:n <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/Tietosuoja\">tietosuojaohjeen</a> mukaisesti.",
+  "accept": "Hyväksyn, että nimeni ja pöytäseuratoiveeni julkaistaan näillä sivuilla."
 }

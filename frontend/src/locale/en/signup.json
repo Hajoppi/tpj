@@ -22,5 +22,6 @@
   "participants": "Participants",
   "title": "Signup for other guests",
   "titleInvited": "Signup for invited guests",
-  "accept": "I consent that my name and seating preferences will be published on this page and that my information processed according to AYY's <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/General+Data+Protection\">GDPR policy</a>"
+  "gdpr": "I consent that my information processed is according to AYY's <a class=\"link\" href=\"https://inside.ayy.fi/display/TIET/General+Data+Protection\">GDPR policy</a>",
+  "accept": "I consent that my name and seating preferences will be published on this page"
 }

@@ -18,5 +18,6 @@ create table signups (
   support boolean not null,
   dish text not null,
   gdpr boolean not null,
+  accept boolean,
   created timestamp default CURRENT_TIMESTAMP
 );

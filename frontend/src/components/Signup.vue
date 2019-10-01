@@ -79,13 +79,19 @@
     <div class="field">
       <div class="accept">
         <input v-model="gdpr" type="checkbox">
+        <label for="" class="label" v-html="$t('signup.gdpr')"></label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="accept">
+        <input v-model="accept" type="checkbox">
         <label for="" class="label" v-html="$t('signup.accept')"></label>
       </div>
     </div>
     <div class="field is-grouped">
       <div class="control">
-        <button v-if="edit" class="button" :disabled="!gdpr">{{$t('signup.edit')}}</button>
-        <button v-else class="button" :disabled="!gdpr">{{$t('signup.submit')}}</button>
+        <button v-if="edit" class="button" :disabled="!gdpr || sending">{{$t('signup.edit')}}</button>
+        <button v-else class="button" :disabled="!gdpr || sending">{{$t('signup.submit')}}</button>
       </div>
       <div v-if="edit" class="control">
         <button @click.prevent="deleteSignup" class="button is-link">{{$t('signup.delete')}}</button>
@@ -135,7 +141,8 @@ export default {
       support: false,
       dish: '',
       gdpr: false,
-      error: '',
+      accept: false,
+      sending: false,
     };
   },
   mounted() {
@@ -156,13 +163,16 @@ export default {
   },
   methods: {
     register() {
+      this.sending = true;
       const data = this.$data;
       data.invited = this.invited;
       data.locale = this.$i18n.locale;
       console.log(data);
       this.$store.dispatch("participants/register", data).then(() => {
+        this.sending = false;
         this.$router.push({ name: 'participants.index'})
       }).catch((error) => {
+        this.sending = false;
         console.log(error);
       });
     },
