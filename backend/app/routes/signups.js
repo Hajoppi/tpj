@@ -21,6 +21,10 @@ module.exports = async (server) => {
       try {
         const signupObj = request.payload;
         const id = await db.signup(signupObj);
+        const count = await db.getParticipantCount();
+        if(count > 300) {
+          return await mail.sendOnSignupCreateReserve(signupObj, id);
+        }
         return await mail.sendOnSignupCreate(signupObj, id);
       }
       catch (error) {

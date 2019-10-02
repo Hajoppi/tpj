@@ -21,6 +21,13 @@ module.exports = {
     signupUpdate: {
       prepend: ['Päivitit tietosi. Tässä uudet ilmoittautumistietosi']
     },
+    signupReserve: {
+      subject: 'Teekkarius147 Varasija',
+      paragraphs: [
+        'Olette ilmoittautuneet Teekkariperinnejuhlaan varasijalle. Laitamme sinulle viestiä, jos paikkoja vapautuu.\n',
+        'Ystävällisin terveisin,\n\nAnni Parkkila\n\nTeekkariperinnetirehtööri\nTeekkarijaosto, Aalto-yliopiston ylioppilaskunta\nanni.parkkila@ayy.fi'
+      ],
+    },
     signupDetailsTemplate: [
       'Nimi: {name}',
       'Sähköposti: {email}',
@@ -59,6 +66,13 @@ module.exports = {
     signupUpdate: {
       prepend: ['You have updated your info. Here are your new registration details.']
     },
+    signupReserve: {
+      subject: 'Teekkarius147 Varasija',
+      paragraphs: [
+        'You have signed up for reserve seats to the Teekkaritraditionparty. We will inform you if you get in.\n',
+        'Best regards,\n\nAnni Parkkila\n\nDirector of Teekkari traditions\nTeekkari Section, Aalto University Student Union\nanni.parkkila@ayy.fi'
+      ],
+    },
     signupDetailsTemplate: [
       'Name: {name}',
       'Email: {email}',
@@ -96,6 +110,13 @@ module.exports = {
     },
     signupUpdate: {
       prepend: ['Du har uppdaterat din information. Här är dina nya registreringsinformation.']
+    },
+    signupReserve: {
+      subject: 'Teekkarius147 Varasija',
+      paragraphs: [
+        'Du har anmälat till Teknologtraditionfest på reservplats. Vi ska informa dig, om du fick i.\n',
+        'Med vänliga hälsning,\n\nAnni Parkkila\n\nTeknologtraditionsdirektör\nTeknologsektionen, Aalto-universitetets studentkår\nanni.parkkila@ayy.fi'
+      ],
     },
     signupDetailsTemplate: [
       'Namn: {name}',

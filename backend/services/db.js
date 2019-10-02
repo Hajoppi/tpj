@@ -45,6 +45,11 @@ db.getSignupDetails = async (signupId) => {
   return result[0];
 }
 
+db.getParticipantCount = async() => {
+  const result = await pool.query('SELECT COUNT(id) as count FROM signups');
+  return result[0].count;
+};
+
 db.getInvitedParticipants = async () => {
   return await pool.query('SELECT * FROM signups WHERE invited=true');
 };

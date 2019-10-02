@@ -53,13 +53,16 @@ const settings = {
   price_sillis: 20
 }
 
-function createSignupMailText(signupObj, signupId, update) {
+function createSignupMailText(signupObj, signupId, flag) {
   const signupHash = utils.encrypt(String(signupId));
   const link = 'https://teekkarius147.ayy.fi/#/edit?id=' + signupHash;
+  console.log(link);
   let text = '';
-  if (update === 'update') {
+  if (flag === 'update') {
       text = strings[signupObj.locale].signupUpdate.prepend.concat(strings[signupObj.locale].signupCreate.paragraphs).join('\n\n');
-  } else {
+  } else if (flag === 'reserve') {
+    text = strings[signupObj.locale].signupCreateReserve.paragraphs.join('\n\n');
+  }else {
       text = strings[signupObj.locale].signupCreate.paragraphs.join('\n\n');
   }
 
@@ -79,6 +82,23 @@ function createSignupMailText(signupObj, signupId, update) {
 
 mail.sendOnSignupCreate = async function (signupObj, signupId) {
   const text = createSignupMailText(signupObj, signupId)
+  const options = {
+    from: '"Teekkarius" <anni.parkkila@ayy.fi>',
+    to: signupObj.email,
+    subject: strings[signupObj.locale].signupCreate.subject,
+    text: text
+  };
+  try {
+    await transporter.sendMail(options);
+    return 1;
+  } catch(err) {
+    console.error(err)
+    throw err
+  }
+}
+
+mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
+  const text = createSignupMailText(signupObj, signupId, 'reserve')
   const options = {
     from: '"Teekkarius" <anni.parkkila@ayy.fi>',
     to: signupObj.email,
