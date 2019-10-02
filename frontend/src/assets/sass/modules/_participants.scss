@@ -17,6 +17,10 @@
     font-size: 1.2rem;
     text-align: center;
 }
+.list--reserve {
+    border-top: 1px solid $peru;
+    margin-top: 0.5rem;
+}
 
 .total {
     @extend .label;
@@ -27,3 +31,10 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+.reserve {
+    color: $peru;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+  }

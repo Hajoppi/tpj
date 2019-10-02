@@ -22,7 +22,7 @@ module.exports = async (server) => {
         const signupObj = request.payload;
         const id = await db.signup(signupObj);
         const count = await db.getParticipantCount();
-        if(count > 300) {
+        if(count > config.maxParticipants) {
           return await mail.sendOnSignupCreateReserve(signupObj, id);
         }
         return await mail.sendOnSignupCreate(signupObj, id);

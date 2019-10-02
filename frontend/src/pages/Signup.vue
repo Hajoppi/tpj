@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="home__text" v-html="$t('home.signup')"></div>
-    <div class="is-full" v-if="total<300">Ilmoittautuminen on täynnä, voit kuitenkin ilmoittautua varasijoille</div>
+    <div class="is-full" v-if="isFull">Ilmoittautuminen on täynnä, voit kuitenkin ilmoittautua varasijoille</div>
     <div class="choose">
       <button :disabled="!isOpenInvited" @click.prevent="invited=true; select=true" class="choose-button">
         {{$t(`signup.invited`)}}
@@ -57,6 +57,9 @@ export default {
     },
     total() {
       return this.$store.state.participants.total;
+    },
+    isFull() {
+      return this.total>config.maxParticipants
     }
   },
   created() {
