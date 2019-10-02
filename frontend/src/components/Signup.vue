@@ -160,6 +160,9 @@ export default {
     formTitle() {
       return this.invited ? this.$t('signup.titleInvited') : this.$t('signup.title')
     },
+    total() {
+      return this.$store.state.participants.total;
+    }
   },
   methods: {
     register() {

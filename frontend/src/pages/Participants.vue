@@ -1,8 +1,8 @@
 <template>
   <div class="participants">
     <div class="choose">
-      <a class="choose-button" @click.prevent="showInvited=false">{{$t(`signup.normal`)}}</a>
-      <a class="choose-button" @click.prevent="showInvited=true">{{$t(`signup.invited`)}}</a>
+      <button class="choose-button" :disabled="!showInvited" @click="showInvited=false">{{$t(`signup.normal`)}}</button>
+      <button class="choose-button" :disabled="showInvited" @click="showInvited=true">{{$t(`signup.invited`)}}</button>
     </div>
     <div class="total">{{total}}/300</div>
     <table class="list">
@@ -52,9 +52,10 @@ export default {
       return this.$store.state.participants.normal;
     },
     total() {
-      const invited = this.invited.length;
-      const normal = this.normal.length;
-      return invited + normal;
+      return this.$store.state.participants.total;
+    },
+    placesForNormal() {
+      return 300 - this.invited.length;
     }
   }
 };

@@ -8,4 +8,5 @@
 export default {
   normal: [],
   invited: [],
+  total: 0,
 };

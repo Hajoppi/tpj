@@ -20,10 +20,9 @@ export const all = ({ commit }) => new Promise((resolve, reject) => {
 });
 
 
-export const register = ({ commit }, data) => new Promise((resolve, reject) => {
+export const register = (_, data) => new Promise((resolve, reject) => {
   new Proxy('signup').create(data)
-    .then((response) => {
-      commit(types.REGISTER, response);
+    .then(() => {
       resolve();
     }).catch((e) => {
       reject(e);
