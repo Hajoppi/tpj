@@ -92,7 +92,7 @@ mail.sendOnSignupCreate = async function (signupObj, signupId) {
     await transporter.sendMail(options);
     return 1;
   } catch(err) {
-    console.error(err)
+    console.error("Error sending mail", signupObj.name, signupObj.email)
     throw err
   }
 }
@@ -109,7 +109,7 @@ mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
     await transporter.sendMail(options);
     return 1;
   } catch(err) {
-    console.error(err)
+    console.error("Error sending mail", signupObj.name, signupObj.email)
     throw err
   }
 }
