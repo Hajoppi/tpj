@@ -21,3 +21,9 @@ create table signups (
   accept boolean,
   created timestamp default CURRENT_TIMESTAMP
 );
+
+create table mail_errors (
+  id serial not null primary key,
+  email text not null,
+  created timestamp default CURRENT_TIMESTAMP
+);

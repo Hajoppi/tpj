@@ -85,3 +85,7 @@ db.updateSignup = async (signupId, signupObj) => {
   params.push(signupId);
   return await pool.query('update signups set name=?, email=?, start_year=?, student=?, no_alcohol=?, sillis=?, invited=?, avec=?, food_requirements=?, table_group=?, representative_of=?, support=?, dish=?, gdpr=?, accept=? where id=?', params);
 };
+
+db.insertMailError = async (id, email) => {
+  return await pool.query('insert into mail_errors (id, email) values (?,?)', [id, email]);
+}

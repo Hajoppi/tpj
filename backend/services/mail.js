@@ -2,7 +2,8 @@
 
 const nodemailer = require('nodemailer'),
       utils = require('./utils'),
-      strings = require('../strings');
+      strings = require('../strings'),
+      db = require('./db');
 
 const mail = module.exports = {};
 let transporter = null;
@@ -56,7 +57,6 @@ const settings = {
 function createSignupMailText(signupObj, signupId, flag) {
   const signupHash = utils.encrypt(String(signupId));
   const link = 'https://teekkarius147.ayy.fi/#/edit?id=' + signupHash;
-  console.log(link);
   let text = '';
   if (flag === 'update') {
       text = strings[signupObj.locale].signupUpdate.prepend.concat(strings[signupObj.locale].signupCreate.paragraphs).join('\n\n');
@@ -91,9 +91,9 @@ mail.sendOnSignupCreate = async function (signupObj, signupId) {
   try {
     await transporter.sendMail(options);
     return 1;
-  } catch(err) {
-    console.error("Error sending mail", signupObj.name, signupObj.email)
-    throw err
+  } catch (err) {
+    console.error(err)
+    db.insertMailError(signupId, signupObj.email)
   }
 }
 
@@ -109,8 +109,8 @@ mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
     await transporter.sendMail(options);
     return 1;
   } catch(err) {
-    console.error("Error sending mail", signupObj.name, signupObj.email)
-    throw err
+    console.error(err)
+    db.insertMailError(signupId, signupObj.email)
   }
 }
 
