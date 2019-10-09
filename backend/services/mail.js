@@ -71,7 +71,6 @@ function createSignupMailText(signupObj, signupId, flag) {
   if (signupObj.sillis) {
       signupPrice += settings.price_sillis;
   }
-
   return text.format({
       signupPrice: String(signupPrice),
       signupDetails: signupToText(signupObj),

@@ -24,7 +24,10 @@ module.exports = {
     signupReserve: {
       subject: 'Teekkarius147 Varasija',
       paragraphs: [
-        'Olette ilmoittautuneet Teekkariperinnejuhlaan varasijalle. Laitamme sinulle viestiä, jos paikkoja vapautuu.\n',
+        'Hei',
+        'Kiitos ilmoittautumisesta Teekkariperinnejuhlaan. Olet tällä hetkellä varasijalla ja ilmoitamme viimeistään ilmoittautumisen päätyttyä, mikäli juhlassa on tilaa. Seuraathan sähköpostiasi!',
+        'Voit muokata tietojasi ilmoittautumisen sulkeutumiseen mennessä osoitteessa {modifyLink}',
+        'Mikäli juhliin liittyen on kysyttävää, olethan yhteydessä allekirjoittaneeseen.\n',
         'Ystävällisin terveisin,\n\nAnni Parkkila\n\nTeekkariperinnetirehtööri\nTeekkarijaosto, Aalto-yliopiston ylioppilaskunta\nanni.parkkila@ayy.fi'
       ],
     },
@@ -67,9 +70,12 @@ module.exports = {
       prepend: ['You have updated your info. Here are your new registration details.']
     },
     signupReserve: {
-      subject: 'Teekkarius147 Varasija',
+      subject: 'Teekkarius147 waiting list',
       paragraphs: [
-        'You have signed up for reserve seats to the Teekkaritraditionparty. We will inform you if you get in.\n',
+        'Hi',
+        'Thank you for signing up for the Teekkaritraditionparty. The sign up is currently full, but you are on the waiting list and we\'ll inform you at latest after the sign up has closed if there are spots left for the party. Please check your e-mail regularly!',
+        'You can modify your information until the end of the signup from this link: {modifyLink}',
+        'If you have any questions regarding the party, please contact me by email.\n',
         'Best regards,\n\nAnni Parkkila\n\nDirector of Teekkari traditions\nTeekkari Section, Aalto University Student Union\nanni.parkkila@ayy.fi'
       ],
     },
@@ -112,9 +118,12 @@ module.exports = {
       prepend: ['Du har uppdaterat din information. Här är dina nya registreringsinformation.']
     },
     signupReserve: {
-      subject: 'Teekkarius147 Varasija',
+      subject: 'Teekkarius147 reservplats',
       paragraphs: [
-        'Du har anmälat till Teknologtraditionfest på reservplats. Vi ska informa dig, om du fick i.\n',
+        'Hej',
+        'Tack för anmälan till Teknologtraditionsfest. Du är på reservplats och vi ska informera dig senast efter anmälningen slutar, om det finns lediga platser i festen. Följa ditt e-post!',
+        'Du kan ändra din information tills registreringen slutar från den här länken: {modifyLink}',
+        'Om du har frågor som gäller Teknologtraditionsfesten, vänligen ta kontakt på undertecknad.\n',
         'Med vänliga hälsning,\n\nAnni Parkkila\n\nTeknologtraditionsdirektör\nTeknologsektionen, Aalto-universitetets studentkår\nanni.parkkila@ayy.fi'
       ],
     },
