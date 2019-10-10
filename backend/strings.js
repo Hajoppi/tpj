@@ -21,7 +21,7 @@ module.exports = {
     signupUpdate: {
       prepend: ['Päivitit tietosi. Tässä uudet ilmoittautumistietosi']
     },
-    signupReserve: {
+    signupCreateReserve: {
       subject: 'Teekkarius147 Varasija',
       paragraphs: [
         'Hei',
@@ -69,7 +69,7 @@ module.exports = {
     signupUpdate: {
       prepend: ['You have updated your info. Here are your new registration details.']
     },
-    signupReserve: {
+    signupCreateReserve: {
       subject: 'Teekkarius147 waiting list',
       paragraphs: [
         'Hi',
@@ -117,7 +117,7 @@ module.exports = {
     signupUpdate: {
       prepend: ['Du har uppdaterat din information. Här är dina nya registreringsinformation.']
     },
-    signupReserve: {
+    signupCreateReserve: {
       subject: 'Teekkarius147 reservplats',
       paragraphs: [
         'Hej',
