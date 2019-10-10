@@ -24,6 +24,7 @@ module.exports = async (server) => {
         const count = await db.getParticipantCount();
         if(count > config.maxParticipants) {
           mail.sendOnSignupCreateReserve(signupObj, id);
+          db.addToReserve(id)
           return 1;
         }
         mail.sendOnSignupCreate(signupObj, id);
@@ -82,7 +83,13 @@ module.exports = async (server) => {
         const signupId = utils.decrypt(request.payload.id);
         const signupObj = request.payload;
         const res = await db.updateSignup(signupId, signupObj);
-        await mail.sendOnSignupUpdate(signupObj, signupId);
+        const count = await db.getSignupsBefore(signupId);
+        if(count < config.maxParticipants) {
+          mail.sendOnSignupUpdate(signupObj, signupId);
+        }
+        else {
+          mail.sendOnSignupUpdateReserve(signupObj, signupId);
+        }
         return res;
       } catch(error) {
         console.log(error.stack);

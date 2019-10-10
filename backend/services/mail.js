@@ -59,10 +59,12 @@ function createSignupMailText(signupObj, signupId, flag) {
   const link = 'https://teekkarius147.ayy.fi/#/edit?id=' + signupHash;
   let text = '';
   if (flag === 'update') {
-      text = strings[signupObj.locale].signupUpdate.prepend.concat(strings[signupObj.locale].signupCreate.paragraphs).join('\n\n');
+    text = strings[signupObj.locale].signupUpdate.prepend.concat(strings[signupObj.locale].signupCreate.paragraphs).join('\n\n');
   } else if (flag === 'reserve') {
     text = strings[signupObj.locale].signupCreateReserve.paragraphs.join('\n\n');
-  }else {
+  } else if (flag === 'ur'){
+    text = strings[signupObj.locale].signupUpdateReserve.prepend.concat(strings[signupObj.locale].signupCreateReserve.paragraphs).join('\n\n');
+  } else {
       text = strings[signupObj.locale].signupCreate.paragraphs.join('\n\n');
   }
 
@@ -108,7 +110,7 @@ mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
     await transporter.sendMail(options);
     return 1;
   } catch(err) {
-    console.error(err)
+    console.error("Signup reserve",err)
     db.insertMailError(signupId, signupObj.email)
   }
 }
@@ -125,7 +127,22 @@ mail.sendOnSignupUpdate = async function(signupObj, signupId) {
     await transporter.sendMail(options);
     return 1;
   } catch(err) {
-    console.error(err)
-    throw err
+    console.error("Signup update",err)
+  }
+}
+
+mail.sendOnSignupUpdateReserve = async function(signupObj, signupId) {
+  const text = createSignupMailText(signupObj, signupId, 'ur');
+  const options = {
+    from: '"Teekkarius" <anni.parkkila@ayy.fi>',
+    to: signupObj.email,
+    subject: strings[signupObj.locale].signupCreateReserve.subject,
+    text: text
+  };
+  try {
+    await transporter.sendMail(options);
+    return 1;
+  } catch(err) {
+    console.error("Signup update reserve",err)
   }
 }

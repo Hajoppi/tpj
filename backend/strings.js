@@ -19,7 +19,10 @@ module.exports = {
       ]
     },
     signupUpdate: {
-      prepend: ['Päivitit tietosi. Tässä uudet ilmoittautumistietosi']
+      prepend: ['Tietosi päivitettiin. Tässä uudet ilmoittautumistietosi']
+    },
+    signupUpdateReserve: {
+      prepend: ['Tietosi päivitettiin']
     },
     signupCreateReserve: {
       subject: 'Teekkarius147 Varasija',
@@ -67,7 +70,10 @@ module.exports = {
       ]
     },
     signupUpdate: {
-      prepend: ['You have updated your info. Here are your new registration details.']
+      prepend: ['Your info has been updated. Here are your new registration details.']
+    },
+    signupUpdateReserve: {
+      prepend: ['Your info has been updated']
     },
     signupCreateReserve: {
       subject: 'Teekkarius147 waiting list',
@@ -115,7 +121,10 @@ module.exports = {
       ]
     },
     signupUpdate: {
-      prepend: ['Du har uppdaterat din information. Här är dina nya registreringsinformation.']
+      prepend: ['Information uppdaterad. Här är dina nya registreringsinformation.']
+    },
+    signupUpdateReserve: {
+      prepend: ['Information uppdaterad']
     },
     signupCreateReserve: {
       subject: 'Teekkarius147 reservplats',

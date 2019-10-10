@@ -27,3 +27,7 @@ create table mail_errors (
   email text not null,
   created timestamp default CURRENT_TIMESTAMP
 );
+
+create table reserve_ids (
+  id serial not null primary key
+)

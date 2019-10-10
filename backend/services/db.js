@@ -50,6 +50,11 @@ db.getParticipantCount = async() => {
   return result[0].count;
 };
 
+db.getSignupsBefore = async (id) => {
+  const result = await pool.query('SELECT COUNT(id) as count from signups WHERE created<(SELECT created from signups where id=?)',[id]);
+  return result[0].count;
+}
+
 db.getInvitedParticipants = async () => {
   return await pool.query('SELECT * FROM signups WHERE invited=true');
 };
@@ -88,4 +93,8 @@ db.updateSignup = async (signupId, signupObj) => {
 
 db.insertMailError = async (id, email) => {
   return await pool.query('insert into mail_errors (id, email) values (?,?)', [id, email]);
-}
+};
+
+db.addToReserve = async (id) => {
+  return await pool.query('insert into reserve_ids (id) values (?)', [id])
+};
