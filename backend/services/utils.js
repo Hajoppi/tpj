@@ -38,7 +38,6 @@ utils.hash = async (password) => {
 }
 
 utils.createToken = (user) => {
-  console.log(secret);
   return jwt.sign(
     { id: user.id, username: user.username, scope: 'normal'},
     secret,
