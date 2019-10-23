@@ -31,7 +31,7 @@ module.exports = async (server) => {
         return 1;
       }
       catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
       }
     }
@@ -51,7 +51,7 @@ module.exports = async (server) => {
     }
   });
 
-  // Fetch admin singups
+  // Fetch admin signups
   server.route({
     method: 'GET',
     path: '/api/admin/signups',
@@ -67,6 +67,27 @@ module.exports = async (server) => {
       }
     }
   });
+
+    // Fetch modifyLink
+    server.route({
+      method: 'GET',
+      path: '/api/admin/modify/{id}',
+      options: {
+        auth: 'jwt'
+      },
+      handler: async (request, h) => {
+        const params = request.params;
+        if (!params) {
+          return h.response('No id').code(404);
+        }
+        try {
+          return { hash: utils.encrypt(String(params.id)) }
+        } catch (err) {
+          console.error(err);
+          throw err;
+        }
+      }
+    });
 
   
   //Fetch single signup
@@ -110,7 +131,7 @@ module.exports = async (server) => {
         }
         return res;
       } catch(error) {
-        console.log(error.stack);
+        console.error(error.stack);
         throw error;
       }
     }
