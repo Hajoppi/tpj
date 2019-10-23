@@ -1,5 +1,5 @@
 const db = require('../../services/db');
-const authCrypt = require('../../services/authCrypt');
+const utils = require('../../services/utils');
 const Bcrypt = require('bcrypt');
 const Boom = require('@hapi/boom');
 
@@ -17,7 +17,7 @@ module.exports = async (server) => {
         }
         const isValid = await Bcrypt.compare(payload.password, user[0].password);
         if (isValid) {
-          return { id_token: authCrypt.createToken(user[0])};
+          return { id_token: utils.createToken(user[0])};
         }
         else {
           return h.response('unauthenticated').code(401);

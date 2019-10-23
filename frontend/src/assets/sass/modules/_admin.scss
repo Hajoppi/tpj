@@ -13,3 +13,8 @@ table.admin-table, .admin-table td, .admin-table th{
     height: 100%;
     max-width: $desktop;
 }
+.button--modify {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+}
