@@ -21,10 +21,10 @@ internals.implementation = (server, options) => {
         throw Boom.unauthorized('No login');
       }
       const strippedToken = token.split(" ")[1];
+      console.log(strippedToken);
       let decoded;
       try {
         decoded = jwt.verify(strippedToken, secret);
-        console.log(decoded);
         const user = await db.getUserById(decoded.id);
         if (user !== undefined) {
           return h.authenticated({

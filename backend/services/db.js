@@ -55,12 +55,16 @@ db.getSignupsBefore = async (id) => {
   return result[0].count;
 }
 
-db.getInvitedParticipants = async () => {
-  return await pool.query('SELECT * FROM signups WHERE invited=true');
-};
-
-db.getNormalParticipants = async () => {
-  return await pool.query('SELECT * FROM signups WHERE invited=false');
+db.adminGetAllParticipants = async () => {
+  const normal = pool.query('SELECT * FROM signups WHERE invited=false ORDER BY created ASC');
+  const invited = pool.query('SELECT * FROM signups WHERE invited=true ORDER BY created ASC');
+  const r1 = await normal;
+  const r2 = await invited;
+  const rows = {
+    normal: r1,
+    invited: r2,
+  }
+  return rows;
 };
 
 db.getAllParticipants = async () => {
@@ -97,4 +101,14 @@ db.insertMailError = async (id, email) => {
 
 db.addToReserve = async (id) => {
   return await pool.query('insert into reserve_ids (id) values (?)', [id])
+};
+
+db.getUser = async (username) => {
+  const result = await pool.query('SELECT id, password FROM users WHERE username=?', [username]);
+  return result;
+};
+
+db.getUserById = async (id) => {
+  const result = await pool.query('SELECT id, username FROM users WHERE id=?', [id]);
+  return result[0];
 };
