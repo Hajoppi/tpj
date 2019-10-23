@@ -12,6 +12,8 @@ import './assets/sass/main.scss';
 
 import App from './App';
 import store from './store';
+
+store.dispatch('auth/check');
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

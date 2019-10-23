@@ -56,8 +56,8 @@ db.getSignupsBefore = async (id) => {
 }
 
 db.adminGetAllParticipants = async () => {
-  const normal = pool.query('SELECT name, table_group, accept, created FROM signups WHERE invited=false');
-  const invited = pool.query('SELECT name, table_group, accept, created FROM signups WHERE invited=true');
+  const normal = pool.query('SELECT * FROM signups WHERE invited=false ORDER BY created ASC');
+  const invited = pool.query('SELECT * FROM signups WHERE invited=true ORDER BY created ASC');
   const r1 = await normal;
   const r2 = await invited;
   const rows = {

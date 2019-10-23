@@ -23,6 +23,7 @@
       <router-link class="navbar__item" v-text="$t('navigation.register')" to="/signup"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.week')" to="/week"></router-link>
       <router-link class="navbar__item" v-text="$t('navigation.contact')" to="/contact"></router-link>
+      <a v-if="authenticated" class="navbar__item" @click.prevent="$store.dispatch('auth/logout')">Logout</a>
     </div>
   </nav>
 </template>
@@ -44,6 +45,10 @@ export default {
     showNavbar() {
       return this.$store.state.navbar.showNavbar;
     },
+    authenticated() {
+      console.log(this.$store.state.auth.authenticated)
+      return this.$store.state.auth.authenticated;
+    }
   },
   components: {
     VLocale
