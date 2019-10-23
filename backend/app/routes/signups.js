@@ -50,6 +50,24 @@ module.exports = async (server) => {
       }
     }
   });
+
+  // Fetch admin singups
+  server.route({
+    method: 'GET',
+    path: '/api/admin/signups',
+    options: {
+      auth: 'jwt'
+    },
+    handler: async (request, h) => {
+      try {
+        return await db.adminGetAllParticipants();
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
+    }
+  });
+
   
   //Fetch single signup
   server.route({
