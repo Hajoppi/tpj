@@ -152,7 +152,7 @@ export default {
         Object.assign(this._data, res);
       }).catch((err) => {
         this.$router.push({name: 'signup.index'})
-        console.log(err);
+        console.error(err);
       });
     }
   },
@@ -170,13 +170,12 @@ export default {
       const data = this.$data;
       data.invited = this.invited;
       data.locale = this.$i18n.locale;
-      console.log(data);
       this.$store.dispatch("participants/register", data).then(() => {
         this.sending = false;
         this.$router.push({ name: 'participants.index'})
       }).catch((error) => {
         this.sending = false;
-        console.log(error);
+        console.error(error);
       });
     },
     update() {
@@ -186,7 +185,7 @@ export default {
       return new Proxy('signup').update(data).then(() => {
         this.$router.push({ name: 'participants.index' });
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       });
     },
     deleteSignup() {
@@ -194,7 +193,7 @@ export default {
       return new Proxy('signup', { id: signupId }).destroy().then(() => {
         this.$router.push({ name: 'participants.index'});
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       });
     },
     handleSubmit() {

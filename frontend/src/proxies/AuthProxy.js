@@ -23,7 +23,6 @@ class AuthProxy extends Proxy {
       username,
       password,
     };
-    console.log(data);
     return this.submit('post', `/login`, data);
   }
 

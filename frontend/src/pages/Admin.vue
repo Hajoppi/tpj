@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     modify(id) {
-      console.log('here',id)
       new Proxy('admin/modify').find(id).then((response) => {
         if (response.hash) {
           const link = '/edit?id=' + response.hash;

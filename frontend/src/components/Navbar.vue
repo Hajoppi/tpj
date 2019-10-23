@@ -46,7 +46,6 @@ export default {
       return this.$store.state.navbar.showNavbar;
     },
     authenticated() {
-      console.log(this.$store.state.auth.authenticated)
       return this.$store.state.auth.authenticated;
     }
   },
