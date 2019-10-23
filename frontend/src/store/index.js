@@ -13,6 +13,7 @@ import createLogger from 'vuex/dist/logger';
 // Modules
 import participants from './modules/participants';
 import navbar from './modules/navbar';
+import auth from './modules/auth';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -23,6 +24,7 @@ export default new Vuex.Store({
   modules: {
     participants,
     navbar,
+    auth,
   },
 
   /**

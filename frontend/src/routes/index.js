@@ -11,6 +11,8 @@ import Signup from '../pages/Signup';
 import Edit from '../pages/Edit';
 import Contact from '../pages/Contact';
 import Week from '../pages/Week';
+import Admin from '../pages/Admin';
+import Login from '../pages/Login';
 
 export default [
   // Home
@@ -18,9 +20,6 @@ export default [
     path: '/',
     name: 'home.index',
     component: Home,
-
-    // If the user needs to be authenticated to view this page
-    // Has *auth: true* if needs authentication
   },
   {
     path: '/signup',
@@ -48,10 +47,22 @@ export default [
     component: Contact,
   },
   {
+    path: '/login',
+    name: 'login.index',
+    component: Login,
+  },
+  {
+    path: '/admin',
+    name: 'admin.index',
+    component: Admin,
+    meta: {
+      auth: true,
+    },
+  },
+  {
     path: '/',
     redirect: '/',
   },
-
   {
     path: '/*',
     redirect: '/',
