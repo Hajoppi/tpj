@@ -9,7 +9,6 @@ module.exports = async (server) => {
     path: '/api/login',
     handler: async (request, h) => {
       const payload = request.payload;
-      console.log(payload);
       try {
         const user = await db.getUser(payload.username);
         if (!user[0]) {

@@ -94,9 +94,16 @@ module.exports = async (server) => {
   server.route({
     method: 'GET',
     path: '/api/signup',
+    options: {
+      auth: {
+        strategy: 'jwt',
+        mode: 'optional',
+      },
+    },
     handler: async (request, h) => {
       try {
-        if (!isOpen(false) && !isOpen(true)) {
+        console.log(request.auth)
+        if (!(request.auth.isAuthenticated || (isOpen(false) || isOpen(true)))) {
           return h.response('Not time').code(401);
         }
         const signupId = utils.decrypt(request.query.id);
@@ -114,9 +121,15 @@ module.exports = async (server) => {
   server.route({
     method: 'PUT',
     path: '/api/signup',
+    options: {
+      auth: {
+        strategy: 'jwt',
+        mode: 'optional',
+      },
+    },
     handler: async (request, h) => {
       try {
-        if (!isOpen(false) && !isOpen(true)) {
+        if (!(request.auth.isAuthenticated || (isOpen(false) || isOpen(true)))) {
           return h.response('Not time').code(401);
         }
         const signupId = utils.decrypt(request.payload.id);
@@ -141,9 +154,15 @@ module.exports = async (server) => {
   server.route({
     method: 'DELETE',
     path: '/api/signup',
+    options: {
+      auth: {
+        strategy: 'jwt',
+        mode: 'optional',
+      },
+    },
     handler: async (request, h) => {
       try {
-        if (!isOpen(false) && !isOpen(true)) {
+        if (!(request.auth.isAuthenticated || (isOpen(false) || isOpen(true)))) {
           return h.response('Not time').code(401);
         }
         const signupId = utils.decrypt(request.query.id);
