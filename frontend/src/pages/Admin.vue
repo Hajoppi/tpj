@@ -69,11 +69,11 @@ export default {
       if(this.invited.length > 0) Object.keys(this.invited[0]).join(';') + '\n';
       else if (this.normal.length > 0 ) Object.keys(this.normal[0]).join(';') + '\n';
       this.invited.forEach((row) => {
-        csv += row.join(';')
+        csv += Object.values(row).join(';')
         csv += '\n';
       });
       this.normal.forEach((row) => {
-        csv += row.join(';')
+        csv += Object.values(row).join(';')
         csv += '\n';
       });
       const element = document.createElement('a');
