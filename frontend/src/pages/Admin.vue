@@ -66,8 +66,8 @@ export default {
     },
     downloadCsv() {
       let csv = '';
-      if(this.invited.length > 0) Object.keys(this.invited[0]).join(';') + '\n';
-      else if (this.normal.length > 0 ) Object.keys(this.normal[0]).join(';') + '\n';
+      if(this.invited.length > 0) csv += Object.keys(this.invited[0]).join(';') + '\n';
+      else if (this.normal.length > 0 ) csv += Object.keys(this.normal[0]).join(';') + '\n';
       this.invited.forEach((row) => {
         csv += Object.values(row).join(';')
         csv += '\n';
