@@ -151,7 +151,7 @@ export default {
       new Proxy('signup', { id: signupId }).all().then((res) => {
         Object.assign(this._data, res);
       }).catch((err) => {
-        this.$router.push({name: 'signup.index'})
+        this.$router.push({name: 'signup.index'});
         console.error(err);
       });
     }

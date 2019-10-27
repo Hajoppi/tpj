@@ -1,5 +1,6 @@
 <template>
   <div class="admin">
+    <button class="button button--modify" @click="downloadCsv">Download as CSV</button>
     <div v-if="normal.length > 0" class="signup-header">Normal</div>
     <table v-if="normal.length > 0" class="admin-table">
       <thead>
@@ -63,6 +64,24 @@ export default {
         }
       });
     },
+    downloadCsv() {
+      let csv = '';
+      if(this.invited.length > 0) Object.keys(this.invited[0]).join(';') + '\n';
+      else if (this.normal.length > 0 ) Object.keys(this.normal[0]).join(';') + '\n';
+      this.invited.forEach((row) => {
+        csv += row.join(';')
+        csv += '\n';
+      });
+      this.normal.forEach((row) => {
+        csv += row.join(';')
+        csv += '\n';
+      });
+      const element = document.createElement('a');
+      element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+      element.target = '_blank';
+      element.download = 'signups.csv';
+      element.click();
+    }
   },
   /**
    * The components that the page can use.

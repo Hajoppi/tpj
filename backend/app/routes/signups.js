@@ -102,7 +102,6 @@ module.exports = async (server) => {
     },
     handler: async (request, h) => {
       try {
-        console.log(request.auth)
         if (!(request.auth.isAuthenticated || (isOpen(false) || isOpen(true)))) {
           return h.response('Not time').code(401);
         }
