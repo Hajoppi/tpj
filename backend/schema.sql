@@ -37,5 +37,3 @@ create table users (
   username TEXT UNIQUE NOT null,
   password TEXT NOT null
 );
-
-INSERT INTO users (username, password) VALUES ('admin', '$2b$10$7YI92EwR3p3BoybGtqu4bO0GVsO4UiMpOCq0qyIwyw30N0L4Y8fq6');
