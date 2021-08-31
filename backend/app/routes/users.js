@@ -1,12 +1,11 @@
 const db = require('../../services/db');
 const utils = require('../../services/utils');
 const Bcrypt = require('bcrypt');
-const Boom = require('@hapi/boom');
 
 module.exports = async (server) => {
   server.route({
     method: 'POST',
-    path: '/api/login',
+    path: '/login',
     handler: async (request, h) => {
       const payload = request.payload;
       try {
@@ -30,7 +29,7 @@ module.exports = async (server) => {
 
   server.route({
     method: 'GET',
-    path: '/api/account',
+    path: '/account',
     handler: async (request, h) => {
       try {
         return request.auth.credentials;

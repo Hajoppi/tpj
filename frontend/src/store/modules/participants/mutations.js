@@ -12,6 +12,7 @@ import {
 
 export default {
   [ALL](state, participants) {
+    console.log(participants);
     state.normal = participants.normal;
     state.invited = participants.invited;
     state.total = participants.normal.length + participants.invited.length;

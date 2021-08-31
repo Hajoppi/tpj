@@ -12,7 +12,7 @@ import proxy from '../../../proxies/proxy';
 export const all = ({ commit }) => new Promise((resolve, reject) => {
   proxy.get('signups')
     .then((response) => {
-      commit(types.ALL, response);
+      commit(types.ALL, response.data);
       resolve();
     }).catch((e) => {
       reject(e);

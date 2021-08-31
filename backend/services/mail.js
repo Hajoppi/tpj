@@ -1,32 +1,12 @@
 'use strict';
 
-const nodemailer = require('nodemailer'),
+const NodeMailer = require('nodemailer'),
       utils = require('./utils'),
       strings = require('../strings'),
       db = require('./db');
 
 const mail = module.exports = {};
-let transporter = null;
-
-const smtp_host = process.env.SMTP_HOST,
-  smtp_port = process.env.SMTP_PORT,
-  smtp_user = process.env.SMTP_USER,
-  smtp_pass = process.env.SMTP_PASS;
-
-if (!smtp_host || !smtp_port) {
-  console.error('SMTP credentials are not defined!');
-  return process.exit();
-}
-const SMTP_settings = {
-  host: smtp_host,
-  port: smtp_port,
-};
-transporter = nodemailer.createTransport(SMTP_settings);
-transporter.verify().then((success) => {
-  console.log(success)
-}).catch((err) => {
-  console.log(err);
-});
+const baseURL = process.env.BASE_URL || 'http://localhost:8080';
 
 function signupToText(signupObj) {
   const booleans = strings[signupObj.locale].booleans;
@@ -47,6 +27,7 @@ function signupToText(signupObj) {
       support: signupObj.support ? booleans[0] : booleans[1]
   });
 }
+
 const settings = {
   price_student: 85,
   price_other: 110,
@@ -54,9 +35,54 @@ const settings = {
   price_sillis: 20
 }
 
+const smtp_user = process.env.SMTP_USER || '',
+      smtp_pass = process.env.SMTP_PASS || '';
+
+if (!smtp_user || !smtp_pass) {
+  console.error('SMTP credentials are not defined!');
+  process.exit();
+}
+
+let SMTP_settings = {
+  service: 'gmail',
+  auth: {
+    user: smtp_user,
+    pass: smtp_pass
+  },
+};
+
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV !== 'production') {
+  NodeMailer.createTestAccount().then((testAccount) => {
+    SMTP_settings = {
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass,
+      },
+    };
+  });
+}
+const testConnection = async () => {
+  const transporter = NodeMailer.createTransport(SMTP_settings);
+  try {
+    await transporter.verify();
+    transporter.close();
+    console.log('Mailer started with', SMTP_settings.host, SMTP_settings.service );
+    return true;
+  } catch(error) {
+    console.error("Mailer did not start", error);
+    return false;
+  }
+}
+
+setTimeout(() => testConnection(), 1000);
+
 function createSignupMailText(signupObj, signupId, flag) {
   const signupHash = utils.encrypt(String(signupId));
-  const link = 'https://teekkarius147.ayy.fi/#/edit?id=' + signupHash;
+  const link = `${baseURL}/edit?id=${signupHash}`;
   let text = '';
   if (flag === 'update') {
     text = strings[signupObj.locale].signupUpdate.prepend.concat(strings[signupObj.locale].signupCreate.paragraphs).join('\n\n');
@@ -82,6 +108,13 @@ function createSignupMailText(signupObj, signupId, flag) {
 
 
 mail.sendOnSignupCreate = async function (signupObj, signupId) {
+  const transporter = NodeMailer.createTransport(SMTP_settings);
+  try {
+    await transporter.verify()
+  } catch(error) {
+    console.error("Mailer did not start", error);
+    return false;
+  }
   const text = createSignupMailText(signupObj, signupId)
   const options = {
     from: '"Teekkarius" <anni.parkkila@ayy.fi>',
@@ -90,7 +123,10 @@ mail.sendOnSignupCreate = async function (signupObj, signupId) {
     text: text
   };
   try {
-    await transporter.sendMail(options);
+    const result = await transporter.sendMail(options);
+    if(process.env.NODE_ENV !== 'production') {
+      console.log('Preview URL: %s', NodeMailer.getTestMessageUrl(result));
+    }
     return 1;
   } catch (err) {
     console.error(err)
@@ -98,7 +134,18 @@ mail.sendOnSignupCreate = async function (signupObj, signupId) {
   }
 }
 
+
 mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
+  const transporter = NodeMailer.createTransport(SMTP_settings);
+  try {
+    const result = await transporter.verify();
+    if(process.env.NODE_ENV !== 'production') {
+      console.log('Preview URL: %s', NodeMailer.getTestMessageUrl(result));
+    }
+  } catch(error) {
+    console.error("Mailer did not start", error);
+    return false;
+  }
   const text = createSignupMailText(signupObj, signupId, 'reserve')
   const options = {
     from: '"Teekkarius" <anni.parkkila@ayy.fi>',
@@ -107,7 +154,10 @@ mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
     text: text
   };
   try {
-    await transporter.sendMail(options);
+    const result = await transporter.sendMail(options);
+    if(process.env.NODE_ENV !== 'production') {
+      console.log('Preview URL: %s', NodeMailer.getTestMessageUrl(result));
+    }
     return 1;
   } catch(err) {
     console.error("Signup reserve",err)
@@ -116,6 +166,13 @@ mail.sendOnSignupCreateReserve = async function (signupObj, signupId) {
 }
 
 mail.sendOnSignupUpdate = async function(signupObj, signupId) {
+  const transporter = NodeMailer.createTransport(SMTP_settings);
+  try {
+    await transporter.verify()
+  } catch(error) {
+    console.error("Mailer did not start", error);
+    return false;
+  }
   const text = createSignupMailText(signupObj, signupId, 'update');
   const options = {
     from: '"Teekkarius" <anni.parkkila@ayy.fi>',
@@ -124,7 +181,10 @@ mail.sendOnSignupUpdate = async function(signupObj, signupId) {
     text: text
   };
   try {
-    await transporter.sendMail(options);
+    const result = await transporter.sendMail(options);
+    if(process.env.NODE_ENV !== 'production') {
+      console.log('Preview URL: %s', NodeMailer.getTestMessageUrl(result));
+    }
     return 1;
   } catch(err) {
     console.error("Signup update",err)
@@ -132,6 +192,13 @@ mail.sendOnSignupUpdate = async function(signupObj, signupId) {
 }
 
 mail.sendOnSignupUpdateReserve = async function(signupObj, signupId) {
+  const transporter = NodeMailer.createTransport(SMTP_settings);
+  try {
+    await transporter.verify()
+  } catch(error) {
+    console.error("Mailer did not start", error);
+    return false;
+  }
   const text = createSignupMailText(signupObj, signupId, 'ur');
   const options = {
     from: '"Teekkarius" <anni.parkkila@ayy.fi>',
@@ -140,7 +207,10 @@ mail.sendOnSignupUpdateReserve = async function(signupObj, signupId) {
     text: text
   };
   try {
-    await transporter.sendMail(options);
+    const result = await transporter.sendMail(options);
+    if(process.env.NODE_ENV !== 'production') {
+      console.log('Preview URL: %s', NodeMailer.getTestMessageUrl(result));
+    }
     return 1;
   } catch(err) {
     console.error("Signup update reserve",err)

@@ -1,7 +1,7 @@
 'use strict';
-
-const Hapi = require('hapi');
-const db = require('./services/db');
+const dotenv = require('dotenv');
+dotenv.config()
+const Hapi = require('@hapi/hapi');
 const jwtAuth = require('./services/auth');
 
 const server = Hapi.server({
@@ -33,7 +33,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 server.route({
-  method: 'POST',
+  method: 'GET',
   path: '/status',
   handler: (request, h) => {
       return {success: true};

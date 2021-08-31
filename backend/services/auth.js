@@ -16,7 +16,6 @@ internals.implementation = (server, options) => {
     authenticate: async (request, h) => {
       const token = request.headers.authorization;
       const secret = process.env.SECRET_KEY;
-      const tokenType = 'Token'
       if (!token) {
         throw Boom.unauthorized('No login');
       }

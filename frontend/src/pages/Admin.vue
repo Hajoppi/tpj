@@ -36,7 +36,7 @@
    *
    * The home index page.
    */
-import Proxy from '../proxies/proxy';
+import proxy from '../proxies/proxy';
 
 export default {
   /**
@@ -50,16 +50,16 @@ export default {
     };
   },
   mounted() {
-    new Proxy('admin/signups').all().then((response) => {
-      this.invited = response.invited;
-      this.normal = response.normal;
+    proxy.get('admin/signups').then((response) => {
+      this.invited = response.data.invited;
+      this.normal = response.data.normal;
     });
   },
   methods: {
     modify(id) {
-      new Proxy('admin/modify').find(id).then((response) => {
-        if (response.hash) {
-          const link = `/edit?id=${response.hash}`;
+      proxy('admin/modify').find(id).then((response) => {
+        if (response.data.hash) {
+          const link = `/edit?id=${response.data.hash}`;
           this.$router.push(link);
         }
       });

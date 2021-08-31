@@ -18,7 +18,7 @@ export const register = ({ commit }, payload) => {
   const router = useRouter();
   proxy.post('/register', payload)
     .then((response) => {
-      commit(types.LOGIN, response.id_token);
+      commit(types.LOGIN, response.data.id_token);
       router.push({
         name: 'home.index',
       });
@@ -31,7 +31,7 @@ export const login = ({ commit }, payload) => {
   const router = useRouter();
   proxy.post('/login', payload)
     .then((response) => {
-      commit(types.LOGIN, response.id_token);
+      commit(types.LOGIN, response.data.id_token);
       router.push({
         name: 'home.index',
       });

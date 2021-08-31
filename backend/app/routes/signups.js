@@ -13,7 +13,7 @@ function isOpen(invited) {
 module.exports = async (server) => {
   server.route({
     method: 'POST',
-    path: '/api/signup',
+    path: '/signup',
     handler: async (request, h) => {
       if (!isOpen(request.payload.invited)) {
         return h.response('Not time').code(401);
@@ -40,7 +40,7 @@ module.exports = async (server) => {
   // Fetch the signups
   server.route({
     method: 'GET',
-    path: '/api/signups',
+    path: '/signups',
     handler: async (request, h) => {
       try {
         return await db.getAllParticipants();
@@ -54,7 +54,7 @@ module.exports = async (server) => {
   // Fetch admin signups
   server.route({
     method: 'GET',
-    path: '/api/admin/signups',
+    path: '/admin/signups',
     options: {
       auth: 'jwt'
     },
@@ -71,7 +71,7 @@ module.exports = async (server) => {
     // Fetch modifyLink
     server.route({
       method: 'GET',
-      path: '/api/admin/modify/{id}',
+      path: '/admin/modify/{id}',
       options: {
         auth: 'jwt'
       },
@@ -93,11 +93,11 @@ module.exports = async (server) => {
   //Fetch single signup
   server.route({
     method: 'GET',
-    path: '/api/signup',
+    path: '/signup',
     options: {
       auth: {
         strategy: 'jwt',
-        mode: 'optional',
+        mode: 'try',
       },
     },
     handler: async (request, h) => {
@@ -107,6 +107,7 @@ module.exports = async (server) => {
         }
         const signupId = utils.decrypt(request.query.id);
         const signup = await db.getSignupDetails(signupId);
+        if(!signup)return h.response('Not found').code(404);
         signup.id = undefined;
         return signup;
       } catch(error) {
@@ -119,11 +120,11 @@ module.exports = async (server) => {
   //Update a signup
   server.route({
     method: 'PUT',
-    path: '/api/signup',
+    path: '/signup',
     options: {
       auth: {
         strategy: 'jwt',
-        mode: 'optional',
+        mode: 'try',
       },
     },
     handler: async (request, h) => {
@@ -152,7 +153,7 @@ module.exports = async (server) => {
   //Delete a signups
   server.route({
     method: 'DELETE',
-    path: '/api/signup',
+    path: '/signup',
     options: {
       auth: {
         strategy: 'jwt',

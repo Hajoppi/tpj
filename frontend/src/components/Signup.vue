@@ -70,7 +70,7 @@
               type="text">
       </div>
     </div>
-    <div class="field" v-if="invited || (edit && this._data.invited)">
+    <div class="field" v-if="invited || (edit)">
       <label class="label">{{$t('signup.representative')}}</label>
       <div class="control">
         <input v-model="representative_of"
@@ -126,7 +126,7 @@
  *
  * The home index page.
  */
-import Proxy from '../proxies/proxy';
+import proxy from '../proxies/proxy';
 
 export default {
 /**
@@ -134,7 +134,7 @@ export default {
  */
   name: 'home-index',
   props: {
-    invited: {
+    invitedProp: {
       type: Boolean,
       required: false,
       default: false,
@@ -162,14 +162,30 @@ export default {
       gdpr: false,
       accept: false,
       sending: false,
+      invited: false,
     };
   },
   mounted() {
+    this.invited = this.invitedProp;
     if (this.edit) {
       const signupId = this.$route.query.id;
-      new Proxy('signup', { id: signupId }).all().then((res) => {
-        // eslint-disable-next-line
-        Object.assign(this._data, res);
+      proxy.get(`signup?id=${signupId}`).then((res) => {
+        const { data } = res;
+        this.name = data.name;
+        this.email = data.email;
+        this.start_year = data.start_year;
+        this.student = data.student;
+        this.no_alcohol = data.no_alcohol;
+        this.sillis = data.sillis;
+        this.avec = data.avec;
+        this.food_requirements = data.food_requirements;
+        this.table_group = data.table_group;
+        this.representative_of = data.representative_of;
+        this.support = data.support;
+        this.dish = data.dish;
+        this.gdpr = data.gdpr;
+        this.accept = data.accept;
+        this.sending = data.sending;
       }).catch((err) => {
         this.$router.push({ name: 'signup.index' });
         console.error(err);
@@ -199,11 +215,10 @@ export default {
       });
     },
     update() {
-      // eslint-disable-next-line
-      const data = this._data;
+      const data = this.$data;
       data.id = this.$route.query.id;
       data.locale = this.$i18n.locale;
-      return new Proxy('signup').update(data).then(() => {
+      return proxy.put('signup', data).then(() => {
         this.$router.push({ name: 'participants.index' });
       }).catch((error) => {
         console.error(error);
@@ -211,7 +226,7 @@ export default {
     },
     deleteSignup() {
       const signupId = this.$route.query.id;
-      return new Proxy('signup', { id: signupId }).destroy().then(() => {
+      return proxy.delete('signup', { id: signupId }).then(() => {
         this.$router.push({ name: 'participants.index' });
       }).catch((error) => {
         console.error(error);

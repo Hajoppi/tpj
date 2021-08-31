@@ -22,7 +22,7 @@
         {{$t(`signup.participants`)}}
       </router-link>
     </div>
-    <v-signup v-if="select && isOpen" :invited="invited"></v-signup>
+    <v-signup v-if="select && isOpen" :invitedProp="invited"></v-signup>
   </div>
 </template>
 
