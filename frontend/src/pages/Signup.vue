@@ -1,12 +1,21 @@
 <template>
   <div>
     <div class="home__text" v-html="$t('home.signup')"></div>
-    <div class="is-full" v-if="isFull">Ilmoittautuminen on täynnä, voit kuitenkin ilmoittautua varasijoille</div>
+    <div class="is-full"
+      v-if="isFull">
+      Ilmoittautuminen on täynnä, voit kuitenkin ilmoittautua varasijoille
+    </div>
     <div class="choose">
-      <button :disabled="!isOpenInvited" @click.prevent="invited=true; select=true" class="choose-button">
+      <button
+        :disabled="!isOpenInvited"
+        @click.prevent="invited=true; select=true"
+        class="choose-button">
         {{$t(`signup.invited`)}}
       </button>
-      <button :disabled="!isOpenOther" @click.prevent="invited=false; select=true" class="choose-button">
+      <button
+        :disabled="!isOpenOther"
+        @click.prevent="invited=false; select=true"
+        class="choose-button">
         {{$t(`signup.normal`)}}
       </button>
       <router-link to="/participants" class="choose-button">
@@ -24,7 +33,7 @@
  *
  * The home index page.
  */
-import VSignup from '../components/Signup';
+import VSignup from '../components/Signup.vue';
 import config from '../../config';
 
 export default {
@@ -39,28 +48,27 @@ export default {
     return {
       select: false,
       invited: false,
-    }
+    };
   },
   computed: {
     isOpenInvited() {
-      const now = new Date()
-      return now > config.signupStartInvited && now < config.signupEndInvited
+      const now = new Date();
+      return now > config.signupStartInvited && now < config.signupEndInvited;
     },
     isOpenOther() {
-      const now = new Date()
+      const now = new Date();
       return now > config.signupStart && now < config.signupEnd;
     },
     isOpen() {
-      const now = new Date()
-      return ((this.invited && this.isOpenInvited) 
-      || (!this.invited && this.isOpenOther))
+      return ((this.invited && this.isOpenInvited)
+      || (!this.invited && this.isOpenOther));
     },
     total() {
       return this.$store.state.participants.total;
     },
     isFull() {
-      return this.total>config.maxParticipants
-    }
+      return this.total > config.maxParticipants;
+    },
   },
   created() {
     this.$store.dispatch('participants/all');

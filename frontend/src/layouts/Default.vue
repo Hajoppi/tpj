@@ -7,12 +7,6 @@
       <slot></slot>
     </div>
     <div class="footer">
-      <div 
-        class="logo" 
-        v-for="sponsor in sponsors" 
-        :key="sponsor">
-        <img class="logo__image" :src="imgSrc(sponsor)" :alt="sponsor">
-      </div>
     </div>
   </div>
 </template>
@@ -27,8 +21,8 @@
  * Layouts are used to store a lot of shared code.
  * This way the app stays clean.
  */
-import VNavbar from '../components/Navbar';
-import images from '../assets/images/logos/*.*'
+import VNavbar from '../components/Navbar.vue';
+
 export default {
   /**
    * The name of the layout.
@@ -38,13 +32,10 @@ export default {
     closeNavbar() {
       this.$store.dispatch('navbar/set', false);
     },
-    imgSrc(name) {
-      return images[name].png;
-    }
   },
   computed: {
     sponsors() {
-      return ['okm','MML', 'TEK', 'FCG'];
+      return ['okm', 'MML', 'TEK', 'FCG'];
     },
   },
   components: {

@@ -2,32 +2,35 @@ version: '3'
 
 services: 
   frontend:
-    image: node:10
+    image: node:14
     volumes:
       - ./frontend:/usr/src/app
-    working_dir: /usr/src/app
     command: npm start
     ports:
       - 3000:3000
       - 45253:45253
 
-  backend:
-    image: node:10
+backend:
+    build: 
+      context: ./backend
+      dockerfile: dev.Dockerfile
     volumes:
-      - ./backend:/usr/src/app
-    working_dir: /usr/src/app
-    environment: 
-      - NODE_URI=0.0.0.0
-    command: npm start
+      - ./backend:/app
+      - /app/node_modules
     ports:
-      - 3001:2041
+      - 3001:3001
+    networks:
+      - default
+    depends_on:
+      - db
     
   db:
-    image: mariadb
+    image: postgres:10.14
+    container_name: rwbk_db
     environment: 
-      - MYSQL_DATABASE=tpjdb
-      - MYSQL_ROOT_PASSWORD=lorem
-    volumes: 
-      - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-    depends_on:
-      - backend
+      - POSTGRES_DB=muistinnollaus
+      - POSTGRES_PASSWORD=lorem
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+    networks:
+      - default

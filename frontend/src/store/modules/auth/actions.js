@@ -6,8 +6,8 @@
  * auth module.
  */
 
-import Vue from 'vue';
-import AuthProxy from '../../../proxies/AuthProxy';
+import { useRouter } from 'vue-router';
+import proxy from '../../../proxies/proxy';
 import * as types from './mutation-types';
 
 export const check = ({ commit }) => {
@@ -15,11 +15,11 @@ export const check = ({ commit }) => {
 };
 
 export const register = ({ commit }, payload) => {
-  new AuthProxy()
-    .register(payload)
+  const router = useRouter();
+  proxy.post('/register', payload)
     .then((response) => {
       commit(types.LOGIN, response.id_token);
-      Vue.router.push({
+      router.push({
         name: 'home.index',
       });
     })
@@ -28,11 +28,11 @@ export const register = ({ commit }, payload) => {
 };
 
 export const login = ({ commit }, payload) => {
-  new AuthProxy()
-    .login(payload)
+  const router = useRouter();
+  proxy.post('/login', payload)
     .then((response) => {
       commit(types.LOGIN, response.id_token);
-      Vue.router.push({
+      router.push({
         name: 'home.index',
       });
     }).catch(() => {

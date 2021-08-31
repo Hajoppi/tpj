@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'Locale',
-  data () {
+  data() {
     return {
       langs: ['fi', 'en', 'se'],
       index: 0,
@@ -18,18 +18,18 @@ export default {
 
   computed: {
     filteredLangs() {
-      return this.langs.filter( lang => lang != this.$i18n.locale)
+      return this.langs.filter((lang) => lang !== this.$i18n.locale);
     },
     getLang() {
       return this.$i18n.locale;
     },
 
   },
-  methods:{
+  methods: {
     changeLang(lang) {
       localStorage.setItem('locale', lang);
       this.$i18n.locale = lang;
     },
-  }
-}
+  },
+};
 </script>

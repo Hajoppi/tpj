@@ -1,19 +1,16 @@
 <template>
-  <div id="app">
-    <v-layout>
-      <router-view></router-view>
-    </v-layout>
-  </div>
+  <v-layout>
+    <router-view></router-view>
+  </v-layout>
 </template>
 
 <script>
-import VLayout from './layouts/Default';
-import VLocale from './components/Locale';
+import VLayout from './layouts/Default.vue';
+
 export default {
   name: 'app',
   components: {
     VLayout,
-    VLocale,
   },
-}
+};
 </script>

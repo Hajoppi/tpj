@@ -1,29 +1,22 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n/index';
 
-// Plugin
-import './plugins/vuex';
-import './plugins/axios';
-import { i18n } from './plugins/vue-i18n';
-import { router } from './plugins/vue-router';
-import './plugins/vuex-router-sync';
-
-// Styling
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import messages from './locale';
 import './assets/sass/main.scss';
 
-import App from './App';
-import store from './store';
+let locale = 'fi';
+if (localStorage.getItem('locale')) {
+  locale = localStorage.getItem('locale');
+}
 
-store.dispatch('auth/check');
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  i18n,
-  router,
-  store,
-  /**
- * Will render the application.
- *
- * @param {Function} h Will create an element.
- */
-  render: h => h(App),
+const i18n = createI18n({
+  locale,
+  fallbackLocale: 'fi',
+  messages,
 });
+
+createApp(App).use(store).use(router).use(i18n)
+  .mount('#app');

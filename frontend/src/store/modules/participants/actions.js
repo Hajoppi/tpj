@@ -7,21 +7,20 @@
  */
 
 import * as types from './mutation-types';
-import Proxy from '../../../proxies/Proxy';
+import proxy from '../../../proxies/proxy';
 
 export const all = ({ commit }) => new Promise((resolve, reject) => {
-  new Proxy('signups').all()
+  proxy.get('signups')
     .then((response) => {
       commit(types.ALL, response);
       resolve();
-  }).catch((e) => {
+    }).catch((e) => {
       reject(e);
-   });
+    });
 });
 
-
 export const register = (_, data) => new Promise((resolve, reject) => {
-  new Proxy('signup').create(data)
+  proxy.post('signup', data)
     .then(() => {
       resolve();
     }).catch((e) => {

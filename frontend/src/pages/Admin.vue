@@ -30,13 +30,13 @@
 </template>
 
 <script>
-  /* ============
+/* ============
    * Home Index Page
    * ============
    *
    * The home index page.
    */
-import Proxy from '../proxies/Proxy';
+import Proxy from '../proxies/proxy';
 
 export default {
   /**
@@ -46,8 +46,8 @@ export default {
   data() {
     return {
       invited: [],
-      normal:[]
-    }
+      normal: [],
+    };
   },
   mounted() {
     new Proxy('admin/signups').all().then((response) => {
@@ -59,29 +59,29 @@ export default {
     modify(id) {
       new Proxy('admin/modify').find(id).then((response) => {
         if (response.hash) {
-          const link = '/edit?id=' + response.hash;
+          const link = `/edit?id=${response.hash}`;
           this.$router.push(link);
         }
       });
     },
     downloadCsv() {
       let csv = '';
-      if(this.invited.length > 0) csv += Object.keys(this.invited[0]).join(';') + '\n';
-      else if (this.normal.length > 0 ) csv += Object.keys(this.normal[0]).join(';') + '\n';
+      if (this.invited.length > 0) csv += `${Object.keys(this.invited[0]).join(';')}\n`;
+      else if (this.normal.length > 0) csv += `${Object.keys(this.normal[0]).join(';')}\n`;
       this.invited.forEach((row) => {
-        csv += Object.values(row).join(';')
+        csv += Object.values(row).join(';');
         csv += '\n';
       });
       this.normal.forEach((row) => {
-        csv += Object.values(row).join(';')
+        csv += Object.values(row).join(';');
         csv += '\n';
       });
       const element = document.createElement('a');
-      element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+      element.href = `data:text/csv;charset=utf-8,${encodeURI(csv)}`;
       element.target = '_blank';
       element.download = 'signups.csv';
       element.click();
-    }
+    },
   },
   /**
    * The components that the page can use.

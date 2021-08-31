@@ -6,7 +6,7 @@
  * account module.
  */
 
-import Vue from 'vue';
+import proxy from '../../../proxies/proxy';
 import {
   CHECK,
   REGISTER,
@@ -18,7 +18,7 @@ export default {
   [CHECK](state) {
     state.authenticated = !!localStorage.getItem('id_token');
     if (state.authenticated) {
-      Vue.$http.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('id_token')}`;
+      proxy.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('id_token')}`;
     }
   },
 
@@ -29,12 +29,12 @@ export default {
   [LOGIN](state, token) {
     state.authenticated = true;
     localStorage.setItem('id_token', token);
-    Vue.$http.defaults.headers.common.Authorization = `Bearer ${token}`;
+    proxy.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
 
   [LOGOUT](state) {
     state.authenticated = false;
     localStorage.removeItem('id_token');
-    Vue.$http.defaults.headers.common.Authorization = '';
+    proxy.defaults.headers.common.Authorization = '';
   },
 };

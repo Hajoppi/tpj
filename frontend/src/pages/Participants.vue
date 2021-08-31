@@ -1,8 +1,16 @@
 <template>
   <div class="participants">
     <div class="choose">
-      <button class="choose-button" :disabled="!showInvited" @click="showInvited=false">{{$t(`signup.normal`)}}</button>
-      <button class="choose-button" :disabled="showInvited" @click="showInvited=true">{{$t(`signup.invited`)}}</button>
+      <button class="choose-button"
+        :disabled="!showInvited"
+        @click="showInvited=false">
+        {{$t(`signup.normal`)}}
+      </button>
+      <button class="choose-button"
+        :disabled="showInvited"
+        @click="showInvited=true">
+          {{$t(`signup.invited`)}}
+      </button>
     </div>
     <div class="total">{{total}}/{{maxParticipants}}</div>
     <table class="list">
@@ -32,6 +40,7 @@
  * The home index page.
  */
 import config from '../../config';
+
 export default {
 /**
  * The name of the page.
@@ -50,7 +59,7 @@ export default {
   },
   computed: {
     showReserve() {
-      return !this.showInvited && this.reserve.length > 0
+      return !this.showInvited && this.reserve.length > 0;
     },
     participants() {
       return this.showInvited ? this.invited : this.normal;
@@ -72,7 +81,7 @@ export default {
     },
     maxParticipants() {
       return config.maxParticipants;
-    }
-  }
+    },
+  },
 };
 </script>

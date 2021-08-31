@@ -1,8 +1,0 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    RewriteRule ^api/$ http://0.0.0.0:2041/api [P,L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^api/?(.*)$ http://0.0.0.0:2041/api/$1 [P,L]
-</IfModule>

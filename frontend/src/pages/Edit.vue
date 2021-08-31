@@ -11,7 +11,7 @@
  *
  * The home index page.
  */
-import VSignup from '../components/Signup';
+import VSignup from '../components/Signup.vue';
 
 export default {
   /**

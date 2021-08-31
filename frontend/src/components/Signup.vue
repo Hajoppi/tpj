@@ -33,10 +33,20 @@
       <label class="label">{{$t('signup.dish')}}</label>
       <div class="control dish">
         <label for="fish">{{$t('signup.fish')}}</label>
-        <input class="radio" required name="dish" type="radio" id="fish" value="fish" v-model="dish">
+        <input class="radio"
+          required name="dish"
+          type="radio"
+          id="fish"
+          value="fish"
+          v-model="dish">
         <span class="radio-padder"></span>
         <label for="vegetarian">{{$t('signup.vegetarian')}}</label>
-        <input class="radio" name="dish" type="radio" id="vegetarian" value="vegetarian" v-model="dish">
+        <input class="radio"
+          name="dish"
+          type="radio"
+          id="vegetarian"
+          value="vegetarian"
+          v-model="dish">
         <br>
       </div>
     </div>
@@ -90,11 +100,20 @@
     </div>
     <div class="field is-grouped">
       <div class="control">
-        <button v-if="edit" class="button" :disabled="!gdpr || sending">{{$t('signup.edit')}}</button>
+        <button
+          v-if="edit"
+          class="button"
+          :disabled="!gdpr || sending">
+            {{$t('signup.edit')}}
+          </button>
         <button v-else class="button" :disabled="!gdpr || sending">{{$t('signup.submit')}}</button>
       </div>
       <div v-if="edit" class="control">
-        <button @click.prevent="deleteSignup" class="button is-link">{{$t('signup.delete')}}</button>
+        <button
+          @click.prevent="deleteSignup"
+          class="button is-link">
+            {{$t('signup.delete')}}
+        </button>
       </div>
     </div>
   </form>
@@ -107,7 +126,7 @@
  *
  * The home index page.
  */
-import Proxy from '../proxies/Proxy';
+import Proxy from '../proxies/proxy';
 
 export default {
 /**
@@ -124,7 +143,7 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    }
+    },
   },
   data() {
     return {
@@ -146,23 +165,24 @@ export default {
     };
   },
   mounted() {
-    if(this.edit) {
+    if (this.edit) {
       const signupId = this.$route.query.id;
       new Proxy('signup', { id: signupId }).all().then((res) => {
+        // eslint-disable-next-line
         Object.assign(this._data, res);
       }).catch((err) => {
-        this.$router.push({name: 'signup.index'});
+        this.$router.push({ name: 'signup.index' });
         console.error(err);
       });
     }
   },
   computed: {
     formTitle() {
-      return this.invited ? this.$t('signup.titleInvited') : this.$t('signup.title')
+      return this.invited ? this.$t('signup.titleInvited') : this.$t('signup.title');
     },
     total() {
       return this.$store.state.participants.total;
-    }
+    },
   },
   methods: {
     register() {
@@ -170,15 +190,16 @@ export default {
       const data = this.$data;
       data.invited = this.invited;
       data.locale = this.$i18n.locale;
-      this.$store.dispatch("participants/register", data).then(() => {
+      this.$store.dispatch('participants/register', data).then(() => {
         this.sending = false;
-        this.$router.push({ name: 'participants.index'})
+        this.$router.push({ name: 'participants.index' });
       }).catch((error) => {
         this.sending = false;
         console.error(error);
       });
     },
     update() {
+      // eslint-disable-next-line
       const data = this._data;
       data.id = this.$route.query.id;
       data.locale = this.$i18n.locale;
@@ -191,13 +212,13 @@ export default {
     deleteSignup() {
       const signupId = this.$route.query.id;
       return new Proxy('signup', { id: signupId }).destroy().then(() => {
-        this.$router.push({ name: 'participants.index'});
+        this.$router.push({ name: 'participants.index' });
       }).catch((error) => {
         console.error(error);
       });
     },
     handleSubmit() {
-      if(this.edit) {
+      if (this.edit) {
         this.update();
       } else {
         this.register();
